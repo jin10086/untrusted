@@ -30,6 +30,11 @@ sudo npm install http-server
 ```
 make runlocal
 ```
+构建在其他目录中的 mod：
+
+```
+make mod=$path_of_mod
+```
 
 ### 对关卡进行贡献
 
