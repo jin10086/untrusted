@@ -5,6 +5,7 @@ js-target = scripts/build/untrusted.js
 js-target-min = scripts/build/untrusted.min.js
 
 js-modules = scripts/util.js \
+			 scripts/i18n.js \
 			 scripts/_head.js \
              scripts/game.js \
              scripts/codeEditor.js \
@@ -23,6 +24,7 @@ js-modules = scripts/util.js \
 	         scripts/_tail.js
 
 js-modules-debug = scripts/util.js \
+				   scripts/i18n.js \
 	               scripts/_head.js \
 				   scripts/game.js \
 	               scripts/codeEditor.js \
