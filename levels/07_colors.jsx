@@ -12,12 +12,10 @@
 * colors.js *
  *************
  *
- * You're almost at the exit. You just need to get past this
- * color lock.
+ * 你已经接近出口了。只需要通过这个颜色锁就可以了。
  *
- * Changing your environment is no longer enough. You must
- * learn to change yourself. I've sent you a little something
- * that should help with that.
+ * 只改变环境已经不够了。你需要学习改变你自己。
+ * 我已经为你提供了一些有帮助的东西。
  */
 
 function startLevel(map) {

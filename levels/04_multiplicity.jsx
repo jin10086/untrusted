@@ -9,13 +9,11 @@
  * multiplicity.js *
  *******************
  *
- * Out of one cell and into another. They're not giving you
- * very much to work with here, either. Ah, well.
+ * 刚出狼窝又入虎穴。他们再次限制了你的活动。不过，当然啦……
  *
- * Level filenames can be hints, by the way. Have I
- * mentioned that before?
+ * 顺便说一下，关卡文件名可作看作提示。我之前有提过吗？
  *
- * No more cells after this one. I promise.
+ * 我保证，不会再遇到这种监牢了。
  */
 
 function startLevel(map) {

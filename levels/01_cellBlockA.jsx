@@ -12,27 +12,25 @@
  * cellBlockA.js *
  *****************
  *
- * Good morning, Dr. Eval.
+ * 早安，Dr. Eval。
  *
- * It wasn't easy, but I've managed to get your computer down
- * to you. This system might be unfamiliar, but the underlying
- * code is still JavaScript. Just like we predicted.
+ * 这并不容易，不过我已经授权将你的电脑还你。
+ * 你对这个系统可能不怎么熟悉，不过仍然是基于 JavaScript。
+ * 这和我们预期的一样。
  *
- * Now, let's get what we came here for and then get you out of
- * here. Easy peasy.
+ * 现在让我们看看来此的目的，以及如何让你从这里出去。
+ * 小菜一碟。
  *
- * I've given you as much access to their code as I could, but
- * it's not perfect. The red background indicates lines that
- * are off-limits from editing.
+ * 我会尽可能的为你提供可访问的代码，不过可能不怎么有效。
+ * 红色背景表示那些代码被限制编辑。
  *
- * The code currently places blocks in a rectangle surrounding
- * you. All you need to do is make a gap. You don't even need
- * to do anything extra. In fact, you should be doing less.
+ * 代码构造了一个围绕你的墙。你需要开个缺口出来。
+ * 你可能不用作太多工作。事实上，做得越少越好。
  */
 
 function startLevel(map) {
 #START_OF_START_LEVEL#
-    map.displayChapter('Chapter 1\nBreakout');
+    map.displayChapter('第一章\n越狱');
 
     map.placePlayer(7, 5);
 #BEGIN_EDITABLE#
@@ -56,7 +54,7 @@ function startLevel(map) {
 
 function onExit(map) {
     if (!map.getPlayer().hasItem('computer')) {
-        map.writeStatus("Don't forget to pick up the computer!");
+        map.writeStatus("别 忘 记 捡 起 你 的 电 脑！");
         return false;
     } else {
         return true;
