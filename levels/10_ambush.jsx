@@ -9,14 +9,12 @@
  * ambush.js *
  *************
  *
- * Oh. Oh, I see. This wasn't quite part of the plan.
+ * 噢，噢，我知道了。这不在计划内。
  *
- * Looks like they won't let you take the Algorithm
- * without a fight. You'll need to carefully weave your
- * way through the guard drones.
+ * 看起来，不好好打一架，他们是不会让你带走算法（Algorithm）的。
+ * 在穿过守卫机器人时，小心选择你的路线。
  *
- * Well, time to improvise. Let's mess with their programming
- * a little, shall we?
+ * 好吧，来点改进。让我们给它们的程序制造点麻烦，如何？
  */
 
 function startLevel(map) {
@@ -86,7 +84,7 @@ function startLevel(map) {
         }
     });
 
-    // just for decoration
+    // 用于装饰
     map.defineObject('water', {
         'symbol': '░',
         'color': '#44f'
