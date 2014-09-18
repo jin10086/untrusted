@@ -44,8 +44,8 @@ js-modules-debug = scripts/util.js \
 
 yui-jar = tools/yuicompressor-2.4.8pre.jar
 
-
-ERR_NOT_FOUND:=$(shell if [ ! -z '$(mod)' ] && [ ! -d '$(mod)' ]; then echo 'Mod [$(mod)] not found!'; fi)
+# if the mod is set but not exist, raise an error
+ERR_NOT_FOUND:=$(shell if [ ! -z '$(mod)' ] && [ ! -d 'mods/$(mod)' ]; then echo 'Mod [$(mod)] not found!'; fi)
 # `make` or `make debug` merges scripts (using debug launcher)
 debug:
 ifneq '$(ERR_NOT_FOUND)' ''
@@ -56,6 +56,7 @@ endif
 	@echo "[ Done ]"
 	@echo "Merging JS files…\t\t\t\c"
 	@cat $(js-modules-debug) > $(js-target)
+	@./collect_levels_filename.sh $(js-target) $(mod)
 	@echo "[ Done ]"
 
 # `make release` merges and compresses scripts (using release launcher)
@@ -69,6 +70,7 @@ endif
 	@echo "[ Done ]"
 	@echo "Merging JS files…\t\t\t\c"
 	@cat $(js-modules) > $(js-target)
+	@./collect_levels_filename.sh $(js-target) $(mod)
 	@echo "[ Done ]"
 	@echo "Compressing merged JS…\t\t\t\c"
 	@java -jar $(yui-jar) -o $(js-target-min) $(js-target)

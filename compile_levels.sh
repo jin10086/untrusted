@@ -2,11 +2,12 @@ echo "Game.prototype._levels = {" > levels/levels.js
 
 mod=$1
 
-[ -z $mod ] && mod=levels
+[ -z $mod ] && mod=default
 
-for lvl in $mod/*.jsx
+for lvl in mods/$mod/*.jsx
 do
-	printf %s "    '$lvl': '" >> levels/levels.js
+	lvlfn=`basename $lvl`
+	printf %s "    'levels/$lvlfn': '" >> levels/levels.js
 	echo "$lvl" | xargs sed "s#\\\#\\\\\\\#g" | sed "s#'#\\\'#g" | tr '\n' '`' | sed "s/\`/\\\n/g" | sed -e "a\\
 	',
 	" | tr '\n' ' ' >> levels/levels.js
