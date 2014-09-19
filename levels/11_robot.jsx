@@ -10,16 +10,13 @@
 /*
  * robot.js
  *
- * You'll need three keys in order to unlock the
- * Algorithm: the red key, the green key, and the
- * blue key. Unfortunately, all three of them are
- * behind human-proof barriers.
+ * 你需要三把钥匙来释放算法（Algorithm）：红色的、绿色的和蓝色的钥匙。
+ * 不幸的是，这三把钥匙保存在人类识别区（barrier）中。
  *
- * The plan is simple: reprogram the maintenance
- * robots to grab the key and bring it through
- * the barrier to us.
+ * 计划很简单：对用于维护作业的机器人（robot）重新编程，
+ * 以便让其穿过识别区拿到钥匙。
  *
- * Let's try it on the red key first.
+ * 首先让我们试试红色钥匙（redKey）。
  */
 
 function getRandomInt(min, max) {
@@ -28,8 +25,7 @@ function getRandomInt(min, max) {
 
 function startLevel(map) {
 #START_OF_START_LEVEL#
-    // Hint: you can press R or 5 to "rest" and not move the
-    // player, while the robot moves around.
+    // 提示：你可以按 R 或 5 来重置，并且玩家不要与机器人同时移动。
 
     map.placePlayer(map.getWidth()-2, map.getHeight()-2);
     var player = map.getPlayer();
@@ -43,10 +39,7 @@ function startLevel(map) {
         },
         'behavior': function (me) {
 #BEGIN_EDITABLE#
-            // Available commands: me.move(direction)
-            //                 and me.canMove(direction)
-
-
+            // 可用的命令：me.move(direction) 和 me.canMove(direction)
 
 #END_EDITABLE#
         }
@@ -86,7 +79,7 @@ function validateLevel(map) {
 
 function onExit(map) {
     if (!map.getPlayer().hasItem('redKey')) {
-        map.writeStatus("We need to get that key!");
+        map.writeStatus("我们必须拿到这把钥匙！");
         return false;
     } else {
         return true;

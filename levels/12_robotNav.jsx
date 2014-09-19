@@ -8,15 +8,13 @@
 /*
  * robotNav.js
  *
- * The green key is located in a slightly more
- * complicated room. You'll need to get the robot
- * past these obstacles.
+ * 绿色钥匙被放在一个更加复杂的房间里。
+ * 你需要让机器人穿越这些障碍。
  */
 
 function startLevel(map) {
 #START_OF_START_LEVEL#
-    // Hint: you can press R or 5 to "rest" and not move the
-    // player, while the robot moves around.
+    // 提示：你可以按 R 或 5 来重置，并且玩家不要与机器人同时移动。
 
     map.placePlayer(0, map.getHeight() - 1);
     var player = map.getPlayer();
@@ -89,7 +87,7 @@ function validateLevel(map) {
 
 function onExit(map) {
     if (!map.getPlayer().hasItem('greenKey')) {
-        map.writeStatus("We need to get that key!");
+        map.writeStatus("我们必须拿到这把钥匙！");
         return false;
     } else {
         return true;

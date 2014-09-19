@@ -10,36 +10,27 @@
  * endOfTheLine.js *
  *******************
  *
- * I don't feel guilty at all, Cornelius.
+ * 
+ * 我认为无须忏悔，Cornelius。
  *
- * Did you really expect me to? Did you really think that
- * you could be trusted with coauthorship on the paper that
- * would prove P = NP in the eyes of the world?
+ * 你真希望我能做到？你真的认为可以相信论文的作者可以证明举世瞩目的 P = NP？
  *
- * You're a very pure researcher, my good Doctor. "Department
- * of Theoretical Computation", divorced from the realities
- * of the world. I don't think you ever considered the
- * implications - the *physical* implications - of the
- * Algorithm. What humanity might do if it was as easy to
- * solve an intractable puzzle as it was to conceive of it.
+ * 你们都是单纯的科研人员，我的好博士。“人工智能部门”是脱离现实的。
+ * 我不认为你曾行考虑过，将这个算法实现，一个【物理】的实现方案。
+ * 如果一个棘手的谜题实际上就像它预期的那样容易解决，人类会怎么做？
  *
- * We would become as unto Gods, Cornelius, if this knowledge
- * was public. Immature children wielding power unimaginable.
- * We've already had one Oppenheimer - we don't need Dr.
- * Cornelius Eval to be another.
+ * Cornelius，如果这个知识被公开的话，我们都将成为上帝。
+ * 幼稚的孩童使用无法想象的力量会如何。
+ * 我们已经有一个奥本海默了，我们不需要让 Dr. Cornelius Eval 成为另一个奥本海默。
  *
- * If I had succeeded the Algorithm would be safe and secure
- * in the hands of those with the sound judgement and sense
- * of responsibility to use it wisely. I pray my failure
- * will not doom mankind - but I cannot hope so
- * optimistically.
+ * 如果在这个算法上我能获得成功，那么它将是安全和可靠的。
+ * 我可以明智的、具有远见和负责的运用它。
+ * 我祈祷我的失败不会导致人类毁灭，不过我如此并不报乐观态度。
  *
- * You may have defeated my robot form, but I anticipated
- * this eventuality. The Algorithm must never leave the
- * Machine Continuum. And so neither can you.
+ * 你可能已经击败了我的机器人军团，而我估计这可能是最终结果了。
+ * 算法永远无法离开这一赛博空间。而你也一样。
  *
- * This is bigger than me and bigger than you. I have no
- * regrets. I would do it again in an instant.
+ * 这是超越你我之外的存在。我不后悔，因为我可以立刻重新开始。
  */
 
 function startLevel(map) {

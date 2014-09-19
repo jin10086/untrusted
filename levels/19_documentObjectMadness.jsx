@@ -18,18 +18,16 @@
  * documentObjectMadness.js *
  ****************************
  *
- * I can't believe it! I can't believe you made it onto
- * Department of Theoretical Computation's web server!
- * YOU SHOULD HAVE BEEN DELETED! This shouldn't even be
- * possible! What the hell were the IT folks thinking?
+ * 这真令人无法相信！我无法相信你居然进入了人工智能部门的 Web 服务器！
+ * 你应该已经被删除了！这不可能！这些干 IT 的蠢货在想什么？
  *
- * No matter. I still have the Algorithm. That's the
- * important part. The rest is just implementation, and
- * how hard could that be?
+ * 没关系。算法还在我这里。这是最重要的。
+ * 剩下的部分只是实现一下，这能有多难？
  *
- * Anyway you're not going to catch me now, my good Doctor.
- * After all, you're a tenured professor with a well-respected
- * history of research - you probably don't know jQuery!
+ * 无论如何，你已经无法抓到我了，我亲爱的博士。
+ * 最终，科研的史册里会记载你被授予令人尊敬的教授头衔的。
+ *
+ * 你大概不知道 jQuery 吧！
  */
 
 function objective(map) {
@@ -40,23 +38,22 @@ function startLevel(map) {
 #START_OF_START_LEVEL#
     var html = "<div class='container'>" +
     "<div style='width: 600px; height: 500px; background-color: white; font-size: 10px;'>" +
-        "<center><h1>Department of Theoretical Computation</h1></center>" +
+        "<center><h1>人工智能部门</h1></center>" +
         "<hr />" +
         "<table border='0'><tr valign='top'>" +
             "<td><div id='face' /></td>" +
             "<td>" +
                 "<h2 class=facultyName>Cornelius Eval</h2>" +
-                "<h3>Associate Professor of Computer Science</h3>" +
+                "<h3>计算机科学副教授</h3>" +
                 "<ul>" +
-                    "<li>BS, Mathematics, University of Manitoba</li>" +
-                    "<li>PhD, Theoretical Computation, <a href='http://www.mit.edu'>MIT</a></li>" +
+                    "<li>学士, 数学, 马尼托巴大学</li>" +
+                    "<li>PhD, 人工智能, <a href='http://www.mit.edu'>MIT</a></li>" +
                 "</ul>" +
-                "<h4>About me</h4>" +
-                "<p>I am an associate professor of computer science, attached to the Department of " +
-                "Theoretical Computation. My current research interests include the human-machine " +
-                "interface, NP complete problems, and parallelized mesh mathematics.</p>" +
-                "<p>I am also the current faculty advisor to the <a href=''>undergraduate Super Smash Bros. team</a>. " +
-                "In my spare time I enjoy polka and dirtbiking. </p>" +
+                "<h4>个人介绍</h4>" +
+                "<p>我是一名计算机科学副教授，工作于人工智能部门。" +
+                "我当前的研究方向包括人机界面、NP 完全问题和并行网格数学理论。</p>" +
+                "<p>我现在还是 <a href=''>超级玛丽大学生队</a> 的在职顾问。" +
+                "业余时间，我热衷于波尔卡舞和轻骑摩托。</p>" +
             "</td>" +
         "</tr></table>" +
 
@@ -64,10 +61,10 @@ function startLevel(map) {
           "<h4>Class Schedule</h4>" +
             "<table>" +
              "<tr>" +
-                "<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th>" +
+                "<th>星期一</th><th>星期二</th><th>星期三</th><th>星期四</th><th>星期五</th>" +
              "</tr>" +
              "<tr>" +
-                "<td>CS145 - Semicolons</td><td>Nothing Planned</td><td>CS145 - Semicolons</td><td>CS199 - Practical Theorycrafting </td><td>CS145 - Semicolons</td>" +
+                "<td>CS145 - 分号</td><td>无计划</td><td>CS145 - 分号</td><td>CS199 - 实践理论</td><td>CS145 - Semicolons</td>" +
              "</tr>" +
             "</table>" +
         "</div>" +
