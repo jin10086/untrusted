@@ -14,9 +14,9 @@ var _i18n = {
 	// display.js
 	"%c{#0f0}> initialize"	:	"%c{#0f0}> 初始化",
 	"U N T R U S T E D"		:	"一意孤行",
-	"- or - "	:	"-或 - ",
-	"THE CONTINUING ADVENTURES OF DR. EVAL"	:	"Dr.Eval大冒险",
-	"a game by Alex Nisnevich and Greg Shuflin"	:	"Alex Nisnevich和 Greg Shuflin开发\n　　　　　　　　　　mikespook汉化",
+	"- or - "	:	"- 或 - ",
+	"THE CONTINUING ADVENTURES OF DR. EVAL"	:	"Dr.Eval 大冒险",
+	"a game by Alex Nisnevich and Greg Shuflin"	:	"Alex Nisnevich 和 Greg Shuflin 开发\n　　　　　　　　　　mikespook 汉化",
 	"Press any key to begin ..."	:	"按任意键开始游戏 ...",
 	"%c{#0f0}> run "	:	"%c{#0f0}> 运行 ",
 	// objects.js
