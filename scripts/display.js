@@ -161,12 +161,14 @@ ROT.Display.prototype.playIntro = function (map, i) {
     } else {
         if (typeof i === 'undefined') { i = map.getHeight(); }
         this.clear();
-        this.drawText(0, i - 2, _("%c{#0f0}> initialize"));
-        this.drawText(21, i + 3, _("U N T R U S T E D"));
-        this.drawText(23, i + 5, _("- or - "));
-        this.drawText(19, i + 7, _("THE CONTINUING ADVENTURES OF DR. EVAL"));
-        this.drawText(9, i + 12, _("a game by Alex Nisnevich and Greg Shuflin"));
-        this.drawText(28, i + 22, _("Press any key to begin ..."));
+		var l = ["%c{#0f0}> initialize", "U N T R U S T E D",
+		"- or - ", "THE CONTINUING ADVENTURES OF DR. EVAL",
+		"a game by Alex Nisnevich and Greg Shuflin",
+		"Press any key to begin ..."];
+		for(var j = 0; j < l.length; j ++) {
+			var txt = _d(l[j])
+	        this.drawText(txt.x, i + txt.y, txt.txt);
+		}
         setTimeout(function () {
             display.playIntro(map, i - 1);
         }, 100);
