@@ -132,6 +132,24 @@ var _i18n = {
 	'Removes the given item from the player\'s inventory, if the player has the given item.'	:	'如果玩家有指定的物品的话，从背包中移除它。',
 	'Sets the color of the player.'	:	'设置玩家的颜色。',
 	'Sets the function that is executed when the player uses the function phone.'	:	'设置玩家使用电话功能时，将执行的函数。',
+	// map.js
+	'Forbidden method call: '	:	'禁止的方法调用：',
+	"There is no type of object named "	:	'没有物品叫做',
+	"!"	:	'！',
+    "Can't place object on top of player!"	:	'不能将物品放在玩家上！',
+	"There is already an object at"	:	'已经有物品位于坐标',
+	"Can't place player twice!"	:	'玩家不能被放置两次！',
+	"There is already a type of object named "	:	'已经有物品类型叫做',
+	"defineObject(): minimum interval is 100 milliseconds"	:	'"defineObject()：最小间隔为 100 毫秒',
+	"delay not specified"	:	'未指定延迟',
+	"minimum delay is 25 milliseconds"	:	'最小延迟为 25 毫秒',
+	'Not enough '	:	'不足数量的',
+	's on the map! Expected: '	:	'在地图上！应当有：',
+	', found: '	:	'，现有：', 
+	'Too many '	:	'太多的',
+	'Wrong number of '	:	'错误数量的',
+	'Too many timers set on the map! Expected: 0, found: '	:	'在地图上有太多定时器！应当有：0，现有：',
+	'Not enough lines on the map! Expected: '	:	'在地图上的线条数量不足！应当有：',
 	//
 	'':''
 }

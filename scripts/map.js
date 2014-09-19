@@ -38,19 +38,19 @@ function Map(display, __game) {
     /* unexposed getters */
 
     this._getObjectDefinition = function(objName) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._getObjectDefinition()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._getObjectDefinition()';}
         return __objectDefinitions[objName];
     };
     this._getObjectDefinitions = function() {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._getObjectDefinitions()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._getObjectDefinitions()';}
         return __objectDefinitions;
     };
     this._getGrid = function () {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._getGrid()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._getGrid()';}
         return __grid;
     };
     this._getLines = function() {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._getLines()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._getLines()';}
         return __lines;
     };
 
@@ -64,7 +64,7 @@ function Map(display, __game) {
     /* unexposed methods */
 
     this._reset = function () {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._reset()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._reset()';}
 
         __objectDefinitions = __game.getListOfObjects();
 
@@ -103,7 +103,7 @@ function Map(display, __game) {
     };
 
     this._ready = function () {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._ready()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._ready()';}
 
         var map = this;
 
@@ -127,7 +127,7 @@ function Map(display, __game) {
     };
 
     this._setProperties = function (mapProperties) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._setProperties()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._setProperties()';}
 
         // set defaults
         this._properties = {};
@@ -154,7 +154,7 @@ function Map(display, __game) {
     };
 
     this._canMoveTo = function (x, y, myType) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._canMoveTo()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._canMoveTo()';}
 
         var x = Math.floor(x); var y = Math.floor(y);
 
@@ -193,7 +193,7 @@ function Map(display, __game) {
 
     // Returns the object of the given type closest to target coordinates
     this._findNearestToPoint = function (type, targetX, targetY) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._findNearestToPoint()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._findNearestToPoint()';}
 
         var foundObjects = [];
 
@@ -237,7 +237,7 @@ function Map(display, __game) {
     };
 
     this._isPointOccupiedByDynamicObject = function (x, y) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._isPointOccupiedByDynamicObject()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._isPointOccupiedByDynamicObject()';}
 
         var x = Math.floor(x); var y = Math.floor(y);
 
@@ -251,7 +251,7 @@ function Map(display, __game) {
     };
 
     this._findDynamicObjectAtPoint = function (x, y) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._findDynamicObjectAtPoint()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._findDynamicObjectAtPoint()';}
 
         var x = Math.floor(x); var y = Math.floor(y);
 
@@ -265,7 +265,7 @@ function Map(display, __game) {
     };
 
     this._moveAllDynamicObjects = function () {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._moveAllDynamicObjects()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._moveAllDynamicObjects()';}
 
         // the way things work right now, teleporters must take precedence
         // over all other objects -- otherwise, pointers.jsx will not work
@@ -291,7 +291,7 @@ function Map(display, __game) {
     };
 
     this._removeItemFromMap = function (x, y, klass) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._removeItemFromMap()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._removeItemFromMap()';}
 
         var x = Math.floor(x); var y = Math.floor(y);
 
@@ -301,7 +301,7 @@ function Map(display, __game) {
     };
 
     this._reenableMovementForPlayer = function (player) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._reenableMovementForPlayer()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._reenableMovementForPlayer()';}
 
         if (!this._callbackValidationFailed) {
             setTimeout(function () {
@@ -311,7 +311,7 @@ function Map(display, __game) {
     };
 
     this._hideChapter = function() {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._hideChapter()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._hideChapter()';}
 
         // start fading out chapter immediately
         // unless it's a death message, in which case wait 2.5 sec
@@ -325,13 +325,13 @@ function Map(display, __game) {
     };
 
     this._refreshDynamicObjects = function() {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._refreshDynamicObjects()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._refreshDynamicObjects()';}
 
         __dynamicObjects = __dynamicObjects.filter(function (obj) { return !obj.isDestroyed(); });
     };
 
     this._countTimers = function() {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._countTimers()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._countTimers()';}
 
         return __intervals.length;
     }
@@ -347,13 +347,13 @@ function Map(display, __game) {
     };
 
     this._playSound = function (sound) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._playSound()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._playSound()';}
 
         __game.sound.playSound(sound);
     };
 
     this._validateCallback = function (callback) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._validateCallback()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._validateCallback()';}
 
         return __game.validateCallback(callback);
     };
@@ -402,11 +402,11 @@ function Map(display, __game) {
         var x = Math.floor(x); var y = Math.floor(y);
 
         if (!__objectDefinitions[type]) {
-            throw "There is no type of object named " + type + "!";
+            throw _("There is no type of object named ") + type + _("!");
         }
 
         if (__player && x == __player.getX() && y == __player.getY()) {
-            throw "Can't place object on top of player!";
+            throw _("Can't place object on top of player!");
         }
 
         if (typeof(__grid[x]) === 'undefined' || typeof(__grid[x][y]) === 'undefined') {
@@ -422,7 +422,7 @@ function Map(display, __game) {
             if (__grid[x][y].type === 'empty' || __grid[x][y].type === type || __allowOverwrite) {
                 __grid[x][y].type = type;
             } else {
-                throw "There is already an object at (" + x + ", " + y + ")!";
+                throw _("There is already an object at") + " (" + x + ", " + y + ")" + _("!");
             }
         }
     }, this);
@@ -431,7 +431,7 @@ function Map(display, __game) {
         var x = Math.floor(x); var y = Math.floor(y);
 
         if (__player) {
-            throw "Can't place player twice!";
+            throw _("Can't place player twice!");
         }
 
         __player = new __game._playerPrototype(x, y, this, __game);
@@ -461,11 +461,11 @@ function Map(display, __game) {
 
     this.defineObject = wrapExposedMethod(function (name, properties) {
         if (__objectDefinitions[name]) {
-            throw "There is already a type of object named " + name + "!";
+            throw _("There is already a type of object named ") + name + _("!");
         }
 
         if (properties.interval && properties.interval < 100) {
-            throw "defineObject(): minimum interval is 100 milliseconds";
+            throw _("defineObject(): minimum interval is 100 milliseconds");
         }
 
         __objectDefinitions[name] = properties;
@@ -513,9 +513,9 @@ function Map(display, __game) {
 
     this.startTimer = wrapExposedMethod(function(timer, delay) {
         if (!delay) {
-            throw "startTimer(): delay not specified"
+            throw "startTimer(): " + _("delay not specified")
         } else if (delay < 25) {
-            throw "startTimer(): minimum delay is 25 milliseconds";
+            throw "startTimer(): " + _("minimum delay is 25 milliseconds");
         }
 
         __intervals.push(setInterval(timer, delay));
@@ -523,9 +523,9 @@ function Map(display, __game) {
 
     this.timeout = wrapExposedMethod(function(timer, delay) {
         if (!delay) {
-            throw "timeout(): delay not specified"
+            throw "timeout(): " + _("delay not specified");
         } else if (delay < 25) {
-            throw "timeout(): minimum delay is 25 milliseconds";
+            throw "timeout(): " + _("minimum delay is 25 milliseconds");
         }
 
         __intervals.push(setTimeout(timer, delay));
@@ -635,21 +635,21 @@ function Map(display, __game) {
     this.validateAtLeastXObjects = wrapExposedMethod(function(num, type) {
         var count = this.countObjects(type);
         if (count < num) {
-            throw 'Not enough ' + type + 's on the map! Expected: ' + num + ', found: ' + count;
+            throw _('Not enough ') + type + _('s on the map! Expected: ') + num + _(', found: ') + count;
         }
     }, this);
 
     this.validateAtMostXObjects = wrapExposedMethod(function(num, type) {
         var count = this.countObjects(type);
         if (count > num) {
-            throw 'Too many ' + type + 's on the map! Expected: ' + num + ', found: ' + count;
+            throw _('Too many ') + type + _('s on the map! Expected: ') + num + _(', found: ') + count;
         }
     }, this);
 
     this.validateExactlyXManyObjects = wrapExposedMethod(function(num, type) {
         var count = this.countObjects(type);
         if (count != num) {
-            throw 'Wrong number of ' + type + 's on the map! Expected: ' + num + ', found: ' + count;
+            throw _('Wrong number of ') + type + _('s on the map! Expected: ') + num + _(', found: ') + count;
         }
     }, this);
 
@@ -663,14 +663,14 @@ function Map(display, __game) {
     this.validateNoTimers = wrapExposedMethod(function() {
         var count = this._countTimers();
         if (count > 0) {
-            throw 'Too many timers set on the map! Expected: 0, found: ' + count;
+            throw _('Too many timers set on the map! Expected: 0, found: ') + count;
         }
     }, this);
 
     this.validateAtLeastXLines = wrapExposedMethod(function(num) {
         var count = this._getLines().length;
         if (count < num) {
-            throw 'Not enough lines on the map! Expected: ' + num + ', found: ' + count;
+            throw _('Not enough lines on the map! Expected: ') + num + _(', found: ') + count;
         }
     }, this);
 
