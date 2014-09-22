@@ -24,9 +24,9 @@ function startLevel(map) {
 
     map.placeObject(5, 12, 'phone');
 
-    // The function phone lets you call arbitrary functions,
-    // as defined by player.setPhoneCallback() below.
-    // The function phone callback is bound to Q or Ctrl-6.
+    // 电话（phone）可以让你调用由在下面
+	// player.setPhoneCallback() 定义的功能函数。
+	// 可以通过 Q 键或 Ctrl+6 使用电话的功能。
     map.getPlayer().setPhoneCallback(function () {
 #BEGIN_EDITABLE#
         var player = map.getPlayer();
@@ -43,7 +43,7 @@ function startLevel(map) {
 
     map.defineObject('redLock', {
         symbol: '☒',
-        color: "#f00", // red
+        color: "#f00", // 红
         impassable: function(player, object) {
             return player.getColor() != object.color;
         }
@@ -51,7 +51,7 @@ function startLevel(map) {
 
     map.defineObject('greenLock', {
         symbol: '☒',
-        color: "#0f0", // green
+        color: "#0f0", // 绿
         impassable: function(player, object) {
             return player.getColor() != object.color;
         }
@@ -59,7 +59,7 @@ function startLevel(map) {
 
     map.defineObject('yellowLock', {
         symbol: '☒',
-        color: "#ff0", // yellow
+        color: "#ff0", // 黄
         impassable: function(player, object) {
             return player.getColor() != object.color;
         }
@@ -93,7 +93,7 @@ function validateLevel(map) {
 
 function onExit(map) {
     if (!map.getPlayer().hasItem('phone')) {
-        map.writeStatus("We need the phone!");
+        map.writeStatus("我们需要电话！");
         return false;
     } else {
         return true;

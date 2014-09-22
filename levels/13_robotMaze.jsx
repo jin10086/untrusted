@@ -15,7 +15,7 @@
 
 function startLevel(map) {
 #START_OF_START_LEVEL#
-    // 提示：你可以按 R 或 5 来重置，并且玩家不要与机器人同时移动。
+    // 提示：你可以按 R 或 5 来重置，并且玩家不要与机器人同时同方向移动。
 
     map.getRandomInt = function(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;

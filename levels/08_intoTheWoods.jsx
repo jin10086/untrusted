@@ -26,8 +26,8 @@
 
 function startLevel(map) {
 #START_OF_START_LEVEL#
-    // NOTE: In this level alone, map.placeObject is allowed to
-    //overwrite existing objects.
+    // 注意：在本关中，允许用 map.placeObject
+	// 替换已有的对象。
 
     map.displayChapter('第二章\n迷失的算法与骑士');
 
@@ -67,9 +67,9 @@ function startLevel(map) {
         for (var i = 0; i < map.getWidth(); i++) {
             for (var j = 0; j < map.getHeight(); j++) {
 
-                // initialize to empty if the square contains a forest already
+                // 如果该格已经有树，就将其清空
                 if (map.getObjectTypeAt(i, j) === 'tree') {
-                    // remove existing forest
+                    // 移除已有的树
                     map.placeObject(i,j, 'empty');
                 }
 
@@ -89,15 +89,15 @@ function startLevel(map) {
     };
 
     functionList['movePlayerToExit'] = function () {
-        map.writeStatus("Permission denied.");
+        map.writeStatus("拒绝访问。");
     }
 
     functionList['pleaseMovePlayerToExit'] = function () {
-        map.writeStatus("I don't think so.");
+        map.writeStatus("我不这么认为。");
     }
 
     functionList['movePlayerToExitDamnit'] = function () {
-        map.writeStatus("So, how 'bout them <LOCAL SPORTS TEAM>?");
+        map.writeStatus("那么，赛事如何了？");
     }
 
     // generate forest
