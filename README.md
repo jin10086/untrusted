@@ -86,27 +86,27 @@ jsx 与一般的 JavaScript 文件类似，不过有一些扩展语法：
 
 一意孤行中出现的音乐，按照顺序有
 
-- "The Green" - [Jonathan Holliday](http://www.soundclick.com/bands/default.cfm?bandID=836578) （授权使用）
-- "Dmitry's Thing #2" - [Dmitry Mazin](https://soundcloud.com/dmitry-mazin) （为一意孤行撰写）
-- "Obscure Terrain" - [Revolution Void](http://revolutionvoid.com/) (CC-BY-NC-SA)
-- "coming soon" - [Fex](http://artistserver.com/Fex) （公共领域）
-- "cloudy sin" - [iNTRICATE](https://soundcloud.com/stk13) （授权使用）
-- "Dynamic Punctuality" - [Dmitry Mazin](https://soundcloud.com/dmitry-mazin) （为一意孤行撰写）
+- "绿之韵" - [Jonathan Holliday](http://www.soundclick.com/bands/default.cfm?bandID=836578) （授权使用）
+- "德米特里小事 #2" - [Dmitry Mazin](https://soundcloud.com/dmitry-mazin) （为一意孤行撰写）
+- "朦胧领域" - [Revolution Void](http://revolutionvoid.com/) (CC-BY-NC-SA)
+- "将至" - [Fex](http://artistserver.com/Fex) （公共领域）
+- "罪恶密布" - [iNTRICATE](https://soundcloud.com/stk13) （授权使用）
+- "动态规则" - [Dmitry Mazin](https://soundcloud.com/dmitry-mazin) （为一意孤行撰写）
 - "Y" - [Tortue Super Sonic](https://soundcloud.com/tss-tortue-super-sonic) (CC-BY-NC-SA)
-- "Night Owl" - [Broke for Free](http://brokeforfree.com/) (CC-BY)
-- "The Waves Call Her Name" - [Sycamore Drive](http://sycamoredrive.bandcamp.com/) (CC-BY-NC-SA)
-- "Come and Find Me - B mix" - [Eric Skiff](http://ericskiff.com/) (CC-BY)
-- "Conspiracy" - [Mike and Alan](https://www.facebook.com/MicAndAlan) （授权使用）
-- "Messeah" - [RoccoW](https://soundcloud.com/roccow) (CC-BY)
-- "Searching" - [Eric Skiff](http://ericskiff.com/) (CC-BY)
-- "Da Funk Do You Know 'bout Chip?" - [That Andy Guy](https://soundcloud.com/that-andy-guy) （授权使用）
-- "Soixante-8" - [Obsibilo](http://freemusicarchive.org/music/Obsibilo/) (CC-BY-NC-SA)
-- "Tart (Pts 1 and 2)" - [BLEO feat KeFF](http://bleo.dummydrome.com/) (CC-BY-NC-SA)
-- "Beach Wedding Dance" - [Rolemusic](https://soundcloud.com/rolemusic) (CC-BY-NC-SA)
-- "Boss Loop 1" - [Essa](http://www.youtube.com/user/Essasmusic) （免费使用）
-- "Adversity" - [Seropard](https://soundcloud.com/seropard) （免费使用）
-- "Comme Des Orages" - [Obsibilo](http://freemusicarchive.org/music/Obsibilo/) (CC-BY-NC-SA)
-- "Brazilicon Alley" - [Vernon Lenoir](http://vernonlenoir.wordpress.com/) (CC-BY-NC-SA)，基于 Ary Barroso 的 "Aquarela do Brazil"
+- "猫头鹰" - [Broke for Free](http://brokeforfree.com/) (CC-BY)
+- "永恒的呼唤" - [Sycamore Drive](http://sycamoredrive.bandcamp.com/) (CC-BY-NC-SA)
+- "来找我 - B 调混音" - [Eric Skiff](http://ericskiff.com/) (CC-BY)
+- "阴谋" - [Mike and Alan](https://www.facebook.com/MicAndAlan) （授权使用）
+- "混乱" - [RoccoW](https://soundcloud.com/roccow) (CC-BY)
+- "寻觅" - [Eric Skiff](http://ericskiff.com/) (CC-BY)
+- "芯之畏惧" - [That Andy Guy](https://soundcloud.com/that-andy-guy) （授权使用）
+- "六十8" - [Obsibilo](http://freemusicarchive.org/music/Obsibilo/) (CC-BY-NC-SA)
+- "午夜酸果（1、2 部）" - [BLEO feat KeFF](http://bleo.dummydrome.com/) (CC-BY-NC-SA)
+- "沙滩婚礼舞" - [Rolemusic](https://soundcloud.com/rolemusic) (CC-BY-NC-SA)
+- "大王寻山 1" - [Essa](http://www.youtube.com/user/Essasmusic) （免费使用）
+- "厄运" - [Seropard](https://soundcloud.com/seropard) （免费使用）
+- "风暴" - [Obsibilo](http://freemusicarchive.org/music/Obsibilo/) (CC-BY-NC-SA)
+- "布里斯林科小路" - [Vernon Lenoir](http://vernonlenoir.wordpress.com/) (CC-BY-NC-SA)，基于 Ary Barroso 的 "Aquarela do Brazil"
 
 ### 许可证
 使用双许可证授权。
