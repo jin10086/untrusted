@@ -156,23 +156,7 @@ ROT.Display.prototype.saveGrid = function (map) {
 ROT.Display.prototype.playIntro = function (map, i) {
     display = this;
 
-    if (i < 0) {
-        this._intro = true;
-    } else {
-        if (typeof i === 'undefined') { i = map.getHeight(); }
-        this.clear();
-		var l = ["%c{#0f0}> initialize", "U N T R U S T E D",
-		"- or - ", "THE CONTINUING ADVENTURES OF DR. EVAL",
-		"a game by Alex Nisnevich and Greg Shuflin",
-		"Press any key to begin ..."];
-		for(var j = 0; j < l.length; j ++) {
-			var txt = _d(l[j])
-	        this.drawText(txt.x, i + txt.y, txt.txt);
-		}
-        setTimeout(function () {
-            display.playIntro(map, i - 1);
-        }, 100);
-    }
+//%INTRO%
 };
 
 ROT.Display.prototype.fadeIn = function (map, speed, callback, i) {
