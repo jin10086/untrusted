@@ -8,24 +8,23 @@
  * mod.js *
  *************
  *
- * Congratulations! You'v completed the example of mod.
+ * 恭喜你！你已经完成了 mod 的例子。
  *
- * Create your own mod by putting the source code into
- * the directory [mods/$your_mod_name]. When you ready for it,
- * just run [make mod=$your_mod_name] to build it. And you can
- * add this paramater to any [make] command to specify which
- * mod you want to handle.
+ * 将代码放置于 [mods/$your_mod_name] 目录可以创建你自己的 mod。
+ * 当一切就绪，只需要运行 [make mod=$your_mod_name] 来构建它。
+ * 你可以将这个参数放入该项目的 make 中，任何一个合法的命令下，
+ * 来指定要处理哪个模块。
  * 
- * What are you waiting for? Come on!
+ * 还在等什么？快来！
  *
- * Create you own mod and enjoy it.
+ * 创建你自己的 mod 并乐在其中吧。
  *
  */
 
 function startLevel(map) {
 #START_OF_START_LEVEL#
     var credits = [
-        [14, 5, "E X A M P L E of M O D"],
+        [14, 5, "关于 M O D 的例子"],
 		[10, 7, "%c{#0f0}$%c{#cccccc} make mod=example_mod"],
 		[10, 9, "%c{#0f0}$%c{#cccccc} make mod=example_mod release"],
 		[10, 11, "%c{#0f0}$%c{#cccccc} make mod=example_mod runlocal"],
@@ -36,7 +35,7 @@ function startLevel(map) {
             return;
         }
 
-        // redraw lines bottom to top to avoid cutting off letters
+        // 从底向上重绘每行，以防止字符被覆盖
         for (var j = i; j >= 0; j--) {
             var line = credits[j];
             map._display.drawText(line[0], line[1], line[2]);

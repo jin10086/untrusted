@@ -12,19 +12,18 @@
  * theGreatWall.js *
  *****************
  *
- * The great wall defensed enemies in ancient.
- * Meanwhile, it blocked citizens travel and trade to outside.
+ * 古代，长城在用于保护不受外敌入侵的同时，也阻止人民出行海外旅游、贸易。
+ * 
+ * 今天，一个网络长城依然屹立在东方。
  *
- * Today, the great wall which replaced with electronic stones is still standing there.
+ * 是男人，就冲出去！
  *
- * BREAK OUT! MAN!
- *
- * Freedom is not free!
+ * 自由无价！
  */
 
 function startLevel(map) {
 #START_OF_START_LEVEL#
-    map.displayChapter('Chapter 1\nFreedom is not free');
+    map.displayChapter('第一章\n自由无价');
 
     map.placePlayer(25, map.getHeight() - 5);
 
@@ -51,7 +50,7 @@ function startLevel(map) {
 
 function onExit(map) {
     if (!map.getPlayer().hasItem('computer')) {
-        map.writeStatus("Don't forget to pick up the computer!");
+        map.writeStatus("别忘记捡起电脑（computer）！");
         return false;
     } else {
         return true;
