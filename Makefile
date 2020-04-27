@@ -139,6 +139,14 @@ deploy-debug-full: debug
 deploy-github:
 	@git checkout gh-pages && git merge master --no-commit && make release && git commit -am "build" && git push origin gh-pages; git checkout master && make
 
+deploy-ghpage:
+	echo "Deploying to ghpage\t\t\t\c"
+	@rm -rf _site
+	@mkdir _site
+	@cp -R levels scripts styles images sound music lib index.html _site
+	@ghp-import _site -b gh-pages -p -f
+	@rm -rf _site
+	@echo "[ Done ]"
 # run-local will start a mini python webserver and host a local
 # instance of the game on port 9001 (-c-1 disables caching)
 
