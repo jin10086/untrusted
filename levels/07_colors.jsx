@@ -12,12 +12,10 @@
 * colors.js *
  *************
  *
- * You're almost at the exit. You just need to get past this
- * color lock.
+ * 你已经接近出口了。只需要通过这个颜色锁就可以了。
  *
- * Changing your environment is no longer enough. You must
- * learn to change yourself. I've sent you a little something
- * that should help with that.
+ * 只改变环境已经不够了。你需要学习改变你自己。
+ * 我已经为你提供了一些有帮助的东西。
  */
 
 function startLevel(map) {
@@ -26,9 +24,9 @@ function startLevel(map) {
 
     map.placeObject(5, 12, 'phone');
 
-    // The function phone lets you call arbitrary functions,
-    // as defined by player.setPhoneCallback() below.
-    // The function phone callback is bound to Q or Ctrl-6.
+    // 电话（phone）可以让你调用由在下面
+	// player.setPhoneCallback() 定义的功能函数。
+	// 可以通过 Q 键或 Ctrl+6 使用电话的功能。
     map.getPlayer().setPhoneCallback(function () {
 #BEGIN_EDITABLE#
         var player = map.getPlayer();
@@ -45,7 +43,7 @@ function startLevel(map) {
 
     map.defineObject('redLock', {
         symbol: '☒',
-        color: "#f00", // red
+        color: "#f00", // 红
         impassable: function(player, object) {
             return player.getColor() != object.color;
         }
@@ -53,7 +51,7 @@ function startLevel(map) {
 
     map.defineObject('greenLock', {
         symbol: '☒',
-        color: "#0f0", // green
+        color: "#0f0", // 绿
         impassable: function(player, object) {
             return player.getColor() != object.color;
         }
@@ -61,7 +59,7 @@ function startLevel(map) {
 
     map.defineObject('yellowLock', {
         symbol: '☒',
-        color: "#ff0", // yellow
+        color: "#ff0", // 黄
         impassable: function(player, object) {
             return player.getColor() != object.color;
         }
@@ -95,7 +93,7 @@ function validateLevel(map) {
 
 function onExit(map) {
     if (!map.getPlayer().hasItem('phone')) {
-        map.writeStatus("We need the phone!");
+        map.writeStatus("我们需要电话！");
         return false;
     } else {
         return true;

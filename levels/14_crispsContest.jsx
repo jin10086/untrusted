@@ -10,14 +10,12 @@
  * crispsContest.js *
  ********************
  *
- * The Algorithm is almost in our grasp!
- * At long last, we will definitively establish
- * that 3SAT is solvable in polynomial time. It's
- * been a long, strange journey, but it will all be
- * worth it.
+ * 算法（Algorithm）已经是我们囊中之物了！
+ * 
+ * 最后，我们将面对决定性的时刻，在多项式时间里解决 3SAT。
+ * 这将会是一个漫长而又奇怪的旅程，不过这一切都十分值得。
  *
- * You have the red, green, and blue keys. Now you
- * just need to figure out how to unlock this thing.
+ * 你已经有了红色、绿色和蓝色的钥匙。现在，你需要找到解锁这些东西方法。
  */
 
 function startLevel(map) {
@@ -114,7 +112,7 @@ function validateLevel(map) {
 }
 
 function onExit(map) {
-    // make sure we have all the items we need!
+    // 确保我们得到了所有需要的东西！
     if (!map.getPlayer().hasItem('theAlgorithm')) {
         map.writeStatus("You must get that Algorithm!!");
         return false;

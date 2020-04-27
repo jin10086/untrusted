@@ -11,12 +11,12 @@
  * validationEngaged.js *
  ************************
  *
- * They're really on to us now! The validateLevel function
- * has been activated to enforce constraints on what you can
- * do. In this case, you're not allowed to remove any blocks.
+ * 现在，可以确认我们被他们发现了！
+ * validateLevel 函数会用来检验，限制你可以做的事情。
+ * 看来这儿不允许移除任何阻挡。
  *
- * They're doing all they can to keep you here. But you
- * can still outsmart them.
+ * 他们正想尽办法将你留在这里。
+ * 不过你比他们更聪明。
  */
 
 function startLevel(map) {

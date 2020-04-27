@@ -152,6 +152,188 @@ function isNewerVersion(v1, v2) {
     }
     return (0 > cmp);
 }
+// 由于 rotjs 库的原因，括号使用英文半角，
+// 可以获得更好的显示效果。
+var _i18nDisplay = {
+	// display.js
+	"%c{#0f0}> initialize"	:	{'x' : 0, 'y' : -2, 'txt' : "%c{#0f0}> 初始化"},
+	"U N T R U S T E D"		:	{'x' : 21, 'y' : 3, 'txt' : "一意孤行"},
+	"- or - "	:	{'x' : 23, 'y' : 5, 'txt' : "- 或 - "},
+	"THE CONTINUING ADVENTURES OF DR. EVAL"	:	{'x' : 19,'y' : 7, 'txt' : "Dr.Eval 大冒险"},
+	"a game by Alex Nisnevich and Greg Shuflin"	:	{'x' : 9, 'y' : 12, 'txt' : "Alex Nisnevich 和 Greg Shuflin 开发\n\n　　　　　　　　　mikespook 汉化"},
+	"Press any key to begin ..."	:	{'x' : 28, 'y' : 22, 'txt':"按任意键开始游戏 ..."},
+}
+var _i18n = {
+	// display.js	
+	"%c{#0f0}> run "	:	"%c{#0f0}> 运行 ",
+	// inventory.js
+	'INVENTORY: '	:	'背包：',
+	// sound.js
+	'Now playing: "':	'正在播放："',
+	'The Green'		:	'绿之韵',
+	'Adversity'		:	'厄运',
+    'Beach Wedding Dance'	:	'沙滩婚礼舞',
+	'Boss Loop 1'	:	'大王寻山 1',
+    'Brazilicon Alley'		:	'布里斯林科小路',
+    'Da Funk Do You Know \'bout Chip?'	:	'芯之畏惧',
+    'cloudy sin'	:	'罪恶密布',
+    'Come and Find Me'	:	'来找我',
+    'coming soon'	:	'将至',
+    'Comme Des Orages'	:	'风暴',
+    'Conspiracy'	:	'阴谋',
+    'Death Destroyer (Radio Edit)'	:	'死神（音乐版）',
+    'Dynamic Punctuality'	:	'动态规则',
+    'Dmitry\'s Thing #2'	:	'德米特里小事 #2',
+    'Messeah'	:	'混乱',
+    'Night Owl'	:	'猫头鹰',
+    'Obscure Terrain'	:	'朦胧领域',
+    'Searching'	:	'寻觅',
+    'Slimeball Vomit'	:	'作呕',
+    'Soixante-8'	:	'六十8',
+    'Tart (Pts 1-2)'	:	'午夜酸果',
+    'The Waves Call Her Name'	:	'永恒的呼唤',
+	// _tail.js
+	'%cIf you can read this, you are cheating! D:'	:	'"%c如果你看到这些文字，说明你在作弊！:D"',
+	'%cBut really, you don\'t need this console to play the game. Walk around using arrow keys (or Vim keys), and pick up the computer ('	:	'%c说真的，你没必要用控制台来玩这个游戏。用方向键(或 Vim 快捷键)移动，捡起电脑(',
+	'). Then the fun begins!'	:	')。来找点乐子吧！',
+	// objects.js
+	'a hidden mine'	:	'隐藏的地雷(mine)',
+	'a trap'	:	'陷阱(trap)',
+	'You have picked up the computer!'	:	'你捡起了一台电脑(computer)！',
+	'You have picked up the function phone!' :	'你捡起了一部电话(phone)！',
+	'You have picked up a red key!'	:	'你捡起了红色钥匙(redKey)！',
+	'You have picked up a green key!'	:	'你捡起了绿色钥匙(greenKey)！',
+	'You have picked up a blue key!'	:	'你捡起了蓝色钥匙(blueKey)！',
+	'You have picked up a yellow key!'	:	'你捡起了黄色钥匙(yellowKey)！',
+	'You have picked up the Algorithm!'	:	'你得到了算法(theAlgorithm)！',
+	'You have lost the Algorithm!'	:	'你失去了算法(theAlgorithm)！',
+	// reference.js
+	'Begins drawing a new shape.'	:	'绘制一个新的图形。',
+	'Sets the end coordinates of a line.'	:	'设定线段的终点坐标。',
+	'Determines the width of the next lines drawn.'	:	'设定之后绘制的线段的宽度。',
+	'Sets the start coordinates of a line.'	:	'设定线段的起始坐标。',
+	'Draws a line whose coordinates have been defined by <b>lineTo</b> and <b>moveTo</b>.'	:	'绘制一条由 <b>lineTo</b> 和 <b>moveTo</b> 定义坐标的线段。',
+	'Determines the color (and, optionally, other properties) of the next lines drawn.'	:	'设定之后绘制的线段的颜色(以及其他属性作为可选项)。',
+	'When passed an HTML string, $ returns a corresponding <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> instance.'	:	'当传入一段 HTML 字符串时，$ 返回对应的 <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> 实例。',
+	'The player exits the level as soon as this method returns true.'	:	'一旦这个方法返回 true，玩家就立刻退出当前关卡。',
+	'The player can exit the level only if this method returns true.'	:	'只有当这个方法返回 true，玩家才能退出当前关卡。',
+	'This method is called when the level loads.'	:	'在当前关卡加载时，这个方法会被调用。',
+	'The level can be loaded only if this method returns true.'	:	'只有这个方法返回 true 时，当前关卡才能被加载。',
+	'Instantiates a Maze object of given width and height. The Maze object can create a maze by calling maze.create(callback), where the callback is a function that accepts (x, y, mapValue) and performs some action for each point in a grid, where mapValue is a boolean that is true if and only if the given point is part of the maze.'	:	'用给定的宽度和高度初始化一个迷宫对象。这个迷宫对象可以通过调用 maze.create(callback) 来创建迷宫。这里的 callback 是一个接受 (x, y, mapValue) 作为参数的函数，并且可以对方格中的每个点进行操作。mapValue 是布尔值，当给定的点是迷宫中可以通行的路径是为 true。',
+	'Adds the given CSS class to the DOM element(s) specified by the jQuery object.'	:	'为某个 jQuery 对象化的 DOM 元素添加 CSS class。',
+	'Returns the children of the DOM element specified by the jQuery object, as a jQuery array.'	:	'返回某个 jQuery 对象化的 DOM 元素的子对象，并保存在 jQuery 数组中。',
+	'Returns all elements in the DOM tree specified by the jQuery object that match the given CSS selector, as a jQuery array.'	:	'返回所有匹配给定的 CSS 选择器的 jQuery 对象化的 DOM 元素，并保存在 jQuery 数组中。',
+	'Returns the first element of a jQuery array.'	:	'返回 jQuery 数组的第一个元素。',
+	'Returns true if and only if the DOM element specified by the jQuery object has the given CSS class.'	:	'当且仅当某个 jQuery 对象化的 DOM 元素拥有指定的 CSS class 时，返回 true。',
+	'Returns the number of elements in a jQuery array.'	:	'返回 jQuery 数组的元素个数。',
+	'Returns the next sibling of the DOM element specified by the jQuery object.'	:	'返回某个 jQuery 对象化的 DOM 元素的下一个元素。',
+	'Returns the parent of the DOM element specified by the jQuery object.'	:	'返回某个 jQuery 对象化的 DOM 元素的父元素。',
+	'Returns the previous sibling of the DOM element specified by the jQuery object.'	:	'返回某个jQuery 对象化的 DOM 元素的前一个元素。',
+	'Removes the given CSS class from the DOM element(s) specified by the jQuery object.'	:	'移除某个 jQuery 对象化的 DOM 元素指定的 CSS class。',
+	'Returns the number of objects of the given type on the map.'	:	'返回地图上指定类型的对象的个数。',
+	'Creates the map from a <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> instance, rendering the map as a DOM (document object model) rather than a grid.'	:	'从一个 <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> 实例中创建地图，用 DOM (document object model) 而不是表格来渲染地图。',
+	'Places objects on the map corresponding to their position on the grid (an array of strings), with mappings as defined in tiles (a dictionary of character -> object type mappings), at the given offset from the top-left corner of the map.'	:	'基于对象在网格中的位置(一个字符串数组)在地图上放置它们。同时，用给定的从地图左上角计算的偏移量映射到分片(角色的方向 -> 对象的类型)。',
+	'Places a line on the map between the given points, that triggers the given callback when the player touches it. (Note that the line is invisible: createLine does <i>not</i> draw anything to the <a onclick="$(\'#helpPaneSidebar .category#canvas\').click();">canvas</a>.)'	:	'在地图上给定的点之间放置一条线段，当玩家触碰到这条线的时候，触发指定的回调。(注意这条线是不可见的：createLine <i>不会</i>在 <a onclick="$(\'#helpPaneSidebar .category#canvas\').click();">canvas</a> 上绘制任何东西。',
+	'Displays the given chapter name.'	:	'显示指定章节的名字。',
+	'Defines a new type of <a onclick="$(\'#helpPaneSidebar .category#object\').click();">object</a> with the given properties. Note that type definitions created with map.defineObject only persist in the scope of the level.'	:	'用指定的属性来定义一个新的 <a onclick="$(\'#helpPaneSidebar .category#object\').click();">object</a> 类型。注意使用 map.defineObject 进行的任何定义，对象的作用域只在当前关卡有效。',
+	'Returns the empty cells adjacent to the cell at the given coordinates (if any), as an array of items of the form <i>[[x, y], direction]</i>, where (x, y) are the coordinates of each empty cell, and <i>direction</i> is the direction from the given cell to each empty cell ("left", "right", "up", or "down").'	:	'返回指定坐标的相邻的空单元，用 <i>[[x, y], direction]</i> 的格式作为数组的元素，返回数组。(x, y) 表示空单元的坐标，而 <i>direction</i> 是空单元相对指定单元的方向(“left”、“right”、“up” 或 “down”)。',
+	'Returns the 2D drawing context of the <a onclick="$(\'#helpPaneSidebar .category#canvas\').click();">canvas</a> overlaying the map.'	:	'返回放置有地图的 <a onclick="$(\'#helpPaneSidebar .category#canvas\').click();">canvas</a> 的 2D 上下文。',
+	'Returns {"x": x, "y": y}, where x and y are the respective coordinates of the given object on the canvas returned by map.getCanvasContext().'	:	'返回 {"x": x, "y": y}，而 x 和 y 分别是由 map.getCanvasContext() 返回的指定对象的横纵坐标。',
+	'Returns the <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> instance representing the map.'	:	'返回表示地图的 <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> 实例。',
+	'Returns all dynamic objects currently on the map.'	:	'返回当前地图上所有的动态对象。',
+	'Returns the height of the map, in cells.'	:	'以单元格为单位，返回地图的高。',
+	'Returns the type of the object at the given coordinates (or "empty" if there is no object there).'	:	'返回指定坐标上对象的类型(如果没有对象，返回“empty”)。',
+	'Returns the Player object.'	:	'返回玩家对象',
+	'Returns a hexadecimal string representing a random color in between the start and end colors. The start and end colors must be arrays of the form [R, G, B], where R, G, and B are decimal integers.'	:	'返回一个十六进制字符串表示在 start 到 end 之间的随机颜色。start 和 end 颜色必须是按照 [R, G, B] 格式的数组，R、G 和 B 是十进制整数。',
+	'Returns the width of the map, in cells.'	:	'以单元格为单位，返回地图的宽。',
+	'Returns true if called while a level is starting.'	:	'如果调用的时候关卡已经开始，返回 true。',
+	'Overrides the action performed by pressing the given key (<i>left</i>, <i>right</i>, <i>up</i>, or <i>down</i>).'	:	'改写给定的按键的功能(<i>left</i>, <i>right</i>, <i>up</i>, or <i>down</i>)。',
+	'Places an object of the given type at the given coordinates.'	:	'在指定的坐标放置特定类型的对象。',
+	'Places the player at the given coordinates.'	:	'将玩家放置在指定坐标。',
+	'Sets the background color of the given square.'	:	'设置指定格子的背景颜色。',
+	'Sets the background color of the given square.'	:	'设置指定格子的背景颜色。',
+	'Starts a timer (c.f. setInterval) of the given delay, in milliseconds (minimum 25 ms).'	:	'用指定延迟启动一个定时器(也就是 setInterval)，以毫秒为单位(最小 25 毫秒)。',
+	'Updates the <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> instance representing the map.'	:	'更新代表地图的 <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> 实例。',
+	'Raises an exception if there are not at least num lines (created by map.createLine) on the map.'	:	'如果地图上(由 map.createLine 创建的)线段的数量未达到 num，产生一个异常。',
+	'Raises an exception if there are not at least num objects of type objectType on the map.'	:	'如果地图 objectType 类型对象的数量未达到 num ，产生一个异常。',
+	'Raises an exception if there are more than num dynamic objects on the map.'	:	'如果地图上动态对象的数量未达到 num，产生一个异常。',
+	'Raises an exception if there are not exactly num objects of type objectType on the map.'	:	'如果地图上 objectType 类型对象的数量不是 num，产生一个异常。',
+	'Raises an exception if there are any timers currently set with map.startTimer.'	:	'如果当前有任何由 map.startTimer 创建的定时器，产生一个异常。',
+	'Displays a message at the bottom of the map.'	:	'在地图的下方显示消息。',
+	'(For dynamic objects only.) Returns true if (and only if) the object is able to move one square in the given direction, which can be "left", "right", "up", or "down".'	:	'(仅用于动态对象。)当且仅当对象可以移动到指定方向上的方格时返回 true。方向可以是“left”、“right”、“up” 或 “down”。',
+	'The color of the object\'s symbol on the map.'	:	'地图上代表对象的颜色。',
+	'(For dynamic objects only.) Returns the x and y coordinates of the nearest object of the given type to this object, as a hash.'	:	'(仅用于动态对象。)返回距离当前对象最近的、指定类型的对象的 x 和 y 坐标。',
+	'(For dynamic objects only.) Returns the x-coordinate of the object.'	:	'(仅用于动态对象。)返回对象的 x 坐标。',
+	'(For dynamic objects only.) Returns the y-coordinate of the object.'	:	'(仅用于动态对象。)返回对象的 y 坐标。',
+	'(For dynamic objects only.) Gives the given item to the target (generally, the player). Can only be done if the object and the player have just collided.'	:	'(仅用于动态对象。)向指定目标(通常是玩家)提供特定的物品。仅在物品和玩家发生碰撞时有效。',
+	'(For non-dynamic objects only.) The function that determines whether or not the player can pass through this object.'	:	'(仅用于非动态对象。)用于判断玩家是否可以穿过该对象的函数。',
+	'(For dynamic objects only.) Moves the object one square in the given direction, which can be "left", "right", "up", or "down". An object can only move once per turn.'	:	'(仅用于动态对象。)将对象向指定方向移动一格。方向可以是“left”、“right”、“up” 或 “down”。每个周期对象都只能移动一格。',
+	'The function that is executed when this object touches the player.'	:	'当对象触碰到玩家时，该函数被执行。',
+	'(For dynamic objects only.) The function that is executed when this object is destroyed.'	:	'(仅用于动态对象。)当对象被销毁时，该函数被执行。',
+	'(For dynamic objects only.) If true, this object destroys any dynamic object (or player) that it collides with, and is itself destroyed when it collides with anything.'	:	'(仅用于动态对象。)如果为 true，这个对象会摧毁它所碰到的任何动态对象(或玩家)，如果碰到任何东西，它本身也会被摧毁。',
+	'(For dynamic objects only.) If true, this object can be pushed by the player.'	:	'(仅用于动态对象。)如果为 true，这个对象可以被玩家推动。',
+	'The object\'s symbol on the map.'	:	'地图上代表对象的符号。',
+	'(For teleporters only.) Sets the destination of this teleporter.'	:	'(仅用于传送点)设定该传送点的目的地。',
+	'Can be "item", "dynamic", or none. If "dynamic", then this object can move on turns that run each time that the player moves. If "item", then this object can be picked up.'	:	'可以是“item”、“dynamic” 或 none。如果是 “dynamic” 这个对象在玩家每次移动的时候都可以移动。如果是 “item”，那么可以捡起这个对象。',
+	'Returns true if and only if the player is at the given location.'	:	'当且仅当玩家在指定的位置上时，返回 true。',
+	'Returns the color of the player.'	:	'返回玩家的颜色。',
+	'Returns the direction of last move by the player.'	:	'返回玩家最后移动的方向。',
+	'Returns the x-coordinate of the player.'	:	'返回玩家的 x 坐标。',
+	'Returns the y-coordinate of the player.'	:	'返回玩家的 y 坐标。',
+	'Returns true if and only if the player has the given item.'	:	'当且仅当玩家拥有指定的物品时，返回 true。',
+	'Kills the player and displays the given text as the cause of death.'	:	'杀死玩家，并展示指定的文字来说明死因。',
+	'Moves the player one square in the given direction. The player can only move once in a given function.'	:	'向指定方向将玩家移动一格。在指定函数中，玩家只能被移动一次。',
+	'Removes the given item from the player\'s inventory, if the player has the given item.'	:	'如果玩家有指定的物品的话，从背包中移除它。',
+	'Sets the color of the player.'	:	'设置玩家的颜色。',
+	'Sets the function that is executed when the player uses the function phone.'	:	'设置玩家使用电话功能时，将执行的函数。',
+	// map.js
+	'Forbidden method call: '	:	'禁止的方法调用：',
+	"There is no type of object named "	:	'没有物品叫做',
+	"!"	:	'！',
+    "Can't place object on top of player!"	:	'不能将物品放在玩家上！',
+	"There is already an object at"	:	'已经有物品位于坐标',
+	"Can't place player twice!"	:	'玩家不能被放置两次！',
+	"There is already a type of object named "	:	'已经有物品类型叫做',
+	"defineObject(): minimum interval is 100 milliseconds"	:	'"defineObject()：最小间隔为 100 毫秒',
+	"delay not specified"	:	'未指定延迟',
+	"minimum delay is 25 milliseconds"	:	'最小延迟为 25 毫秒',
+	'Not enough '	:	'不足数量的',
+	's on the map! Expected: '	:	'在地图上！应当有：',
+	', found: '	:	'，现有：', 
+	'Too many '	:	'太多的',
+	'Wrong number of '	:	'错误数量的',
+	'Too many timers set on the map! Expected: 0, found: '	:	'在地图上有太多定时器！应当有：0，现有：',
+	'Not enough lines on the map! Expected: '	:	'在地图上的线条数量不足！应当有：',
+	//
+	'':''
+}
+
+function _(txt) {
+	return _i18n[txt] == undefined ? txt : _i18n[txt];
+}
+
+function _d(txt) {
+	return _i18nDisplay[txt] == undefined ? {'x' : 0, 'y' : 0, 'txt' : txt} : _i18nDisplay[txt];
+}
+function playIntro(display, map, i) {
+    if (i < 0) {
+        display._intro = true;
+    } else {
+        if (typeof i === 'undefined') { i = map.getHeight(); }
+        display.clear();
+		var l = ["%c{#0f0}> initialize", "U N T R U S T E D",
+		"- or - ", "THE CONTINUING ADVENTURES OF DR. EVAL",
+		"a game by Alex Nisnevich and Greg Shuflin",
+		"Press any key to begin ..."];
+		for(var j = 0; j < l.length; j ++) {
+			var txt = _d(l[j])
+	        display.drawText(txt.x, i + txt.y, txt.txt);
+		}
+        setTimeout(function () {
+            display.playIntro(map, i - 1);
+        }, 100);
+    }    
+}
 (function () {
 function Game(debugMode, startLevel) {
     /* private properties */
@@ -168,35 +350,14 @@ function Game(debugMode, startLevel) {
     };
 
     this._levelFileNames = [
-        '01_cellBlockA.jsx',
-        '02_theLongWayOut.jsx',
-        '03_validationEngaged.jsx',
-        '04_multiplicity.jsx',
-        '05_minesweeper.jsx',
-        '06_drones101.jsx',
-        '07_colors.jsx',
-        '08_intoTheWoods.jsx',
-        '09_fordingTheRiver.jsx',
-        '10_ambush.jsx',
-        '11_robot.jsx',
-        '12_robotNav.jsx',
-        '13_robotMaze.jsx',
-        '14_crispsContest.jsx',
-        '15_exceptionalCrossing.jsx',
-        '16_lasers.jsx',
-        '17_pointers.jsx',
-        '18_superDrEvalBros.jsx',
-        '19_documentObjectMadness.jsx',
-        '20_bossFight.jsx',
-        '21_endOfTheLine.jsx',
-        '22_credits.jsx'
+'01_cellBlockA.jsx','02_theLongWayOut.jsx','03_validationEngaged.jsx','04_multiplicity.jsx','05_minesweeper.jsx','06_drones101.jsx','07_colors.jsx','08_intoTheWoods.jsx','09_fordingTheRiver.jsx','10_ambush.jsx','11_robot.jsx','12_robotNav.jsx','13_robotMaze.jsx','14_crispsContest.jsx','15_exceptionalCrossing.jsx','16_lasers.jsx','17_pointers.jsx','18_superDrEvalBros.jsx','19_documentObjectMadness.jsx','20_bossFight.jsx','21_endOfTheLine.jsx','22_credits.jsx'
     ];
 
     this._bonusLevels = [
-        // 'sampleLevel.jsx',
-        'pushme.jsx',
-        'trapped.jsx'
+'pushme.jsx','sampleLevel.jsx','trapped.jsx'
     ]
+
+	this._mod = '';
 
     this._viewableScripts = [
         'codeEditor.js',
@@ -223,7 +384,7 @@ function Game(debugMode, startLevel) {
     this._resetTimeout = null;
     this._currentLevel = 0;
     this._currentFile = null;
-    this._levelReached = parseInt(localStorage.getItem('levelReached')) || 1;
+    this._levelReached = parseInt(localStorage.getItem(this._mod.length == 0 ? 'levelReached' : this._mod + '.levelReached')) || 1;
     this._displayedChapters = [];
 
     this._eval = window.eval; // store our own copy of eval so that we can override window.eval
@@ -233,6 +394,7 @@ function Game(debugMode, startLevel) {
 
     this._getHelpCommands = function () { return __commands; };
     this._isPlayerCodeRunning = function () { return __playerCodeRunning; };
+	this._getLocalKey = function (key) { return (this._mod.length == 0 ? '' : this._mod + '.') + key; };
 
     /* unexposed setters */
 
@@ -245,7 +407,7 @@ function Game(debugMode, startLevel) {
         // levelReached may be "81111" instead of "8" due to bug
         if (this._levelReached > this._levelFileNames.length) {
             for (var l = 1; l <= this._levelFileNames.length; l++) {
-                if (!localStorage["level" + l + ".lastGoodState"]) {
+                if (!localStorage[this._getLocalKey("level" + l + ".lastGoodState")]) {
                     this._levelReached = l - 1;
                     break;
                 }
@@ -288,8 +450,8 @@ function Game(debugMode, startLevel) {
         this.setUpNotepad();
 
         // Load help commands from local storage (if possible)
-        if (localStorage.getItem('helpCommands')) {
-            __commands = localStorage.getItem('helpCommands').split(';');
+        if (localStorage.getItem(this._getLocalKey('helpCommands'))) {
+            __commands = localStorage.getItem(this._getLocalKey('helpCommands')).split(';');
         }
 
         // Enable debug features
@@ -298,11 +460,6 @@ function Game(debugMode, startLevel) {
             this._levelReached = 999; // make all levels accessible
             __commands = Object.keys(this.reference); // display all help
             this.sound.toggleSound(); // mute sound by default in debug mode
-        } else {
-            // some people are at work right now
-            if (document.referrer.indexOf('news.ycombinator.com') > -1) {
-                this.toggleSound();
-            }
         }
 
         // Lights, camera, action
@@ -366,7 +523,7 @@ function Game(debugMode, startLevel) {
 
         this._levelReached = Math.max(levelNum, this._levelReached);
         if (!debugMode) {
-            localStorage.setItem('levelReached', this._levelReached);
+            localStorage.setItem(this._getLocalKey('levelReached'), this._levelReached);
         }
 
         var fileName = this._levelFileNames[levelNum - 1];
@@ -412,7 +569,7 @@ function Game(debugMode, startLevel) {
 
         // store the commands introduced in this level (for api reference)
         __commands = __commands.concat(editor.getProperties().commandsIntroduced).unique();
-        localStorage.setItem('helpCommands', __commands.join(';'));
+        localStorage.setItem(this._getLocalKey('helpCommands'), __commands.join(';'));
     };
 
     this._getLevelByPath = function (filePath) {
@@ -433,7 +590,7 @@ function Game(debugMode, startLevel) {
 
             // store the commands introduced in this level (for api reference)
             __commands = __commands.concat(editor.getProperties().commandsIntroduced).unique();
-            localStorage.setItem('helpCommands', __commands.join(';'));
+            localStorage.setItem(this._getLocalKey('helpCommands'), __commands.join(';'));
         }, 'text');
 
     };
@@ -599,7 +756,7 @@ function CodeEditor(textAreaDomID, width, height, game) {
 
     var charLimit = 80;
 
-    var properties = {}
+    var properties = {};
     var editableLines = [];
     var editableSections = {};
     var lastChange = {};
@@ -1025,7 +1182,7 @@ function CodeEditor(textAreaDomID, width, height, game) {
 
     this.saveGoodState = function () {
         var lvlNum = game._currentFile ? game._currentFile : game._currentLevel;
-        localStorage.setItem('level' + lvlNum + '.lastGoodState', JSON.stringify({
+        localStorage.setItem(game._getLocalKey('level' + lvlNum + '.lastGoodState'), JSON.stringify({
             code: this.getCode(true),
             playerCode: this.getPlayerCode(),
             editableLines: editableLines,
@@ -1060,7 +1217,7 @@ function CodeEditor(textAreaDomID, width, height, game) {
     }
 
     this.getGoodState = function (lvlNum) {
-        return JSON.parse(localStorage.getItem('level' + lvlNum + '.lastGoodState'));
+        return JSON.parse(localStorage.getItem(game._getLocalKey('level' + lvlNum + '.lastGoodState')));
     }
 
     this.refresh = function () {
@@ -1074,7 +1231,7 @@ function CodeEditor(textAreaDomID, width, height, game) {
     this.initialize(); // run initialization code
 }
 ROT.Display.create = function(game, opts) {
-    opts['fontFamily'] = '"droid sans mono", Courier, "Courier New", monospace';
+    opts.fontFamily = _('"droid sans mono", Courier, "Courier New", monospace');
     var display = new ROT.Display(opts);
     display.game = game;
     return display;
@@ -1230,22 +1387,7 @@ ROT.Display.prototype.saveGrid = function (map) {
 
 ROT.Display.prototype.playIntro = function (map, i) {
     display = this;
-
-    if (i < 0) {
-        this._intro = true;
-    } else {
-        if (typeof i === 'undefined') { i = map.getHeight(); }
-        this.clear();
-        this.drawText(0, i - 2, "%c{#0f0}> initialize")
-        this.drawText(15, i + 3, "U N T R U S T E D");
-        this.drawText(20, i + 5, "- or - ");
-        this.drawText(5, i + 7, "THE CONTINUING ADVENTURES OF DR. EVAL");
-        this.drawText(3, i + 12, "a game by Alex Nisnevich and Greg Shuflin");
-        this.drawText(10, i + 22, "Press any key to begin ...")
-        setTimeout(function () {
-            display.playIntro(map, i - 1);
-        }, 100);
-    }
+	playIntro(display, map, i)
 };
 
 ROT.Display.prototype.fadeIn = function (map, speed, callback, i) {
@@ -1256,7 +1398,7 @@ ROT.Display.prototype.fadeIn = function (map, speed, callback, i) {
     } else {
         var levelName = game._levelFileNames[game._currentLevel - 1];
     }
-    var command = "%c{#0f0}> run " + levelName;
+    var command = _("%c{#0f0}> run ") + levelName;
 
     if (i < -3) {
         if (callback) { callback(); }
@@ -1280,19 +1422,28 @@ ROT.Display.prototype.fadeIn = function (map, speed, callback, i) {
 ROT.Display.prototype.writeStatus = function(text) {
     var map = this.game.map;
 
-    var strings = [text];
-    if (text.length > map.getWidth()) {
-        // split into two lines
-        var minCutoff = map.getWidth() - 10;
-        var cutoff = minCutoff + text.slice(minCutoff).indexOf(" ");
-        strings = [text.slice(0, cutoff), text.slice(cutoff + 1)];
-    }
+    var strings = [];
+	var l = 0;
+	for (var i = 0; i < text.length; i ++) {
+		l ++;
+		if (escape(text.charAt(i)).indexOf('%u') >= 0) { // is full-width char
+			l ++;
+		}
+		if (l > map.getWidth() - 10) {
+	        // split into lines
+	        strings.push(text.substr(strings.join('').length, i));
+			l = 0;
+		}
+	}
+	if (strings.length == 0) {
+		strings = [text];
+	}
 
     for (var i = 0; i < strings.length; i++) {
         var str = strings[i];
-        var x = Math.floor((map.getWidth() - str.length) / 2);
+        var x = Math.floor((map.getWidth() - str.replace(/[^\u0000-\u00ff]/g,"aa").length) / 2);
         var y = map.getHeight() + i - strings.length - 1;
-        this.drawText(x, y, str);
+        this.drawText(x, y, _(str));
     }
 };
 
@@ -1409,7 +1560,7 @@ function DynamicObject(map, type, x, y, __game) {
                     }
                 }
 
-                if (__myTurn && __definition.behavior !== null) {
+                if (__myTurn && __definition.behavior) {
                     map._validateCallback(function () {
                         __definition.behavior(me, player);
                     });
@@ -1668,7 +1819,7 @@ Game.prototype.drawInventory = function () {
 	var game = this;
 
 	if (this.inventory.length > 0) {
-		$('#inventory').text('INVENTORY: ');
+		$('#inventory').text(_('INVENTORY: '));
 
 		this.inventory.forEach(function (item) {
 			var object = game.map._getObjectDefinition(item);
@@ -1738,19 +1889,19 @@ function Map(display, __game) {
     /* unexposed getters */
 
     this._getObjectDefinition = function(objName) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._getObjectDefinition()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._getObjectDefinition()';}
         return __objectDefinitions[objName];
     };
     this._getObjectDefinitions = function() {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._getObjectDefinitions()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._getObjectDefinitions()';}
         return __objectDefinitions;
     };
     this._getGrid = function () {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._getGrid()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._getGrid()';}
         return __grid;
     };
     this._getLines = function() {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._getLines()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._getLines()';}
         return __lines;
     };
 
@@ -1764,7 +1915,7 @@ function Map(display, __game) {
     /* unexposed methods */
 
     this._reset = function () {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._reset()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._reset()';}
 
         __objectDefinitions = __game.getListOfObjects();
 
@@ -1803,7 +1954,7 @@ function Map(display, __game) {
     };
 
     this._ready = function () {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._ready()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._ready()';}
 
         var map = this;
 
@@ -1827,7 +1978,7 @@ function Map(display, __game) {
     };
 
     this._setProperties = function (mapProperties) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._setProperties()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._setProperties()';}
 
         // set defaults
         this._properties = {};
@@ -1854,7 +2005,7 @@ function Map(display, __game) {
     };
 
     this._canMoveTo = function (x, y, myType) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._canMoveTo()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._canMoveTo()';}
 
         var x = Math.floor(x); var y = Math.floor(y);
 
@@ -1893,7 +2044,7 @@ function Map(display, __game) {
 
     // Returns the object of the given type closest to target coordinates
     this._findNearestToPoint = function (type, targetX, targetY) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._findNearestToPoint()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._findNearestToPoint()';}
 
         var foundObjects = [];
 
@@ -1937,7 +2088,7 @@ function Map(display, __game) {
     };
 
     this._isPointOccupiedByDynamicObject = function (x, y) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._isPointOccupiedByDynamicObject()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._isPointOccupiedByDynamicObject()';}
 
         var x = Math.floor(x); var y = Math.floor(y);
 
@@ -1951,7 +2102,7 @@ function Map(display, __game) {
     };
 
     this._findDynamicObjectAtPoint = function (x, y) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._findDynamicObjectAtPoint()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._findDynamicObjectAtPoint()';}
 
         var x = Math.floor(x); var y = Math.floor(y);
 
@@ -1965,7 +2116,7 @@ function Map(display, __game) {
     };
 
     this._moveAllDynamicObjects = function () {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._moveAllDynamicObjects()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._moveAllDynamicObjects()';}
 
         // the way things work right now, teleporters must take precedence
         // over all other objects -- otherwise, pointers.jsx will not work
@@ -1991,7 +2142,7 @@ function Map(display, __game) {
     };
 
     this._removeItemFromMap = function (x, y, klass) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._removeItemFromMap()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._removeItemFromMap()';}
 
         var x = Math.floor(x); var y = Math.floor(y);
 
@@ -2001,7 +2152,7 @@ function Map(display, __game) {
     };
 
     this._reenableMovementForPlayer = function (player) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._reenableMovementForPlayer()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._reenableMovementForPlayer()';}
 
         if (!this._callbackValidationFailed) {
             setTimeout(function () {
@@ -2011,7 +2162,7 @@ function Map(display, __game) {
     };
 
     this._hideChapter = function() {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._hideChapter()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._hideChapter()';}
 
         // start fading out chapter immediately
         // unless it's a death message, in which case wait 2.5 sec
@@ -2025,13 +2176,13 @@ function Map(display, __game) {
     };
 
     this._refreshDynamicObjects = function() {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._refreshDynamicObjects()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._refreshDynamicObjects()';}
 
         __dynamicObjects = __dynamicObjects.filter(function (obj) { return !obj.isDestroyed(); });
     };
 
     this._countTimers = function() {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._countTimers()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._countTimers()';}
 
         return __intervals.length;
     }
@@ -2047,13 +2198,13 @@ function Map(display, __game) {
     };
 
     this._playSound = function (sound) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._playSound()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._playSound()';}
 
         __game.sound.playSound(sound);
     };
 
     this._validateCallback = function (callback) {
-        if (__game._isPlayerCodeRunning()) { throw 'Forbidden method call: map._validateCallback()';}
+        if (__game._isPlayerCodeRunning()) { throw _('Forbidden method call: ') + 'map._validateCallback()';}
 
         return __game.validateCallback(callback);
     };
@@ -2102,11 +2253,11 @@ function Map(display, __game) {
         var x = Math.floor(x); var y = Math.floor(y);
 
         if (!__objectDefinitions[type]) {
-            throw "There is no type of object named " + type + "!";
+            throw _("There is no type of object named ") + type + _("!");
         }
 
         if (__player && x == __player.getX() && y == __player.getY()) {
-            throw "Can't place object on top of player!";
+            throw _("Can't place object on top of player!");
         }
 
         if (typeof(__grid[x]) === 'undefined' || typeof(__grid[x][y]) === 'undefined') {
@@ -2122,7 +2273,7 @@ function Map(display, __game) {
             if (__grid[x][y].type === 'empty' || __grid[x][y].type === type || __allowOverwrite) {
                 __grid[x][y].type = type;
             } else {
-                throw "There is already an object at (" + x + ", " + y + ")!";
+                throw _("There is already an object at") + " (" + x + ", " + y + ")" + _("!");
             }
         }
     }, this);
@@ -2131,7 +2282,7 @@ function Map(display, __game) {
         var x = Math.floor(x); var y = Math.floor(y);
 
         if (__player) {
-            throw "Can't place player twice!";
+            throw _("Can't place player twice!");
         }
 
         __player = new __game._playerPrototype(x, y, this, __game);
@@ -2161,11 +2312,11 @@ function Map(display, __game) {
 
     this.defineObject = wrapExposedMethod(function (name, properties) {
         if (__objectDefinitions[name]) {
-            throw "There is already a type of object named " + name + "!";
+            throw _("There is already a type of object named ") + name + _("!");
         }
 
         if (properties.interval && properties.interval < 100) {
-            throw "defineObject(): minimum interval is 100 milliseconds";
+            throw _("defineObject(): minimum interval is 100 milliseconds");
         }
 
         __objectDefinitions[name] = properties;
@@ -2213,9 +2364,9 @@ function Map(display, __game) {
 
     this.startTimer = wrapExposedMethod(function(timer, delay) {
         if (!delay) {
-            throw "startTimer(): delay not specified"
+            throw "startTimer(): " + _("delay not specified")
         } else if (delay < 25) {
-            throw "startTimer(): minimum delay is 25 milliseconds";
+            throw "startTimer(): " + _("minimum delay is 25 milliseconds");
         }
 
         __intervals.push(setInterval(timer, delay));
@@ -2223,9 +2374,9 @@ function Map(display, __game) {
 
     this.timeout = wrapExposedMethod(function(timer, delay) {
         if (!delay) {
-            throw "timeout(): delay not specified"
+            throw "timeout(): " + _("delay not specified");
         } else if (delay < 25) {
-            throw "timeout(): minimum delay is 25 milliseconds";
+            throw "timeout(): " + _("minimum delay is 25 milliseconds");
         }
 
         __intervals.push(setTimeout(timer, delay));
@@ -2335,21 +2486,21 @@ function Map(display, __game) {
     this.validateAtLeastXObjects = wrapExposedMethod(function(num, type) {
         var count = this.countObjects(type);
         if (count < num) {
-            throw 'Not enough ' + type + 's on the map! Expected: ' + num + ', found: ' + count;
+            throw _('Not enough ') + type + _('s on the map! Expected: ') + num + _(', found: ') + count;
         }
     }, this);
 
     this.validateAtMostXObjects = wrapExposedMethod(function(num, type) {
         var count = this.countObjects(type);
         if (count > num) {
-            throw 'Too many ' + type + 's on the map! Expected: ' + num + ', found: ' + count;
+            throw _('Too many ') + type + _('s on the map! Expected: ') + num + _(', found: ') + count;
         }
     }, this);
 
     this.validateExactlyXManyObjects = wrapExposedMethod(function(num, type) {
         var count = this.countObjects(type);
         if (count != num) {
-            throw 'Wrong number of ' + type + 's on the map! Expected: ' + num + ', found: ' + count;
+            throw _('Wrong number of ') + type + _('s on the map! Expected: ') + num + _(', found: ') + count;
         }
     }, this);
 
@@ -2363,14 +2514,14 @@ function Map(display, __game) {
     this.validateNoTimers = wrapExposedMethod(function() {
         var count = this._countTimers();
         if (count > 0) {
-            throw 'Too many timers set on the map! Expected: 0, found: ' + count;
+            throw _('Too many timers set on the map! Expected: 0, found: ') + count;
         }
     }, this);
 
     this.validateAtLeastXLines = wrapExposedMethod(function(num) {
         var count = this._getLines().length;
         if (count < num) {
-            throw 'Not enough lines on the map! Expected: ' + num + ', found: ' + count;
+            throw _('Not enough lines on the map! Expected: ') + num + _(', found: ') + count;
         }
     }, this);
 
@@ -2430,7 +2581,7 @@ Game.prototype.getListOfObjects = function () {
         'mine': {
             'symbol': ' ',
             'onCollision': function (player) {
-                player.killedBy('a hidden mine');
+                player.killedBy(_('a hidden mine'));
             }
         },
 
@@ -2439,7 +2590,7 @@ Game.prototype.getListOfObjects = function () {
             'symbol': '*',
             'color': '#f00',
             'onCollision': function (player, me) {
-                player.killedBy('a trap');
+                player.killedBy(_('a trap'));
             },
             'behavior': null
         },
@@ -2468,7 +2619,7 @@ Game.prototype.getListOfObjects = function () {
             'onPickUp': function (player) {
                 $('#editorPane').fadeIn();
                 game.editor.refresh();
-                game.map.writeStatus('You have picked up the computer!');
+                game.map.writeStatus(_('You have picked up the computer!'));
             },
             'onDrop': function () {
                 $('#editorPane').hide();
@@ -2479,7 +2630,7 @@ Game.prototype.getListOfObjects = function () {
             'type': 'item',
             'symbol': String.fromCharCode(0x260E), // ☎
             'onPickUp': function (player) {
-                game.map.writeStatus('You have picked up the function phone!');
+                game.map.writeStatus(_('You have picked up the function phone!'));
                 $('#phoneButton').show();
             },
             'onDrop': function () {
@@ -2492,7 +2643,7 @@ Game.prototype.getListOfObjects = function () {
             'symbol': 'k',
             'color': 'red',
             'onPickUp': function (player) {
-                game.map.writeStatus('You have picked up a red key!');
+                game.map.writeStatus(_('You have picked up a red key!'));
             }
         },
 
@@ -2501,7 +2652,7 @@ Game.prototype.getListOfObjects = function () {
             'symbol': 'k',
             'color': '#0f0',
             'onPickUp': function (player) {
-                game.map.writeStatus('You have picked up a green key!');
+                game.map.writeStatus(_('You have picked up a green key!'));
             }
         },
 
@@ -2510,7 +2661,7 @@ Game.prototype.getListOfObjects = function () {
             'symbol': 'k',
             'color': '#06f',
             'onPickUp': function (player) {
-                game.map.writeStatus('You have picked up a blue key!');
+                game.map.writeStatus(_('You have picked up a blue key!'));
             }
         },
 
@@ -2519,7 +2670,7 @@ Game.prototype.getListOfObjects = function () {
             'symbol': 'k',
             'color': 'yellow',
             'onPickUp': function (player) {
-                game.map.writeStatus('You have picked up a yellow key!');
+                game.map.writeStatus(_('You have picked up a yellow key!'));
             }
         },
 
@@ -2528,10 +2679,10 @@ Game.prototype.getListOfObjects = function () {
             'symbol': 'A',
             'color': 'white',
             'onPickUp': function (player) {
-                game.map.writeStatus('You have picked up the Algorithm!');
+                game.map.writeStatus(_('You have picked up the Algorithm!'));
             },
             'onDrop': function () {
-                game.map.writeStatus('You have lost the Algorithm!');
+                game.map.writeStatus(_('You have lost the Algorithm!'));
             }
         }
     };
@@ -2754,474 +2905,480 @@ Game.prototype.reference = {
         'name': 'canvasContext.beginPath()',
         'category': 'canvas',
         'type': 'method',
-        'description': 'Begins drawing a new shape.'
+        'description': _('Begins drawing a new shape.')
     },
     'canvas.lineTo': {
         'name': 'canvasContext.lineTo(x, y)',
         'category': 'canvas',
         'type': 'method',
-        'description': 'Sets the end coordinates of a line.'
+        'description': _('Sets the end coordinates of a line.')
     },
     'canvas.lineWidth': {
         'name': 'canvasContext.lineWidth',
         'category': 'canvas',
         'type': 'property',
-        'description': 'Determines the width of the next lines drawn.'
+        'description': _('Determines the width of the next lines drawn.')
     },
     'canvas.moveTo': {
         'name': 'canvasContext.moveTo(x, y)',
         'category': 'canvas',
         'type': 'method',
-        'description': 'Sets the start coordinates of a line.'
+        'description': _('Sets the start coordinates of a line.')
     },
     'canvas.stroke': {
         'name': 'canvasContext.stroke()',
         'category': 'canvas',
         'type': 'method',
-        'description': 'Draws a line whose coordinates have been defined by <b>lineTo</b> and <b>moveTo</b>.'
+        'description': _('Draws a line whose coordinates have been defined by <b>lineTo</b> and <b>moveTo</b>.')
     },
     'canvas.strokeStyle': {
         'name': 'canvasContext.strokeStyle',
         'category': 'canvas',
         'type': 'property',
-        'description': 'Determines the color (and, optionally, other properties) of the next lines drawn.'
+        'description': _('Determines the color (and, optionally, other properties) of the next lines drawn.')
     },
 
     'global.$': {
         'name': '$(html)',
         'category': 'global',
         'type': 'method',
-        'description': 'When passed an HTML string, $ returns a corresponding <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> instance.'
+        'description': _('When passed an HTML string, $ returns a corresponding <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> instance.')
     },
     'global.objective': {
         'name': 'objective(map)',
         'category': 'global',
         'type': 'method',
-        'description': 'The player exits the level as soon as this method returns true.'
+        'description': _('The player exits the level as soon as this method returns true.')
     },
     'global.onExit': {
         'name': 'onExit(map)',
         'category': 'global',
         'type': 'method',
-        'description': 'The player can exit the level only if this method returns true.'
+        'description': _('The player can exit the level only if this method returns true.')
     },
     'global.startLevel': {
         'name': 'startLevel(map)',
         'category': 'global',
         'type': 'method',
-        'description': 'This method is called when the level loads.'
+        'description': _('This method is called when the level loads.')
     },
     'global.validateLevel': {
         'name': 'validateLevel(map)',
         'category': 'global',
         'type': 'method',
-        'description': 'The level can be loaded only if this method returns true.'
+        'description': _('The level can be loaded only if this method returns true.')
     },
     'ROT.Map.DividedMaze': {
         'name': 'ROT.Map.DividedMaze(width, height)',
         'category': 'global',
         'type': 'method',
-        'description': 'Instantiates a Maze object of given width and height. The Maze object can create a maze by calling maze.create(callback), where the callback is a function that accepts (x, y, mapValue) and performs some action for each point in a grid, where mapValue is a boolean that is true if and only if the given point is part of the maze.'
+        'description': _('Instantiates a Maze object of given width and height. The Maze object can create a maze by calling maze.create(callback), where the callback is a function that accepts (x, y, mapValue) and performs some action for each point in a grid, where mapValue is a boolean that is true if and only if the given point is part of the maze.')
     },
 
     'jQuery.addClass': {
         'name': 'jQueryObject.addClass(class)',
         'category': 'jQuery',
         'type': 'method',
-        'description': 'Adds the given CSS class to the DOM element(s) specified by the jQuery object.'
+        'description': _('Adds the given CSS class to the DOM element(s) specified by the jQuery object.')
     },
     'jQuery.children': {
         'name': 'jQueryObject.children()',
         'category': 'jQuery',
         'type': 'method',
-        'description': 'Returns the children of the DOM element specified by the jQuery object, as a jQuery array.'
+        'description': _('Returns the children of the DOM element specified by the jQuery object, as a jQuery array.')
     },
     'jQuery.find': {
         'name': 'jQueryObject.find(selector)',
         'category': 'jQuery',
         'type': 'method',
-        'description': 'Returns all elements in the DOM tree specified by the jQuery object that match the given CSS selector, as a jQuery array.'
+        'description': _('Returns all elements in the DOM tree specified by the jQuery object that match the given CSS selector, as a jQuery array.')
     },
     'jQuery.first': {
         'name': 'jQueryObject.first()',
         'category': 'jQuery',
         'type': 'method',
-        'description': 'Returns the first element of a jQuery array.'
+        'description': _('Returns the first element of a jQuery array.')
     },
     'jQuery.hasClass': {
         'name': 'jQueryObject.hasClass(class)',
         'category': 'jQuery',
         'type': 'method',
-        'description': 'Returns true if and only if the DOM element specified by the jQuery object has the given CSS class.'
+        'description': _('Returns true if and only if the DOM element specified by the jQuery object has the given CSS class.')
     },
     'jQuery.length': {
         'name': 'jQueryObject.length',
         'category': 'jQuery',
         'type': 'property',
-        'description': 'Returns the number of elements in a jQuery array.'
+        'description': _('Returns the number of elements in a jQuery array.')
     },
     'jQuery.next': {
         'name': 'jQueryObject.next()',
         'category': 'jQuery',
         'type': 'property',
-        'description': 'Returns the next sibling of the DOM element specified by the jQuery object.'
+        'description': _('Returns the next sibling of the DOM element specified by the jQuery object.')
     },
     'jQuery.parent': {
         'name': 'jQueryObject.parent()',
         'category': 'jQuery',
         'type': 'method',
-        'description': 'Returns the parent of the DOM element specified by the jQuery object.'
+        'description': _('Returns the parent of the DOM element specified by the jQuery object.')
     },
     'jQuery.prev': {
         'name': 'jQueryObject.prev()',
         'category': 'jQuery',
         'type': 'property',
-        'description': 'Returns the previous sibling of the DOM element specified by the jQuery object.'
+        'description': _('Returns the previous sibling of the DOM element specified by the jQuery object.')
     },
     'jQuery.removeClass': {
         'name': 'jQueryObject.removeClass(class)',
         'category': 'jQuery',
         'type': 'method',
-        'description': 'Removes the given CSS class from the DOM element(s) specified by the jQuery object.'
+        'description': _('Removes the given CSS class from the DOM element(s) specified by the jQuery object.')
     },
 
     'map.countObjects': {
         'name': 'map.countObjects(objectType)',
         'category': 'map',
         'type': 'method',
-        'description': 'Returns the number of objects of the given type on the map.'
+        'description': _('Returns the number of objects of the given type on the map.')
     },
     'map.createFromDOM': {
         'name': 'map.createFromDOM($html)',
         'category': 'map',
         'type': 'method',
-        'description': 'Creates the map from a <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> instance, rendering the map as a DOM (document object model) rather than a grid.'
+        'description': _('Creates the map from a <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> instance, rendering the map as a DOM (document object model) rather than a grid.')
     },
     'map.createFromGrid': {
         'name': 'map.createFromGrid(grid, tiles, xOffset, yOffset)',
         'category': 'map',
         'type': 'method',
-        'description': 'Places objects on the map corresponding to their position on the grid (an array of strings), with mappings as defined in tiles (a dictionary of character -> object type mappings), at the given offset from the top-left corner of the map.'
+        'description': _('Places objects on the map corresponding to their position on the grid (an array of strings), with mappings as defined in tiles (a dictionary of character -> object type mappings), at the given offset from the top-left corner of the map.')
     },
     'map.createLine': {
         'name': 'map.createLine([x1, x2], [y1 y2], callback)',
         'category': 'map',
         'type': 'method',
-        'description': 'Places a line on the map between the given points, that triggers the given callback when the player touches it. (Note that the line is invisible: createLine does <i>not</i> draw anything to the <a onclick="$(\'#helpPaneSidebar .category#canvas\').click();">canvas</a>.)'
+        'description': _('Places a line on the map between the given points, that triggers the given callback when the player touches it. (Note that the line is invisible: createLine does <i>not</i> draw anything to the <a onclick="$(\'#helpPaneSidebar .category#canvas\').click();">canvas</a>.)')
     },
     'map.displayChapter': {
         'name': 'map.displayChapter(chapter)',
         'category': 'map',
         'type': 'method',
-        'description': 'Displays the given chapter name.'
+        'description': _('Displays the given chapter name.')
     },
     'map.defineObject': {
         'name': 'map.defineObject(type, properties)',
         'category': 'map',
         'type': 'method',
-        'description': 'Defines a new type of <a onclick="$(\'#helpPaneSidebar .category#object\').click();">object</a> with the given properties. Note that type definitions created with map.defineObject only persist in the scope of the level.'
+        'description': _('Defines a new type of <a onclick="$(\'#helpPaneSidebar .category#object\').click();">object</a> with the given properties. Note that type definitions created with map.defineObject only persist in the scope of the level.')
     },
     'map.getAdjacentEmptyCells': {
         'name': 'map.getAdjacentEmptyCells(x, y)',
         'category': 'map',
         'type': 'method',
-        'description': 'Returns the empty cells adjacent to the cell at the given coordinates (if any), as an array of items of the form <i>[[x, y], direction]</i>, where (x, y) are the coordinates of each empty cell, and <i>direction</i> is the direction from the given cell to each empty cell ("left", "right", "up", or "down").'
+        'description': _('Returns the empty cells adjacent to the cell at the given coordinates (if any), as an array of items of the form <i>[[x, y], direction]</i>, where (x, y) are the coordinates of each empty cell, and <i>direction</i> is the direction from the given cell to each empty cell ("left", "right", "up", or "down").')
     },
     'map.getCanvasContext': {
         'name': 'map.getCanvasContext()',
         'category': 'map',
         'type': 'method',
-        'description': 'Returns the 2D drawing context of the <a onclick="$(\'#helpPaneSidebar .category#canvas\').click();">canvas</a> overlaying the map.'
+        'description': _('Returns the 2D drawing context of the <a onclick="$(\'#helpPaneSidebar .category#canvas\').click();">canvas</a> overlaying the map.')
     },
     'map.getCanvasCoords': {
         'name': 'map.getCanvasCoords(obj)',
         'category': 'map',
         'type': 'method',
-        'description': 'Returns {"x": x, "y": y}, where x and y are the respective coordinates of the given object on the canvas returned by map.getCanvasContext().'
+        'description': _('Returns {"x": x, "y": y}, where x and y are the respective coordinates of the given object on the canvas returned by map.getCanvasContext().')
     },
     'map.getDOM': {
         'name': 'map.getDOM()',
         'category': 'map',
         'type': 'method',
-        'description': 'Returns the <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> instance representing the map.'
+        'description': _('Returns the <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> instance representing the map.')
     },
     'map.getDynamicObjects': {
         'name': 'map.getDynamicObjects()',
         'category': 'map',
         'type': 'method',
-        'description': 'Returns all dynamic objects currently on the map.'
+        'description': _('Returns all dynamic objects currently on the map.')
     },
     'map.getHeight': {
         'name': 'map.getHeight()',
         'category': 'map',
         'type': 'method',
-        'description': 'Returns the height of the map, in cells.'
+        'description': _('Returns the height of the map, in cells.')
     },
     'map.getObjectTypeAt': {
         'name': 'map.getObjectTypeAt(x, y)',
         'category': 'map',
         'type': 'method',
-        'description': 'Returns the type of the object at the given coordinates (or "empty" if there is no object there).'
+        'description': _('Returns the type of the object at the given coordinates (or "empty" if there is no object there).')
     },
     'map.getPlayer': {
         'name': 'map.getPlayer()',
         'category': 'map',
         'type': 'method',
-        'description': 'Returns the Player object.'
+        'description': _('Returns the Player object.')
     },
     'map.getRandomColor': {
         'name': 'map.getRandomColor(start, end)',
         'category': 'map',
         'type': 'method',
-        'description': 'Returns a hexadecimal string representing a random color in between the start and end colors. The start and end colors must be arrays of the form [R, G, B], where R, G, and B are decimal integers.'
+        'description': _('Returns a hexadecimal string representing a random color in between the start and end colors. The start and end colors must be arrays of the form [R, G, B], where R, G, and B are decimal integers.')
     },
     'map.getWidth': {
         'name': 'map.getWidth()',
         'category': 'map',
         'type': 'method',
-        'description': 'Returns the width of the map, in cells.'
+        'description': _('Returns the width of the map, in cells.')
     },
     'map.isStartOfLevel': {
         'name': 'map.isStartOfLevel()',
         'category': 'map',
         'type': 'method',
-        'description': 'Returns true if called while a level is starting.'
+        'description': _('Returns true if called while a level is starting.')
     },
     'map.overrideKey': {
         'name': 'map.overrideKey(key, callback)',
         'category': 'map',
         'type': 'method',
-        'description': 'Overrides the action performed by pressing the given key (<i>left</i>, <i>right</i>, <i>up</i>, or <i>down</i>).'
+        'description': _('Overrides the action performed by pressing the given key (<i>left</i>, <i>right</i>, <i>up</i>, or <i>down</i>).')
     },
     'map.placeObject': {
         'name': 'map.placeObject(x, y, objectType)',
         'category': 'map',
         'type': 'method',
-        'description': 'Places an object of the given type at the given coordinates.'
+        'description': _('Places an object of the given type at the given coordinates.')
     },
     'map.placePlayer': {
         'name': 'map.placePlayer(x, y)',
         'category': 'map',
         'type': 'method',
-        'description': 'Places the player at the given coordinates.'
+        'description': _('Places the player at the given coordinates.')
     },
     'map.setSquareColor': {
         'name': 'map.setSquareColor(x, y, color)',
         'category': 'map',
         'type': 'method',
-        'description': 'Sets the background color of the given square.'
+        'description': _('Sets the background color of the given square.')
     },
     'map.setSquareColor': {
         'name': 'map.setSquareColor(x, y, color)',
         'category': 'map',
         'type': 'method',
-        'description': 'Sets the background color of the given square.'
+        'description': _('Sets the background color of the given square.')
     },
     'map.startTimer': {
         'name': 'map.startTimer(callback, delay)',
         'category': 'map',
         'type': 'method',
-        'description': 'Starts a timer (c.f. setInterval) of the given delay, in milliseconds (minimum 25 ms).'
+        'description': _('Starts a timer (c.f. setInterval) of the given delay, in milliseconds (minimum 25 ms).')
     },
     'map.updateDOM': {
         'name': 'map.updateDOM($html)',
         'category': 'map',
         'type': 'method',
-        'description': 'Updates the <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> instance representing the map.'
+        'description': _('Updates the <a onclick="$(\'#helpPaneSidebar .category#jQuery\').click();">jQuery</a> instance representing the map.')
     },
     'map.validateAtLeastXLines': {
         'name': 'map.validateAtLeastXObjects(num)',
         'category': 'map',
         'type': 'method',
-        'description': 'Raises an exception if there are not at least num lines (created by map.createLine) on the map.'
+        'description': _('Raises an exception if there are not at least num lines (created by map.createLine) on the map.')
     },
     'map.validateAtLeastXObjects': {
         'name': 'map.validateAtLeastXObjects(num, objectType)',
         'category': 'map',
         'type': 'method',
-        'description': 'Raises an exception if there are not at least num objects of type objectType on the map.'
+        'description': _('Raises an exception if there are not at least num objects of type objectType on the map.')
     },
     'map.validateAtMostXDynamicObjects': {
         'name': 'map.validateExactlyXManyObjects(num)',
         'category': 'map',
         'type': 'method',
-        'description': 'Raises an exception if there are more than num dynamic objects on the map.'
+        'description': _('Raises an exception if there are more than num dynamic objects on the map.')
     },
     'map.validateExactlyXManyObjects': {
         'name': 'map.validateExactlyXManyObjects(num, objectType)',
         'category': 'map',
         'type': 'method',
-        'description': 'Raises an exception if there are not exactly num objects of type objectType on the map.'
+        'description': _('Raises an exception if there are not exactly num objects of type objectType on the map.')
     },
     'map.validateNoTimers': {
         'name': 'map.validateNoTimers()',
         'category': 'map',
         'type': 'method',
-        'description': 'Raises an exception if there are any timers currently set with map.startTimer.'
+        'description': _('Raises an exception if there are any timers currently set with map.startTimer.')
+    },
+    'map.writeStatus': {
+        'name': 'map.writeStatus(message)',
+        'category': 'map',
+        'type': 'method',
+        'description': _('Displays a message at the bottom of the map.')
     },
 
     'object.behavior': {
         'name': 'object.behavior = function (object)',
         'category': 'object',
         'type': 'property',
-        'description': '(For dynamic objects only.) The function that is executed each time it is this object\'s turn.'
+        'description': _('(For dynamic objects only.) The function that is executed each time it is this object\'s turn.')
     },
     'object.canMove': {
         'name': 'object.canMove(direction)',
         'category': 'object',
         'type': 'method',
-        'description': '(For dynamic objects only.) Returns true if (and only if) the object is able to move one square in the given direction, which can be "left", "right", "up", or "down".'
+        'description': _('(For dynamic objects only.) Returns true if (and only if) the object is able to move one square in the given direction, which can be "left", "right", "up", or "down".')
     },
     'object.color': {
         'name': 'object.color',
         'category': 'object',
         'type': 'property',
-        'description': 'The color of the object\'s symbol on the map.'
+        'description': _('The color of the object\'s symbol on the map.')
     },
     'object.findNearest': {
         'name': 'object.findNearest(type)',
         'category': 'object',
         'type': 'method',
-        'description': '(For dynamic objects only.) Returns the x and y coordinates of the nearest object of the given type to this object, as a hash.'
+        'description': _('(For dynamic objects only.) Returns the x and y coordinates of the nearest object of the given type to this object, as a hash.')
     },
     'object.getX': {
         'name': 'object.getX()',
         'category': 'object',
         'type': 'method',
-        'description': '(For dynamic objects only.) Returns the x-coordinate of the object.'
+        'description': _('(For dynamic objects only.) Returns the x-coordinate of the object.')
     },
     'object.getY': {
         'name': 'object.getY()',
         'category': 'object',
         'type': 'method',
-        'description': '(For dynamic objects only.) Returns the y-coordinate of the object.'
+        'description': _('(For dynamic objects only.) Returns the y-coordinate of the object.')
     },
     'object.giveItemTo': {
         'name': 'object.giveItemTo(target, item)',
         'category': 'object',
         'type': 'method',
-        'description': '(For dynamic objects only.) Gives the given item to the target (generally, the player). Can only be done if the object and the player have just collided.'
+        'description': _('(For dynamic objects only.) Gives the given item to the target (generally, the player). Can only be done if the object and the player have just collided.')
     },
     'object.impassable': {
         'name': 'object.impassable = function (player, object)',
         'category': 'object',
         'type': 'property',
-        'description': '(For non-dynamic objects only.) The function that determines whether or not the player can pass through this object.'
+        'description': _('(For non-dynamic objects only.) The function that determines whether or not the player can pass through this object.')
     },
     'object.move': {
         'name': 'object.move(direction)',
         'category': 'object',
         'type': 'method',
-        'description': '(For dynamic objects only.) Moves the object one square in the given direction, which can be "left", "right", "up", or "down". An object can only move once per turn.'
+        'description': _('(For dynamic objects only.) Moves the object one square in the given direction, which can be "left", "right", "up", or "down". An object can only move once per turn.')
     },
     'object.onCollision': {
         'name': 'object.onCollision = function (player)',
         'category': 'object',
         'type': 'property',
-        'description': 'The function that is executed when this object touches the player.'
+        'description': _('The function that is executed when this object touches the player.')
     },
     'object.onDestroy': {
         'name': 'object.onDestroy = function (object)',
         'category': 'object',
         'type': 'property',
-        'description': '(For dynamic objects only.) The function that is executed when this object is destroyed.'
+        'description': _('(For dynamic objects only.) The function that is executed when this object is destroyed.')
     },
     'object.projectile': {
         'name': 'object.projectile',
         'category': 'object',
         'type': 'property',
-        'description': '(For dynamic objects only.) If true, this object destroys any dynamic object (or player) that it collides with, and is itself destroyed when it collides with anything.'
+        'description': _('(For dynamic objects only.) If true, this object destroys any dynamic object (or player) that it collides with, and is itself destroyed when it collides with anything.')
     },
     'object.pushable': {
         'name': 'object.pushable',
         'category': 'object',
         'type': 'property',
-        'description': '(For dynamic objects only.) If true, this object can be pushed by the player.'
+        'description': _('(For dynamic objects only.) If true, this object can be pushed by the player.')
     },
     'object.symbol': {
         'name': 'object.symbol',
         'category': 'object',
         'type': 'property',
-        'description': 'The object\'s symbol on the map.'
+        'description': _('The object\'s symbol on the map.')
     },
     'object.setTarget': {
         'name': 'object.setTarget()',
         'category': 'object',
         'type': 'method',
-        'description': '(For teleporters only.) Sets the destination of this teleporter.'
+        'description': _('(For teleporters only.) Sets the destination of this teleporter.')
     },
     'object.type': {
         'name': 'object.type',
         'category': 'object',
         'type': 'property',
-        'description': 'Can be "item", "dynamic", or none. If "dynamic", then this object can move on turns that run each time that the player moves. If "item", then this object can be picked up.'
+        'description': _('Can be "item", "dynamic", or none. If "dynamic", then this object can move on turns that run each time that the player moves. If "item", then this object can be picked up.')
     },
 
     'player.atLocation': {
         'name': 'player.atLocation(x, y)',
         'category': 'player',
         'type': 'method',
-        'description': 'Returns true if and only if the player is at the given location.'
+        'description': _('Returns true if and only if the player is at the given location.')
     },
     'player.getColor': {
         'name': 'player.getColor()',
         'category': 'player',
         'type': 'method',
-        'description': 'Returns the color of the player.'
+        'description': _('Returns the color of the player.')
     },
     'player.getLastMoveDirection': {
         'name': 'player.getLastMoveDirection()',
         'category': 'player',
         'type': 'method',
-        'description': 'Returns the direction of last move by the player.'
+        'description': _('Returns the direction of last move by the player.')
     },
     'player.getX': {
         'name': 'player.getX()',
         'category': 'player',
         'type': 'method',
-        'description': 'Returns the x-coordinate of the player.'
+        'description': _('Returns the x-coordinate of the player.')
     },
     'player.getY': {
         'name': 'player.getY()',
         'category': 'player',
         'type': 'method',
-        'description': 'Returns the y-coordinate of the player.'
+        'description': _('Returns the y-coordinate of the player.')
     },
     'player.hasItem': {
         'name': 'player.hasItem(itemType)',
         'category': 'player',
         'type': 'method',
-        'description': 'Returns true if and only if the player has the given item.'
+        'description': _('Returns true if and only if the player has the given item.')
     },
     'player.killedBy': {
         'name': 'player.killedBy(text)',
         'category': 'player',
         'type': 'method',
-        'description': 'Kills the player and displays the given text as the cause of death.'
+        'description': _('Kills the player and displays the given text as the cause of death.')
     },
     'player.move': {
         'name': 'player.move(direction)',
         'category': 'player',
         'type': 'method',
-        'description': 'Moves the player one square in the given direction. The player can only move once in a given function.'
+        'description': _('Moves the player one square in the given direction. The player can only move once in a given function.')
     },
     'player.removeItem': {
         'name': 'player.removeItem(itemType)',
         'category': 'player',
         'type': 'method',
-        'description': 'Removes the given item from the player\'s inventory, if the player has the given item.'
+        'description': _('Removes the given item from the player\'s inventory, if the player has the given item.')
     },
     'player.setColor': {
         'name': 'player.setColor(color)',
         'category': 'player',
         'type': 'method',
-        'description': 'Sets the color of the player.'
+        'description': _('Sets the color of the player.')
     },
     'player.setPhoneCallback': {
         'name': 'player.setPhoneCallback(callback)',
         'category': 'player',
         'type': 'method',
-        'description': 'Sets the function that is executed when the player uses the function phone.'
+        'description': _('Sets the function that is executed when the player uses the function phone.')
     }
 };
 function Sound(source) {
@@ -3229,139 +3386,139 @@ function Sound(source) {
         'Adversity': {
             path: "music/Adversity.mp3",
             artist: "Seropard",
-            title: "Adversity",
+            title: _("Adversity"),
             url: "https://soundcloud.com/seropard"
         },
         'Beach Wedding Dance': {
             path: "music/Rolemusic_-_07_-_Beach_Wedding_Dance.mp3",
             artist: "Rolemusic",
-            title: "Beach Wedding Dance",
+            title: _("Beach Wedding Dance"),
             url: "https://soundcloud.com/rolemusic"
         },
         'BossLoop': {
             path: "music/Boss Loop 1.mp3",
             artist: "Essa",
-            title: "Boss Loop 1",
+            title: _("Boss Loop 1"),
             url: "http://www.youtube.com/user/Essasmusic"
         },
         'Brazil': {
             path: "music/Vernon_Lenoir_-_Brazilicon_alley.mp3",
             artist: "Vernon Lenoir",
-            title: "Brazilicon Alley",
+            title: _("Brazilicon Alley"),
             url: "http://vernonlenoir.wordpress.com/"
         },
         'Chip': {
             path: "music/ThatAndyGuy-Chip-loop.mp3",
             artist: "That Andy Guy",
-            title: "Da Funk Do You Know 'bout Chip?",
+            title: _("Da Funk Do You Know 'bout Chip?"),
             url: "https://soundcloud.com/that-andy-guy"
         },
         'cloudy_sin': {
             path: "music/intricate_cloudy_sin.mp3",
             artist: "iNTRICATE",
-            title: "cloudy sin",
+            title: _("cloudy sin"),
             url: "https://soundcloud.com/stk13"
         },
         'Come and Find Me': {
             path: "music/Eric_Skiff_-_09_-_Come_and_Find_Me_-_B_mix.mp3",
             artist: "Eric Skiff",
-            title: "Come and Find Me",
+            title: _("Come and Find Me"),
             url: "http://ericskiff.com/"
         },
         'coming soon': {
             path: "music/Fex_coming_soon.mp3",
             artist: "Fex",
-            title: "coming soon",
+            title: _("coming soon"),
             url: "http://artistserver.com/Fex"
         },
         'Comme Des Orages': {
             path: "music/Obsibilo_-_02_-_Comme_Des_Orages.mp3",
             artist: "Obsibilo",
-            title: "Comme Des Orages",
+            title: _("Comme Des Orages"),
             url: "http://freemusicarchive.org/music/Obsibilo/"
         },
         'conspiracy': {
             path: "music/conspiracy_bitcrusher_final.mp3",
             artist: "Mike and Alan",
-            title: "Conspiracy",
+            title: _("Conspiracy"),
             url: "https://www.facebook.com/MicAndAlan"
         },
         'Death Destroyer': {
             path: "music/BLEO_-_02_-_Death_Destroyer_Radio_Edit_feat_Rhinostrich.mp3",
             artist: "BLEO feat Rhinostrich",
-            title: "Death Destroyer (Radio Edit)",
+            title: _("Death Destroyer (Radio Edit)"),
             url: "http://bleo.dummydrome.com/"
         },
         'GameScratch': {
             path: "music/DmitryMazin-GameScratch.mp3",
             artist: "Dmitry Mazin",
-            title: "Dynamic Punctuality",
+            title: _("Dynamic Punctuality"),
             url: "https://soundcloud.com/dmitry-mazin"
         },
         'gurh': {
             path: "music/gurh.mp3",
             artist: "Dmitry Mazin",
-            title: "Dmitry's Thing #2",
+            title: _("Dmitry's Thing #2"),
             url: "https://soundcloud.com/dmitry-mazin"
         },
         'Messeah': {
             path: "music/RoccoW_-_Messeah.mp3",
             artist: "RoccoW",
-            title: "Messeah",
+            title: _("Messeah"),
             url: "https://soundcloud.com/roccow"
         },
         'Night Owl': {
             path: "music/Broke_For_Free_-_01_-_Night_Owl.mp3",
             artist: "Broke for Free",
-            title: "Night Owl",
+            title: _("Night Owl"),
             url: "http://brokeforfree.com/"
         },
         'Obscure Terrain': {
             path: "music/Revolution_Void_-_08_-_Obscure_Terrain.mp3",
             artist: "Revolution Void",
-            title: "Obscure Terrain",
+            title: _("Obscure Terrain"),
             url: "http://revolutionvoid.com/"
         },
         'Searching': {
             path: "music/Eric_Skiff_-_06_-_Searching.mp3",
             artist: "Eric Skiff",
-            title: "Searching",
+            title: _("Searching"),
             url: "http://ericskiff.com/"
         },
         'Slimeball Vomit': {
             path: "music/Various_Artists_-_15_-_Slimeball_vomit.mp3",
             artist: "Radio Scotvoid",
-            title: "Slimeball Vomit",
+            title: _("Slimeball Vomit"),
             url: "https://soundcloud.com/radio-scotvoid"
         },
         'Soixante-8': {
             path: "music/Obsibilo_-_Soixante-8.mp3",
             artist: "Obsibilo",
-            title: "Soixante-8",
+            title: _("Soixante-8"),
             url: "http://freemusicarchive.org/music/Obsibilo/"
         },
         'Tart': {
             path: "music/BLEO_-_02_-_Tart_Pts_1__2_feat_KeFF.mp3",
             artist: "BLEO feat KeFF",
-            title: "Tart (Pts 1-2)",
+            title: _("Tart (Pts 1-2)"),
             url: "http://bleo.dummydrome.com/"
         },
         'The Green': {
             path: "music/Yonnie_The_Green.mp3",
             artist: "Jonathan Holliday",
-            title: "The Green",
+            title: _("The Green"),
             url: "http://www.soundclick.com/bands/default.cfm?bandID=836578"
         },
         'The_Waves_Call_Her_Name': {
             path: "music/Sycamore_Drive_-_03_-_The_Waves_Call_Her_Name.mp3",
             artist: "Sycamore Drive",
-            title: "The Waves Call Her Name",
+            title: _("The Waves Call Her Name"),
             url: "http://sycamoredrive.bandcamp.com/"
         },
         'Y': {
             path: "music/Tortue_Super_Sonic_-_11_-_Y.mp3",
             artist: "Tortue Super Sonic",
-            title: "Y",
+            title: _("Y"),
             url: "https://soundcloud.com/tss-tortue-super-sonic"
         }
     };
@@ -3413,10 +3570,11 @@ function Sound(source) {
         this.trackForLevel = name;
 
         var track = this.tracks[name];
+		var nowPlayingMsg = _('Now playing: "') + track.title;
         if (track.url) {
-            var nowPlayingMsg = 'Now playing: "' + track.title + '" - <a target="_blank" href="' + track.url + '">' + track.artist + '</a>';
+            nowPlayingMsg += '" - <a target="_blank" href="' + track.url + '">' + track.artist + '</a>';
         } else {
-            var nowPlayingMsg = 'Now playing: "' + track.title + '" - ' + track.artist;
+            nowPlayingMsg += '" - ' + track.artist;
         }
         $('#nowPlayingMsg').html(nowPlayingMsg);
 
@@ -3928,7 +4086,7 @@ Game.prototype.setUpNotepad = function () {
     this.notepadEditor.setSize(null, 275);
 
     var ls_tag = 'notepadContent';
-    var content = localStorage.getItem(ls_tag);
+    var content = localStorage.getItem(this._getLocalKey(ls_tag));
     if (content === null) {
         content = '';
     }
@@ -3940,7 +4098,7 @@ Game.prototype.setUpNotepad = function () {
 
     $('#notepadSaveButton').click(function () {
         var v = game.notepadEditor.getValue();
-        localStorage.setItem(ls_tag, v);
+        localStorage.setItem(this._getLocalKey(ls_tag), v);
     });
 };
 
@@ -4096,45 +4254,37 @@ Game.prototype.openHelp = function () {
     }
 };
 Game.prototype._levels = {
-    'levels/01_cellBlockA.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["global.startLevel", "global.onExit", "map.placePlayer",\n         "map.placeObject", "map.getHeight", "map.getWidth",\n         "map.displayChapter", "map.getPlayer", "player.hasItem"],\n    "music": "The Green"\n}\n#END_PROPERTIES#\n/*****************\n * cellBlockA.js *\n *****************\n *\n * Good morning, Dr. Eval.\n *\n * It wasn\'t easy, but I\'ve managed to get your computer down\n * to you. This system might be unfamiliar, but the underlying\n * code is still JavaScript. Just like we predicted.\n *\n * Now, let\'s get what we came here for and then get you out of\n * here. Easy peasy.\n *\n * I\'ve given you as much access to their code as I could, but\n * it\'s not perfect. The red background indicates lines that\n * are off-limits from editing.\n *\n * The code currently places blocks in a rectangle surrounding\n * you. All you need to do is make a gap. You don\'t even need\n * to do anything extra. In fact, you should be doing less.\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.displayChapter(\'Chapter 1\\nBreakout\');\n\n    map.placePlayer(7, 5);\n#BEGIN_EDITABLE#\n\n    for (y = 3; y <= map.getHeight() - 10; y++) {\n        map.placeObject(5, y, \'block\');\n        map.placeObject(map.getWidth() - 5, y, \'block\');\n    }\n\n    for (x = 5; x <= map.getWidth() - 5; x++) {\n        map.placeObject(x, 3, \'block\');\n        map.placeObject(x, map.getHeight() - 10, \'block\');\n    }\n#END_EDITABLE#\n\n    map.placeObject(15, 12, \'computer\');\n\n    map.placeObject(map.getWidth()-7, map.getHeight()-5, \'exit\');\n#END_OF_START_LEVEL#\n}\n\nfunction onExit(map) {\n    if (!map.getPlayer().hasItem(\'computer\')) {\n        map.writeStatus("Don\'t forget to pick up the computer!");\n        return false;\n    } else {\n        return true;\n    }\n}\n 	', 
-    'levels/02_theLongWayOut.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced": ["ROT.Map.DividedMaze", "player.atLocation"],\n    "music": "gurh"\n}\n#END_PROPERTIES#\n/********************\n * theLongWayOut.js *\n ********************\n *\n * Well, it looks like they\'re on to us. The path isn\'t as\n * clear as I thought it\'d be. But no matter - four clever\n * characters should be enough to erase all their tricks.\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.placePlayer(7, 5);\n\n    var maze = new ROT.Map.DividedMaze(map.getWidth(), map.getHeight());\n#BEGIN_EDITABLE#\n\n#END_EDITABLE#\n    maze.create( function (x, y, mapValue) {\n\n        // don\'t write maze over player\n        if (map.getPlayer().atLocation(x,y)) {\n            return 0;\n        }\n\n        else if (mapValue === 1) { //0 is empty space 1 is wall\n            map.placeObject(x,y, \'block\');\n        }\n        else {\n            map.placeObject(x,y,\'empty\');\n        }\n    });\n\n    map.placeObject(map.getWidth()-4, map.getHeight()-4, \'block\');\n    map.placeObject(map.getWidth()-6, map.getHeight()-4, \'block\');\n    map.placeObject(map.getWidth()-5, map.getHeight()-5, \'block\');\n    map.placeObject(map.getWidth()-5, map.getHeight()-3, \'block\');\n#BEGIN_EDITABLE#\n\n#END_EDITABLE#\n    map.placeObject(map.getWidth()-5, map.getHeight()-4, \'exit\');\n#END_OF_START_LEVEL#\n}\n 	', 
-    'levels/03_validationEngaged.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["global.validateLevel", "map.validateAtLeastXObjects",\n         "map.validateExactlyXManyObjects"],\n    "music": "Obscure Terrain"\n}\n#END_PROPERTIES#\n/************************\n * validationEngaged.js *\n ************************\n *\n * They\'re really on to us now! The validateLevel function\n * has been activated to enforce constraints on what you can\n * do. In this case, you\'re not allowed to remove any blocks.\n *\n * They\'re doing all they can to keep you here. But you\n * can still outsmart them.\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.placePlayer(map.getWidth()-7, map.getHeight()-5);\n#BEGIN_EDITABLE#\n\n    for (y = 10; y <= map.getHeight() - 3; y++) {\n        map.placeObject(5, y, \'block\');\n        map.placeObject(map.getWidth() - 5, y, \'block\');\n    }\n\n    for (x = 5; x <= map.getWidth() - 5; x++) {\n        map.placeObject(x, 10, \'block\');\n        map.placeObject(x, map.getHeight() - 3, \'block\');\n    }\n#END_EDITABLE#\n\n    map.placeObject(7, 5, \'exit\');\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    numBlocks = 2 * (map.getHeight()-13) + 2 * (map.getWidth()-10);\n\n    map.validateAtLeastXObjects(numBlocks, \'block\');\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n 	', 
-    'levels/04_multiplicity.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced": [],\n    "music": "coming soon"\n}\n#END_PROPERTIES#\n/*******************\n * multiplicity.js *\n *******************\n *\n * Out of one cell and into another. They\'re not giving you\n * very much to work with here, either. Ah, well.\n *\n * Level filenames can be hints, by the way. Have I\n * mentioned that before?\n *\n * No more cells after this one. I promise.\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n\n    map.placePlayer(map.getWidth()-5, map.getHeight()-4);\n\n    for (y = 7; y <= map.getHeight() - 3; y++) {\n        map.placeObject(7, y, \'block\');\n        map.placeObject(map.getWidth() - 3, y, \'block\');\n    }\n#BEGIN_EDITABLE#\n\n#END_EDITABLE#\n    for (x = 7; x <= map.getWidth() - 3; x++) {\n        map.placeObject(x, 7, \'block\');\n        map.placeObject(x, map.getHeight() - 3, \'block\');\n    }\n\n    map.placeObject(map.getWidth() - 5, 5, \'exit\');\n#END_OF_START_LEVEL#\n}\n 	', 
-    'levels/05_minesweeper.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2.1",\n    "commandsIntroduced": ["map.setSquareColor"],\n    "music": "cloudy_sin"\n}\n#END_PROPERTIES#\n/******************\n * minesweeper.js *\n ******************\n *\n * So much for Asimov\'s Laws. They\'re actually trying to kill\n * you now. Not to be alarmist, but the floor is littered\n * with mines. Rushing for the exit blindly may be unwise.\n * I need you alive, after all.\n *\n * If only there was some way you could track the positions\n * of the mines...\n */\n\nfunction getRandomInt(min, max) {\n    return Math.floor(Math.random() * (max - min + 1)) + min;\n}\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    for (x = 0; x < map.getWidth(); x++) {\n        for (y = 0; y < map.getHeight(); y++) {\n            map.setSquareColor(x, y, \'#f00\');\n        }\n    }\n\n    map.placePlayer(map.getWidth() - 5, 5);\n\n    for (var i = 0; i < 75; i++) {\n        var x = getRandomInt(0, map.getWidth() - 1);\n        var y = getRandomInt(0, map.getHeight() - 1);\n        if ((x != 2 || y != map.getHeight() - 1)\n            && (x != map.getWidth() - 5 || y != 5)) {\n            // don\'t place mine over exit or player!\n            map.placeObject(x, y, \'mine\');\n#BEGIN_EDITABLE#\n\n#END_EDITABLE#\n        }\n    }\n\n    map.placeObject(2, map.getHeight() - 1, \'exit\');\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateAtLeastXObjects(40, \'mine\');\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n 	', 
-    'levels/06_drones101.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n	"commandsIntroduced":\n        ["object.type", "object.behavior", "object.findNearest",\n         "object.getX", "object.getY", "object.canMove", "object.move"],\n    "music": "GameScratch"\n}\n#END_PROPERTIES#\n\n/****************\n * drones101.js *\n ****************\n *\n * Do you remember, my dear Professor, a certain introductory\n * computational rationality class you taught long ago? Assignment\n * #2, behavior functions of autonomous agents? I remember that one\n * fondly - but attack drones are so much easier to reason about\n * when they\'re not staring you in the face, I would imagine!\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    function moveToward(obj, type) {\n        var target = obj.findNearest(type);\n        var leftDist = obj.getX() - target.x;\n        var upDist = obj.getY() - target.y;\n\n        var direction;\n        if (upDist == 0 && leftDist == 0) {\n        	return;\n        } if (upDist > 0 && upDist >= leftDist) {\n            direction = \'up\';\n        } else if (upDist < 0 && upDist < leftDist) {\n            direction = \'down\';\n        } else if (leftDist > 0 && leftDist >= upDist) {\n            direction = \'left\';\n        } else {\n            direction = \'right\';\n        }\n\n        if (obj.canMove(direction)) {\n            obj.move(direction);\n        }\n    }\n\n    map.defineObject(\'attackDrone\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'d\',\n        \'color\': \'red\',\n        \'onCollision\': function (player) {\n            player.killedBy(\'an attack drone\');\n        },\n        \'behavior\': function (me) {\n            moveToward(me, \'player\');\n        }\n    });\n\n\n    map.placePlayer(1, 1);\n    map.placeObject(map.getWidth()-2, 12, \'attackDrone\');\n    map.placeObject(map.getWidth()-1, 12, \'exit\');\n\n    map.placeObject(map.getWidth()-1, 11, \'block\');\n    map.placeObject(map.getWidth()-2, 11, \'block\');\n    map.placeObject(map.getWidth()-1, 13, \'block\');\n    map.placeObject(map.getWidth()-2, 13, \'block\');\n#BEGIN_EDITABLE#\n\n\n\n\n#END_EDITABLE#\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n 	', 
-    'levels/07_colors.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["map.defineObject", "player.getColor", "player.setColor",\n         "object.color", "object.impassable", "object.symbol",\n         "player.setPhoneCallback"],\n    "music": "Y"\n}\n#END_PROPERTIES#\n/*************\n* colors.js *\n *************\n *\n * You\'re almost at the exit. You just need to get past this\n * color lock.\n *\n * Changing your environment is no longer enough. You must\n * learn to change yourself. I\'ve sent you a little something\n * that should help with that.\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.placePlayer(0, 12);\n\n    map.placeObject(5, 12, \'phone\');\n\n    // The function phone lets you call arbitrary functions,\n    // as defined by player.setPhoneCallback() below.\n    // The function phone callback is bound to Q or Ctrl-6.\n    map.getPlayer().setPhoneCallback(function () {\n#BEGIN_EDITABLE#\n        var player = map.getPlayer();\n\n        player.setColor(\'#f00\');\n\n\n\n\n\n#END_EDITABLE#\n    });\n\n\n    map.defineObject(\'redLock\', {\n        symbol: \'☒\',\n        color: "#f00", // red\n        impassable: function(player, object) {\n            return player.getColor() != object.color;\n        }\n    });\n\n    map.defineObject(\'greenLock\', {\n        symbol: \'☒\',\n        color: "#0f0", // green\n        impassable: function(player, object) {\n            return player.getColor() != object.color;\n        }\n    });\n\n    map.defineObject(\'yellowLock\', {\n        symbol: \'☒\',\n        color: "#ff0", // yellow\n        impassable: function(player, object) {\n            return player.getColor() != object.color;\n        }\n    });\n\n    for (var x = 20; x <= 40; x++) {\n        map.placeObject(x, 11, \'block\');\n        map.placeObject(x, 13, \'block\');\n    }\n    map.placeObject(22, 12, \'greenLock\');\n    map.placeObject(25, 12, \'redLock\');\n    map.placeObject(28, 12, \'yellowLock\');\n    map.placeObject(31, 12, \'greenLock\');\n    map.placeObject(34, 12, \'redLock\');\n    map.placeObject(37, 12, \'yellowLock\');\n    map.placeObject(40, 12, \'exit\');\n    for (var y = 0; y < map.getHeight(); y++) {\n        if (y != 12) {\n            map.placeObject(40, y, \'block\');\n        }\n        for (var x = 41; x < map.getWidth(); x++) {\n            map.setSquareColor(x, y, \'#080\');\n        }\n    }\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n\nfunction onExit(map) {\n    if (!map.getPlayer().hasItem(\'phone\')) {\n        map.writeStatus("We need the phone!");\n        return false;\n    } else {\n        return true;\n    }\n}\n 	', 
-    'levels/08_intoTheWoods.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["map.getObjectTypeAt", "player.getX", "player.getY",\n         "map.refresh"],\n    "mapProperties": {\n        "allowOverwrite": true\n    },\n    "music": "Night Owl"\n}\n#END_PROPERTIES#\n/*******************\n * intoTheWoods.js *\n *******************\n *\n * Ah, you\'re out of the woods now. Or into the woods, as the\n * case may be.\n *\n * So take a deep breath, relax, and remember what you\'re here\n * for in the first place.\n *\n * I\'ve traced its signal and the Algorithm is nearby. You\'ll\n * need to go through the forest and across the river, and\n * you\'ll reach the fortress where it\'s kept. Their defences\n * are light, and we should be able to catch them off-guard.\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    // NOTE: In this level alone, map.placeObject is allowed to\n    //overwrite existing objects.\n\n    map.displayChapter(\'Chapter 2\\nRaiders of the Lost Algorithm\');\n\n    map.placePlayer(2, map.getHeight() - 1);\n\n    var functionList = {};\n\n    functionList[\'fortresses\'] = function () {\n        function genRandomValue(direction) {\n            if (direction === "height") {\n                return Math.floor(Math.random() * (map.getHeight()-3));\n            } else if (direction === "width") {\n                return Math.floor(Math.random() * (map.getWidth()+1));\n            }\n        }\n\n        var x = genRandomValue("width");\n        var y = genRandomValue("height");\n\n        for (var i = x-2; i < x+2; i++) {\n            map.placeObject(i,y-2, \'block\');\n        }\n        for (var i = x-2; i < x+2; i++) {\n            map.placeObject(i,y+2, \'block\');\n        }\n\n        for (var j = y-2; j < y+2; j++) {\n            map.placeObject(x-2,j, \'block\');\n        }\n\n        for (var j = y-2; j < y+2; j++) {\n            map.placeObject(x+2,j, \'block\');\n        }\n    };\n\n    functionList[\'generateForest\'] = function () {\n        for (var i = 0; i < map.getWidth(); i++) {\n            for (var j = 0; j < map.getHeight(); j++) {\n\n                // initialize to empty if the square contains a forest already\n                if (map.getObjectTypeAt(i, j) === \'tree\') {\n                    // remove existing forest\n                    map.placeObject(i,j, \'empty\');\n                }\n\n                if (map.getPlayer().atLocation(i,j) ||\n                        map.getObjectTypeAt(i, j) === \'block\' ||\n                        map.getObjectTypeAt(i, j) === \'exit\') {\n                    continue;\n                }\n\n                var rv = Math.random();\n                if (rv < 0.45) {\n                    map.placeObject(i, j, \'tree\');\n                }\n            }\n        }\n        map.refresh();\n    };\n\n    functionList[\'movePlayerToExit\'] = function () {\n        map.writeStatus("Permission denied.");\n    }\n\n    functionList[\'pleaseMovePlayerToExit\'] = function () {\n        map.writeStatus("I don\'t think so.");\n    }\n\n    functionList[\'movePlayerToExitDamnit\'] = function () {\n        map.writeStatus("So, how \'bout them <LOCAL SPORTS TEAM>?");\n    }\n\n    // generate forest\n    functionList[\'generateForest\']();\n\n    // generate fortresses\n    functionList[\'fortresses\']();\n    functionList[\'fortresses\']();\n    functionList[\'fortresses\']();\n    functionList[\'fortresses\']();\n\n    map.getPlayer().setPhoneCallback(functionList[#{#"movePlayerToExit"#}#]);\n\n    map.placeObject(map.getWidth()-1, map.getHeight()-1, \'exit\');\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateAtLeastXObjects(100, \'tree\');\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n 	', 
-    'levels/09_fordingTheRiver.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["player.killedBy", "object.onCollision"],\n    "music": "The_Waves_Call_Her_Name"\n}\n#END_PROPERTIES#\n/**********************\n * fordingTheRiver.js *\n **********************\n *\n * And there\'s the river. Fortunately, I was prepared for this.\n * See the raft on the other side?\n *\n * Everything is going according to plan.\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    var raftDirection = \'down\';\n\n    map.placePlayer(map.getWidth()-1, map.getHeight()-1);\n    var player = map.getPlayer();\n\n    map.defineObject(\'raft\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'▓\',\n        \'color\': \'#420\',\n        \'transport\': true, // (prevents player from drowning in water)\n        \'behavior\': function (me) {\n            me.move(raftDirection);\n        }\n    });\n\n    map.defineObject(\'water\', {\n        \'symbol\': \'░\',\n        \'color\': \'#44f\',\n        \'onCollision\': function (player) {\n            player.killedBy(\'drowning in deep dark water\');\n        }\n    });\n\n    for (var x = 0; x < map.getWidth(); x++) {\n        for (var y = 5; y < 15; y++) {\n            map.placeObject(x, y, \'water\');\n        }\n    }\n\n    map.placeObject(20, 5, \'raft\');\n    map.placeObject(0, 2, \'exit\');\n    map.placeObject(0, 1, \'block\');\n    map.placeObject(1, 1, \'block\');\n    map.placeObject(0, 3, \'block\');\n    map.placeObject(1, 3, \'block\');\n\n#BEGIN_EDITABLE#\n\n\n\n#END_EDITABLE#\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateExactlyXManyObjects(1, \'raft\');\n}\n 	', 
-    'levels/10_ambush.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced": [],\n    "music": "Come and Find Me"\n}\n#END_PROPERTIES#\n/*************\n * ambush.js *\n *************\n *\n * Oh. Oh, I see. This wasn\'t quite part of the plan.\n *\n * Looks like they won\'t let you take the Algorithm\n * without a fight. You\'ll need to carefully weave your\n * way through the guard drones.\n *\n * Well, time to improvise. Let\'s mess with their programming\n * a little, shall we?\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    function moveToward(obj, type) {\n        var target = obj.findNearest(type);\n        var leftDist = obj.getX() - target.x;\n        var upDist = obj.getY() - target.y;\n\n        var direction;\n        if (upDist == 0 && leftDist == 0) {\n            return;\n        } if (upDist > 0 && upDist >= leftDist) {\n            direction = \'up\';\n        } else if (upDist < 0 && upDist < leftDist) {\n            direction = \'down\';\n        } else if (leftDist > 0 && leftDist >= upDist) {\n            direction = \'left\';\n        } else {\n            direction = \'right\';\n        }\n\n        if (obj.canMove(direction)) {\n            obj.move(direction);\n        }\n    }\n\n    map.defineObject(\'attackDrone\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'d\',\n        \'color\': \'red\',\n        \'onCollision\': function (player) {\n            player.killedBy(\'an attack drone\');\n        },\n        \'behavior\': function (me) {\n#BEGIN_EDITABLE#\n            moveToward(me, \'player\');\n#END_EDITABLE#\n        }\n    });\n\n    map.defineObject(\'reinforcementDrone\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'d\',\n        \'color\': \'yellow\',\n        \'onCollision\': function (player) {\n            player.killedBy(\'a reinforcement drone\');\n        },\n        \'behavior\': function (me) {\n#BEGIN_EDITABLE#\n            me.move(\'left\');\n#END_EDITABLE#\n        }\n    });\n\n    map.defineObject(\'defenseDrone\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'d\',\n        \'color\': \'green\',\n        \'onCollision\': function (player) {\n            player.killedBy(\'a defense drone\');\n        },\n        \'behavior\': function (me) {\n#BEGIN_EDITABLE#\n\n#END_EDITABLE#\n        }\n    });\n\n    // just for decoration\n    map.defineObject(\'water\', {\n        \'symbol\': \'░\',\n        \'color\': \'#44f\'\n    });\n\n    map.placePlayer(0, 12);\n\n    for (var x = 0; x < map.getWidth(); x++) {\n        map.placeObject(x, 10, \'block\');\n        map.placeObject(x, 14, \'block\');\n\n        for (var y = 20; y < map.getHeight(); y++) {\n            map.placeObject(x, y, \'water\');\n        }\n    }\n\n    map.placeObject(23, 11, \'attackDrone\');\n    map.placeObject(23, 12, \'attackDrone\');\n    map.placeObject(23, 13, \'attackDrone\');\n\n    map.placeObject(27, 11, \'defenseDrone\');\n    map.placeObject(27, 12, \'defenseDrone\');\n    map.placeObject(27, 13, \'defenseDrone\');\n\n    map.placeObject(24, 11, \'reinforcementDrone\');\n    map.placeObject(25, 11, \'reinforcementDrone\');\n    map.placeObject(26, 11, \'reinforcementDrone\');\n    map.placeObject(24, 13, \'reinforcementDrone\');\n    map.placeObject(25, 13, \'reinforcementDrone\');\n    map.placeObject(26, 13, \'reinforcementDrone\');\n\n    map.placeObject(map.getWidth()-1, 12, \'exit\');\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n 	', 
-    'levels/11_robot.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["object.giveItemTo", "object.passableFor",\n         "map.validateAtMostXObjects"],\n    "music": "conspiracy"\n}\n#END_PROPERTIES#\n/*\n * robot.js\n *\n * You\'ll need three keys in order to unlock the\n * Algorithm: the red key, the green key, and the\n * blue key. Unfortunately, all three of them are\n * behind human-proof barriers.\n *\n * The plan is simple: reprogram the maintenance\n * robots to grab the key and bring it through\n * the barrier to us.\n *\n * Let\'s try it on the red key first.\n */\n\nfunction getRandomInt(min, max) {\n    return Math.floor(Math.random() * (max - min + 1)) + min;\n}\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    // Hint: you can press R or 5 to "rest" and not move the\n    // player, while the robot moves around.\n\n    map.placePlayer(map.getWidth()-2, map.getHeight()-2);\n    var player = map.getPlayer();\n\n    map.defineObject(\'robot\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'R\',\n        \'color\': \'gray\',\n        \'onCollision\': function (player, me) {\n            me.giveItemTo(player, \'redKey\');\n        },\n        \'behavior\': function (me) {\n#BEGIN_EDITABLE#\n            // Available commands: me.move(direction)\n            //                 and me.canMove(direction)\n\n\n\n#END_EDITABLE#\n        }\n    });\n\n    map.defineObject(\'barrier\', {\n        \'symbol\': \'░\',\n        \'color\': \'purple\',\n        \'impassable\': true,\n        \'passableFor\': [\'robot\']\n    });\n\n    map.placeObject(0, map.getHeight() - 1, \'exit\');\n    map.placeObject(1, 1, \'robot\');\n    map.placeObject(map.getWidth() - 2, 8, \'redKey\');\n    map.placeObject(map.getWidth() - 2, 9, \'barrier\');\n\n    for (var x = 0; x < map.getWidth(); x++) {\n        map.placeObject(x, 0, \'block\');\n        if (x != map.getWidth() - 2) {\n            map.placeObject(x, 9, \'block\');\n        }\n    }\n\n    for (var y = 1; y < 9; y++) {\n        map.placeObject(0, y, \'block\');\n        map.placeObject(map.getWidth() - 1, y, \'block\');\n    }\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateExactlyXManyObjects(1, \'robot\');\n    map.validateAtMostXObjects(1, \'redKey\');\n}\n\nfunction onExit(map) {\n    if (!map.getPlayer().hasItem(\'redKey\')) {\n        map.writeStatus("We need to get that key!");\n        return false;\n    } else {\n        return true;\n    }\n}\n 	', 
-    'levels/12_robotNav.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced": [],\n    "music": "Messeah"\n}\n#END_PROPERTIES#\n/*\n * robotNav.js\n *\n * The green key is located in a slightly more\n * complicated room. You\'ll need to get the robot\n * past these obstacles.\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    // Hint: you can press R or 5 to "rest" and not move the\n    // player, while the robot moves around.\n\n    map.placePlayer(0, map.getHeight() - 1);\n    var player = map.getPlayer();\n\n    map.defineObject(\'robot\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'R\',\n        \'color\': \'gray\',\n        \'onCollision\': function (player, me) {\n            me.giveItemTo(player, \'greenKey\');\n        },\n        \'behavior\': function (me) {\n#BEGIN_EDITABLE#\n            if (me.canMove(\'right\')) {\n                me.move(\'right\');\n            } else {\n                me.move(\'down\');\n            }\n\n\n\n\n\n\n\n\n\n\n\n#END_EDITABLE#\n        }\n    });\n\n    map.defineObject(\'barrier\', {\n        \'symbol\': \'░\',\n        \'color\': \'purple\',\n        \'impassable\': true,\n        \'passableFor\': [\'robot\']\n    });\n\n    map.placeObject(map.getWidth() - 1, map.getHeight() - 1, \'exit\');\n    map.placeObject(1, 1, \'robot\');\n    map.placeObject(map.getWidth() - 2, 8, \'greenKey\');\n    map.placeObject(map.getWidth() - 2, 9, \'barrier\');\n\n    for (var x = 0; x < map.getWidth(); x++) {\n        map.placeObject(x, 0, \'block\');\n        if (x != map.getWidth() - 2) {\n            map.placeObject(x, 9, \'block\');\n        }\n    }\n\n    for (var y = 1; y < 9; y++) {\n        map.placeObject(0, y, \'block\');\n        map.placeObject(map.getWidth() - 1, y, \'block\');\n    }\n\n    for (var i = 0; i < 4; i++) {\n        map.placeObject(20 - i, i + 1, \'block\');\n        map.placeObject(35 - i, 8 - i, \'block\');\n    }\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateExactlyXManyObjects(1, \'robot\');\n    map.validateAtMostXObjects(1, \'greenKey\');\n}\n\nfunction onExit(map) {\n    if (!map.getPlayer().hasItem(\'greenKey\')) {\n        map.writeStatus("We need to get that key!");\n        return false;\n    } else {\n        return true;\n    }\n}\n 	', 
-    'levels/13_robotMaze.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced": ["map.getAdjacentEmptyCells"],\n    "music": "Searching"\n}\n#END_PROPERTIES#\n/*\n * robotMaze.js\n *\n * The blue key is inside a labyrinth, and extracting\n * it will not be easy.\n *\n * It\'s a good thing that you\'re a AI expert, or\n * we would have to leave empty-handed.\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    // Hint: you can press R or 5 to "rest" and not move the\n    // player, while the robot moves around.\n\n    map.getRandomInt = function(min, max) {\n        return Math.floor(Math.random() * (max - min + 1)) + min;\n    }\n\n    map.placePlayer(map.getWidth()-1, map.getHeight()-1);\n    var player = map.getPlayer();\n\n    map.defineObject(\'robot\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'R\',\n        \'color\': \'gray\',\n        \'onCollision\': function (player, me) {\n            me.giveItemTo(player, \'blueKey\');\n        },\n        \'behavior\': function (me) {\n#BEGIN_EDITABLE#\n            // move randomly\n            var moves = map.getAdjacentEmptyCells(me.getX(), me.getY());\n            // getAdjacentEmptyCells gives array of ((x, y), direction) pairs\n            me.move(moves[map.getRandomInt(0, moves.length - 1)][1]);\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#END_EDITABLE#\n        }\n    });\n\n    map.defineObject(\'barrier\', {\n        \'symbol\': \'░\',\n        \'color\': \'purple\',\n        \'impassable\': true,\n        \'passableFor\': [\'robot\']\n    });\n\n    map.placeObject(0, map.getHeight() - 1, \'exit\');\n    map.placeObject(1, 1, \'robot\');\n    map.placeObject(map.getWidth() - 2, 8, \'blueKey\');\n    map.placeObject(map.getWidth() - 2, 9, \'barrier\');\n\n    var autoGeneratedMaze = new ROT.Map.DividedMaze(map.getWidth(), 10);\n    autoGeneratedMaze.create( function (x, y, mapValue) {\n        // don\'t write maze over robot or barrier\n        if ((x == 1 && y == 1) || (x == map.getWidth() - 2 && y >= 8)) {\n            return 0;\n        } else if (mapValue === 1) { //0 is empty space 1 is wall\n            map.placeObject(x,y, \'block\');\n        } else {\n            map.placeObject(x,y,\'empty\');\n        }\n    });\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateExactlyXManyObjects(1, \'robot\');\n    map.validateAtMostXObjects(1, \'blueKey\');\n}\n\nfunction onExit(map) {\n    if (!map.getPlayer().hasItem(\'blueKey\')) {\n        map.writeStatus("We need to get that key!");\n        return false;\n    } else {\n        return true;\n    }\n}\n 	', 
-    'levels/14_crispsContest.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["map.createFromGrid", "player.removeItem"],\n    "music": "Chip"\n}\n#END_PROPERTIES#\n/********************\n * crispsContest.js *\n ********************\n *\n * The Algorithm is almost in our grasp!\n * At long last, we will definitively establish\n * that 3SAT is solvable in polynomial time. It\'s\n * been a long, strange journey, but it will all be\n * worth it.\n *\n * You have the red, green, and blue keys. Now you\n * just need to figure out how to unlock this thing.\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.defineObject(\'redLock\', {\n        \'symbol\': String.fromCharCode(0x2297),\n        \'color\': \'red\',\n        \'impassable\': function (player) {\n            if (player.hasItem(\'redKey\')) {\n                player.removeItem(\'redKey\');\n                return false;\n            } else {\n                return true;\n            }\n        }\n    });\n\n    map.defineObject(\'blueLock\', {\n        \'symbol\': String.fromCharCode(0x2297),\n        \'color\': \'#06f\',\n        \'impassable\': function (player) {\n            if (player.hasItem(\'blueKey\')) {\n                player.removeItem(\'blueKey\');\n                return false;\n            } else {\n                return true;\n            }\n        }\n    });\n\n    map.defineObject(\'greenLock\', {\n        \'symbol\': String.fromCharCode(0x2297),\n        \'color\': \'#0f0\',\n        \'impassable\': function (player) {\n            if (player.hasItem(\'greenKey\')) {\n                player.removeItem(#{#\'greenKey\'#}#);\n                return false;\n            } else {\n                return true;\n            }\n        }\n    });\n\n    map.defineObject(\'yellowLock\', {\n        \'symbol\': String.fromCharCode(0x2297),\n        \'color\': \'yellow\',\n        \'impassable\': function (player) {\n            if (player.hasItem(\'yellowKey\')) {\n                player.removeItem(\'yellowKey\');\n                return false;\n            } else {\n                return true;\n            }\n        }\n    });\n\n    map.createFromGrid(\n       [\'  +++++ +++++  \',\n        \'  + b +++ r +  \',\n        \'  +   +E+   +  \',\n        \'+++G+B+ +R+G+++\',\n        \'+ y B     R b +\',\n        \'+   +     +   +\',\n        \'+++++  @  +++++\',\n        \'+   +     +   +\',\n        \'+ y R     B y +\',\n        \'++++++Y+Y++++++\',\n        \'    +  +  +    \',\n        \'    + ABy +    \',\n        \'    +++++++    \'],\n    {\n        \'@\': \'player\',\n        \'E\': \'exit\',\n        \'A\': \'theAlgorithm\',\n        \'+\': \'block\',\n        \'R\': \'redLock\',\n        \'G\': \'greenLock\',\n        \'B\': \'blueLock\',\n        \'Y\': \'yellowLock\',\n        \'r\': \'redKey\',\n        \'g\': \'greenKey\',\n        \'b\': \'blueKey\',\n        \'y\': \'yellowKey\'\n    }, 17, 6);\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateAtMostXObjects(1, \'theAlgorithm\');\n    map.validateAtMostXObjects(4, \'yellowKey\');\n    map.validateAtMostXObjects(2, \'blueKey\');\n    map.validateAtMostXObjects(1, \'redKey\');\n}\n\nfunction onExit(map) {\n    // make sure we have all the items we need!\n    if (!map.getPlayer().hasItem(\'theAlgorithm\')) {\n        map.writeStatus("You must get that Algorithm!!");\n        return false;\n    } else if (!map.getPlayer().hasItem(\'computer\')) {\n        map.writeStatus("You\'ll need your computer! [Ctrl-5 to restart]");\n        return false;\n    } else if (!map.getPlayer().hasItem(\'phone\')) {\n        map.writeStatus("You\'ll need your phone! [Ctrl-5 to restart]");\n        return false;\n    } else {\n        return true;\n    }\n}\n 	', 
-    'levels/15_exceptionalCrossing.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced": [],\n    "music": "The_Waves_Call_Her_Name",\n    "startingMessage": "You have lost the Algorithm!"\n}\n#END_PROPERTIES#\n/**************************\n * exceptionalCrossing.js *\n **************************\n *\n * Sorry, old friend, but I\'m afraid I can\'t share\n * co-authorship on this paper. You\'ve done a very\n * good job getting this Algorithm for me. The bit\n * with the keys was especially clever! I wouldn\'t\n * have thought of it myself. But then, of course,\n * that\'s why you were here in the first place.\n *\n * You\'ve served your purpose well. But now, alas,\n * it is time for you to die.\n *\n * I\'m not heartless, though. In fact, I will let\n * you choose your mode of death. There, isn\'t that\n * nice?\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.displayChapter(\'Chapter 3\\nBetrayal\');\n\n    map.placePlayer(0, 0);\n\n    // yoink!\n    map.getPlayer().removeItem(\'theAlgorithm\');\n\n    map.defineObject(\'water\', {\n        \'symbol\': \'░\',\n        \'color\': \'#44f\',\n        \'onCollision\': function (player) {\n            player.killedBy#{#(\'drowning in deep dark water\')#}#;\n        }\n    });\n\n    for (var x = 0; x < map.getWidth(); x++)\n        for (var y = 5; y < 15; y++)\n            map.placeObject(x, y, \'water\');\n\n    map.placeObject(map.getWidth()-1, map.getHeight()-1, \'exit\');\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n 	', 
-    'levels/16_lasers.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2.3",\n    "commandsIntroduced":\n        ["map.getCanvasContext", "canvas.beginPath", "canvas.strokeStyle",\n         "canvas.lineWidth", "canvas.moveTo", "canvas.lineTo",\n         "canvas.stroke", "map.createLine", "map.validateAtLeastXLines"],\n    "music": "Soixante-8",\n    "mapProperties": {\n        "showDrawingCanvas": true\n    }\n}\n#END_PROPERTIES#\n/*************\n * lasers.js *\n *************\n *\n * Time to unleash the killer lasers! Each laser will kill you\n * unless you have the appropriate color. Too bad you can\'t\n * see which color corresponds to which laser!\n */\n\nfunction getRandomInt(min, max) {\n    return Math.floor(Math.random() * (max - min + 1)) + min;\n}\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.placePlayer(0, 0);\n    map.placeObject(map.getWidth()-1, map.getHeight()-1, \'exit\');\n    var player = map.getPlayer();\n\n    for (var i = 0; i < 25; i++) {\n        var colors = [\'red\', \'yellow\', \'teal\'];\n\n        var startX = getRandomInt(0, 600);\n        var startY = getRandomInt(0, 500);\n        var angle = getRandomInt(0, 360);\n        var length = getRandomInt(200, 300);\n        var color = colors[i % 3];\n        createLaser(startX, startY, angle, length, color);\n    }\n\n    function createLaser(centerX, centerY, angleInDegrees, length, color) {\n        var angleInRadians = angleInDegrees * Math.PI / 180;\n\n        var x1 = centerX - Math.cos(angleInRadians) * length / 2;\n        var y1 = centerY + Math.sin(angleInRadians) * length / 2;\n        var x2 = centerX + Math.cos(angleInRadians) * length / 2;\n        var y2 = centerY - Math.sin(angleInRadians) * length / 2;\n\n        // map.createLine() creates a line with an effect when\n        // the player moves over it, but doesn\'t display it\n        map.createLine([x1, y1], [x2, y2], function (player) {\n            if (player.getColor() != color) {\n                player.killedBy(\'a \' + color + \' laser\');\n            }\n        });\n\n#BEGIN_EDITABLE#\n        // using canvas to draw the line\n        var ctx = map.getCanvasContext();\n        ctx.beginPath();\n        ctx.strokeStyle = \'white\';\n        ctx.lineWidth = 5;\n        ctx.moveTo(x1, y1);\n        ctx.lineTo(x2, y2);\n        ctx.stroke();\n#END_EDITABLE#\n\n    }\n\n#BEGIN_EDITABLE#\n\n\n\n\n\n\n\n\n\n#END_EDITABLE#\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateAtLeastXLines(25);\n}\n 	', 
-    'levels/17_pointers.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2.1",\n    "commandsIntroduced":\n        ["map.getDynamicObjects", "map.getCanvasCoords", "object.setTarget"],\n    "music": "Tart",\n    "mapProperties": {\n        "showDrawingCanvas": true\n    }\n}\n#END_PROPERTIES#\n/***************\n * pointers.js *\n ***************\n *\n * You! How are you still alive?\n *\n * Well, no matter. Good luck getting through this\n * maze of rooms - you\'ll never see me or the Algorithm again!\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    function shuffle(o){ //v1.0 [http://bit.ly/1l6LGQT]\n        for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i),\n            x = o[--i], o[i] = o[j], o[j] = x);\n        return o;\n    };\n\n    map.createFromGrid(\n        [\'+++++++++++++++++++++++++++++++++++++++++++++\',\n         \'++o *++++o *++++o *++++o *++++o *++++o *+++++\',\n         \'+* @ o++*   o++*   o++*   o++*   o++*   o++++\',\n         \'++o *++++o *++++o *++++o *++++o *++++o *+++++\',\n         \'+++++++++++++++++++++++++++++++++++++++++++++\',\n         \'+++++* o++++* o++++* o++++* o++++* o++++* o++\',\n         \'++++o   *++o   *++o   *++o   *++o   *++o   *+\',\n         \'+++++* o++++* o++++* o++++* o++++* o++++* o++\',\n         \'+++++++++++++++++++++++++++++++++++++++++++++\',\n         \'++o *++++o *++++o *++++o *++++o *++++o *+++++\',\n         \'+*   o++*   o++*   o++*   o++*   o++*   o++++\',\n         \'++o *++++o *++++o *++++o *++++o *++++o *+++++\',\n         \'+++++++++++++++++++++++++++++++++++++++++++++\',\n         \'+++++* o++++* o++++* o++++* o++++* o++++* o++\',\n         \'++++o   *++o   *++o   *++o   *++o   *++o   *+\',\n         \'+++++* o++++* o++++* o++++* o++++* o++++* o++\',\n         \'+++++++++++++++++++++++++++++++++++++++++++++\',\n         \'++o *++++o *++++o *++++o *++++o *++++o *+++++\',\n         \'+*   o++*   o++*   o++*   o++*   o++* E o++++\',\n         \'++o *++++o *++++o *++++o *++++o *++++o *+++++\',\n         \'+++++++++++++++++++++++++++++++++++++++++++++\'],\n        {\n            \'@\': \'player\',\n            \'E\': \'exit\',\n            \'+\': \'block\',\n            \'o\': \'teleporter\',\n            \'*\': \'trap\',\n        }, 2, 2);\n\n    var canvas = map.getCanvasContext();\n\n    var teleportersAndTraps = map.getDynamicObjects();\n    teleportersAndTraps = shuffle(teleportersAndTraps);\n\n    for (i = 0; i < teleportersAndTraps.length; i+=2) {\n        var t1 = teleportersAndTraps[i];\n        var t2 = teleportersAndTraps[i+1];\n\n        // Point each teleporter to either another teleporter\n        // or a trap\n        if (t1.getType() == \'teleporter\') {\n            t1.setTarget(t2);\n        }\n        if (t2.getType() == \'teleporter\') {\n            t2.setTarget(t1);\n        }\n\n#BEGIN_EDITABLE#\n        // TODO find a way to remove the API docs\n        // wouldn\'t want the \'good doctor\' to find\n        // out about map.getCanvasCoords()...\n\n\n\n\n\n#END_EDITABLE#\n    }\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n 	', 
-    'levels/18_superDrEvalBros.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2.2",\n    "commandsIntroduced": ["player.move", "map.startTimer"],\n    "music": "Beach Wedding Dance",\n    "mapProperties": {\n        "keyDelay": 25\n    }\n}\n#END_PROPERTIES#\n/**********************\n * superDrEvalBros.js *\n **********************\n *\n * You\'re still here?! Well, Dr. Eval, let\'s see\n * how well you can operate with one less dimension.\n *\n * Give up now. Unless you have a magic mushroom\n * up your sleeve, it\'s all over.\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    var fl = Math.floor;\n    var w = map.getWidth();\n    var h = map.getHeight();\n\n    map.placePlayer(1, fl(h/2)-1);\n    var player = map.getPlayer();\n\n    map.placeObject(w-1, fl(h/2)-1, \'exit\');\n\n    for (var x = 0; x < fl(w/2) - 5; x++) {\n        for (var y = fl(h/2); y < h; y++) {\n            map.placeObject(x, y, \'block\');\n        }\n    }\n\n    for (var x = fl(w/2) + 5; x <= w; x++) {\n        for (var y = fl(h/2); y < h; y++) {\n            map.placeObject(x, y, \'block\');\n        }\n    }\n\n    function gravity() {\n        var x = player.getX();\n        var y = player.getY() + 1;\n\n        if (y === map.getHeight() - 2) {\n            player.killedBy("gravity");\n        }\n\n        if (map.getObjectTypeAt(x,y) === "empty") {\n            player.move("down");\n        }\n\n    }\n    map.startTimer(gravity, 45);\n\n    function jump() {\n#BEGIN_EDITABLE#\n\n\n\n\n\n\n\n#END_EDITABLE#\n    }\n\n    player.setPhoneCallback(function () {\n        var x = player.getX();\n        var y = player.getY() + 1;\n\n        if (map.getObjectTypeAt(x,y) !== "empty") {\n            jump();\n        }\n    });\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateExactlyXManyObjects(520, \'block\');\n}\n 	', 
-    'levels/19_documentObjectMadness.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2.2",\n    "commandsIntroduced":\n        ["global.objective", "map.getDOM", "map.createFromDOM",\n         "map.updateDOM", "map.overrideKey", "global.$",\n         "jQuery.find", "jQuery.addClass", "jQuery.hasClass",\n         "jQuery.removeClass", "jQuery.parent", "jQuery.length",\n         "jQuery.children", "jQuery.first", "jQuery.next",\n         "jQuery.prev"],\n    "music": "BossLoop",\n    "mapProperties": {\n        "showDummyDom": true\n    }\n}\n#END_PROPERTIES#\n/****************************\n * documentObjectMadness.js *\n ****************************\n *\n * I can\'t believe it! I can\'t believe you made it onto\n * Department of Theoretical Computation\'s web server!\n * YOU SHOULD HAVE BEEN DELETED! This shouldn\'t even be\n * possible! What the hell were the IT folks thinking?\n *\n * No matter. I still have the Algorithm. That\'s the\n * important part. The rest is just implementation, and\n * how hard could that be?\n *\n * Anyway you\'re not going to catch me now, my good Doctor.\n * After all, you\'re a tenured professor with a well-respected\n * history of research - you probably don\'t know jQuery!\n */\n\nfunction objective(map) {\n    return map.getDOM().find(\'.adversary\').hasClass(\'drEval\');\n}\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    var html = "<div class=\'container\'>" +\n    "<div style=\'width: 600px; height: 500px; background-color: white; font-size: 10px;\'>" +\n        "<center><h1>Department of Theoretical Computation</h1></center>" +\n        "<hr />" +\n        "<table border=\'0\'><tr valign=\'top\'>" +\n            "<td><div id=\'face\' /></td>" +\n            "<td>" +\n                "<h2 class=facultyName>Cornelius Eval</h2>" +\n                "<h3>Associate Professor of Computer Science</h3>" +\n                "<ul>" +\n                    "<li>BS, Mathematics, University of Manitoba</li>" +\n                    "<li>PhD, Theoretical Computation, <a href=\'http://www.mit.edu\'>MIT</a></li>" +\n                "</ul>" +\n                "<h4>About me</h4>" +\n                "<p>I am an associate professor of computer science, attached to the Department of " +\n                "Theoretical Computation. My current research interests include the human-machine " +\n                "interface, NP complete problems, and parallelized mesh mathematics.</p>" +\n                "<p>I am also the current faculty advisor to the <a href=\'\'>undergraduate Super Smash Bros. team</a>. " +\n                "In my spare time I enjoy polka and dirtbiking. </p>" +\n            "</td>" +\n        "</tr></table>" +\n\n        "<div id=\'class_schedule\'>" +\n          "<h4>Class Schedule</h4>" +\n            "<table>" +\n             "<tr>" +\n                "<th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th>" +\n             "</tr>" +\n             "<tr>" +\n                "<td>CS145 - Semicolons</td><td>Nothing Planned</td><td>CS145 - Semicolons</td><td>CS199 - Practical Theorycrafting </td><td>CS145 - Semicolons</td>" +\n             "</tr>" +\n            "</table>" +\n        "</div>" +\n        "<div id=\'loremIpsum\'>" +\n        "<h4>Lorem Ipsum</h4>" +\n          "<blockquote>" +\n            "<code>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci " +\n            "velit, sed quia nonnumquam eiusmodi tempora incidunt ut labore et dolore magnam aliquam quaerat " +\n            "voluptatem.</code>" +\n            "<footer>— " +\n              "<cite>Cicero, De Finibus Bonorum et Malorum</cite>" +\n            "</footer>" +\n          "</blockquote>" +\n        "</div>" +\n    "</div></div>";\n\n    var $dom = $(html);\n\n    $dom.find(\'.facultyName\').addClass(\'drEval\');\n    $dom.find(\'cite\').addClass(\'adversary\');\n\n    function moveToParent(className) {\n        var currentPosition = $dom.find(\'.\' + className);\n        if (currentPosition.parent().length > 0 &&\n                !currentPosition.parent().hasClass(\'container\')) {\n            currentPosition.parent().addClass(className);\n            currentPosition.removeClass(className);\n            map.updateDOM($dom);\n        }\n    }\n\n    function moveToFirstChild(className) {\n        var currentPosition = $dom.find(\'.\' + className);\n        if (currentPosition.children().length > 0) {\n            currentPosition.children().first().addClass(className);\n            currentPosition.removeClass(className);\n            map.updateDOM($dom);\n        }\n    }\n\n    function moveToPreviousSibling(className) {\n        var currentPosition = $dom.find(\'.\' + className);\n        if (currentPosition.prev().length > 0) {\n            currentPosition.prev().addClass(className);\n            currentPosition.removeClass(className);\n            map.updateDOM($dom);\n        }\n    }\n\n    function moveToNextSibling(className) {\n        var currentPosition = $dom.find(\'.\' + className);\n        if (currentPosition.next().length > 0) {\n            currentPosition.next().addClass(className);\n            currentPosition.removeClass(className);\n            map.updateDOM($dom);\n        }\n    }\n\n    map.overrideKey(\'up\', function () { moveToParent(\'drEval\'); });\n    map.overrideKey(\'down\', function () { moveToFirstChild(\'drEval\'); });\n    map.overrideKey(\'left\', function () { moveToPreviousSibling(\'drEval\'); });\n    map.overrideKey(\'right\', function () { moveToNextSibling(\'drEval\'); });\n\n    map.defineObject(\'adversary\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'@\',\n        \'color\': \'red\',\n        \'behavior\': function (me) {\n            var move = Math.floor(Math.random() * 4) + 1; // 1, 2, 3, or 4\n            if (move == 1) {\n                moveToParent(\'adversary\');\n            } else if (move == 2) {\n                moveToFirstChild(\'adversary\');\n            } else if (move == 3) {\n                moveToPreviousSibling(\'adversary\');\n            } else if (move == 4) {\n                moveToNextSibling(\'adversary\');\n            }\n        }\n    });\n\n    map.placePlayer(1, 1);\n    map.placeObject(map.getWidth() - 2, map.getHeight() - 2, \'adversary\');\n\n    map.createFromDOM($dom);\n#END_OF_START_LEVEL#\n}\n 	', 
-    'levels/20_bossFight.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["object.onDestroy", "object.projectile",\n         "map.countObjects", "map.isStartOfLevel",\n         "map.validateAtMostXDynamicObjects", "map.validateNoTimers"],\n	"music": "Adversity",\n    "mapProperties": {\n        "refreshRate": 50,\n        "quickValidateCallback": true\n    }\n}\n#END_PROPERTIES#\n\n/*****************\n * bossFight.js *\n *****************\n *\n * NO FARTHER, DR. EVAL!!!!\n * YOU WILL NOT GET OUT OF HERE ALIVE!!!!\n * IT\'S TIME YOU SEE MY TRUE FORM!!!!\n * FACE MY ROBOT WRATH!!!!!\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n	map.defineObject(\'boss\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'⊙\',\n        \'color\': \'red\',\n        \'interval\': 200,\n        \'onCollision\': function (player) {\n            player.killedBy(\'the boss\');\n        },\n        \'behavior\': function (me) {\n        	if (!me.direction) {\n        		me.direction = \'right\';\n        	}\n        	if (me.canMove(me.direction)) {\n            	me.move(me.direction);\n        	} else {\n        		me.direction = (me.direction == \'right\') ? \'left\' : \'right\';\n        	}\n        	if (Math.random() < 0.3) {\n            	map.placeObject(me.getX(), me.getY() + 2, \'bullet\');\n        	}\n        },\n        \'onDestroy\': function (me) {\n            if (map.countObjects(\'boss\') == 0) {\n                map.placeObject(me.getX(), me.getY(), \'theAlgorithm\');\n            }\n        }\n    });\n\n    map.defineObject(\'bullet\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'.\',\n        \'color\': \'red\',\n        \'interval\': 100,\n        \'projectile\': true,\n        \'behavior\': function (me) {\n            me.move(\'down\');\n        }\n    });\n\n    map.placePlayer(0, map.getHeight() - 3);\n    map.placeObject(map.getWidth() - 1, map.getHeight() - 1, \'exit\');\n\n    // Not so tough now, huh?\n    map.getPlayer().removeItem(\'phone\');\n    map.placeObject(map.getWidth() - 1, map.getHeight() - 3, \'phone\');\n\n    map.placeObject(0, map.getHeight() - 4, \'block\');\n    map.placeObject(1, map.getHeight() - 4, \'block\');\n    map.placeObject(2, map.getHeight() - 4, \'block\');\n    map.placeObject(2, map.getHeight() - 3, \'block\');\n    map.placeObject(map.getWidth() - 1, map.getHeight() - 4, \'block\');\n    map.placeObject(map.getWidth() - 2, map.getHeight() - 4, \'block\');\n    map.placeObject(map.getWidth() - 3, map.getHeight() - 4, \'block\');\n    map.placeObject(map.getWidth() - 3, map.getHeight() - 3, \'block\');\n\n    for (var x = 0; x < map.getWidth(); x++) {\n        map.placeObject(x, 4, \'block\');\n    }\n\n    map.placeObject(9, 5, \'boss\');\n    map.placeObject(11, 5, \'boss\');\n    map.placeObject(13, 5, \'boss\');\n    map.placeObject(15, 5, \'boss\');\n    map.placeObject(17, 5, \'boss\');\n    map.placeObject(19, 5, \'boss\');\n    map.placeObject(21, 5, \'boss\');\n    map.placeObject(23, 5, \'boss\');\n    map.placeObject(25, 5, \'boss\');\n    map.placeObject(27, 5, \'boss\');\n    map.placeObject(29, 5, \'boss\');\n    map.placeObject(31, 5, \'boss\');\n\n    map.placeObject(10, 6, \'boss\');\n    map.placeObject(12, 6, \'boss\');\n    map.placeObject(14, 6, \'boss\');\n    map.placeObject(16, 6, \'boss\');\n    map.placeObject(18, 6, \'boss\');\n    map.placeObject(20, 6, \'boss\');\n    map.placeObject(22, 6, \'boss\');\n    map.placeObject(24, 6, \'boss\');\n    map.placeObject(26, 6, \'boss\');\n    map.placeObject(28, 6, \'boss\');\n    map.placeObject(30, 6, \'boss\');\n\n#BEGIN_EDITABLE#\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#END_EDITABLE#\n\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    // called at start of level and whenever a callback executes\n    map.validateAtMostXObjects(59, \'block\');\n    map.validateAtMostXObjects(1, \'phone\');\n\n    if (map.countObjects(\'theAlgorithm\') > 0 && map.countObjects(\'boss\') > 0) {\n        throw "The Algorithm can only be dropped by the boss!";\n    }\n\n    // only called at start of level\n    if (map.isStartOfLevel()) {\n        map.validateAtMostXDynamicObjects(23);\n        map.validateNoTimers();\n    }\n}\n\nfunction onExit(map) {\n    if (!map.getPlayer().hasItem(\'theAlgorithm\')) {\n        map.writeStatus("You must take back the Algorithm!!");\n        return false;\n    } else if (!map.getPlayer().hasItem(\'phone\')) {\n        map.writeStatus("We need the phone!");\n        return false;\n    } else {\n        return true;\n    }\n}\n 	', 
-    'levels/21_endOfTheLine.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "activateSuperMenu": true,\n    "music": "Comme Des Orages"\n}\n#END_PROPERTIES#\n\n/*******************\n * endOfTheLine.js *\n *******************\n *\n * I don\'t feel guilty at all, Cornelius.\n *\n * Did you really expect me to? Did you really think that\n * you could be trusted with coauthorship on the paper that\n * would prove P = NP in the eyes of the world?\n *\n * You\'re a very pure researcher, my good Doctor. "Department\n * of Theoretical Computation", divorced from the realities\n * of the world. I don\'t think you ever considered the\n * implications - the *physical* implications - of the\n * Algorithm. What humanity might do if it was as easy to\n * solve an intractable puzzle as it was to conceive of it.\n *\n * We would become as unto Gods, Cornelius, if this knowledge\n * was public. Immature children wielding power unimaginable.\n * We\'ve already had one Oppenheimer - we don\'t need Dr.\n * Cornelius Eval to be another.\n *\n * If I had succeeded the Algorithm would be safe and secure\n * in the hands of those with the sound judgement and sense\n * of responsibility to use it wisely. I pray my failure\n * will not doom mankind - but I cannot hope so\n * optimistically.\n *\n * You may have defeated my robot form, but I anticipated\n * this eventuality. The Algorithm must never leave the\n * Machine Continuum. And so neither can you.\n *\n * This is bigger than me and bigger than you. I have no\n * regrets. I would do it again in an instant.\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.finalLevel = true;\n    map.placePlayer(15, 12);\n    map.placeObject(25, 12, \'exit\');\n#END_OF_START_LEVEL#\n}\n 	', 
-    'levels/22_credits.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2.1",\n    "music": "Brazil"\n}\n#END_PROPERTIES#\n/**************\n * credits.js *\n *************\n *\n * Congratulations! Dr. Eval has successfully escaped from the\n * Machine Continuum with the Algorithm in hand.\n *\n * Give yourself a pat on the back. You are one clever hacker.\n *\n *\n *\n * Hungry for more?\n *\n * Check out Untrusted\'s github repository at\n *      https://github.com/AlexNisnevich/untrusted\n *\n * Perhaps try your hand at making your own level or two!\n *\n * Like what you\'ve been hearing? You can listen to the full\n * soundtrack at\n *      https://soundcloud.com/untrusted\n *\n * Feel free to drop us a line at [\n *      \'alex [dot] nisnevich [at] gmail [dot] com\',\n *      \'greg [dot] shuflin [at] gmail [dot] com\'\n * ]\n *\n * Once again, congratulations!\n *\n *             -- Alex and Greg\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    var credits = [\n        [15, 1, "U N T R U S T E D"],\n        [20, 2, "- or -"],\n        [5, 3, "THE CONTINUING ADVENTURES OF DR. EVAL"],\n        [1, 4, "{"],\n        [2, 5, "a_game_by: \'Alex Nisnevich and Greg Shuflin\',"],\n        [2, 7, "special_thanks_to: {"],\n        [5, 8, "Dmitry_Mazin: [\'design\', \'code\'],"],\n        [5, 9, "Jordan_Arnesen: [\'levels\', \'playtesting\'],"],\n        [5, 10, "Natasha_HullRichter: [\'levels\',\'playtesting\']"],\n        [2, 11, "},"],\n        [2, 13, "music_by: "],\n        [4, 14, "[\'Jonathan Holliday\',"],\n        [5, 15, "\'Dmitry Mazin\',"],\n        [5, 16, "\'Revolution Void\',"],\n        [5, 17, "\'Fex\',"],\n        [5, 18, "\'iNTRICATE\',"],\n        [5, 19, "\'Tortue Super Sonic\',"],\n        [5, 20, "\'Broke For Free\',"],\n        [5, 21, "\'Sycamore Drive\',"],\n        [5, 22, "\'Eric Skiff\'],"],\n        [30, 14, "\'Mike and Alan\',"],\n        [30, 15, "\'RoccoW\',"],\n        [30, 16, "\'That Andy Guy\',"],\n        [30, 17, "\'Obsibilo\',"],\n        [30, 18, "\'BLEO\',"],\n        [30, 19, "\'Rolemusic\',"],\n        [30, 20, "\'Seropard\',"],\n        [30, 21, "\'Vernon Lenoir\',"],\n        [15, map.getHeight() - 2, "Thank_you: \'for playing!\'"],\n        [1, map.getHeight() - 1, "}"]\n    ];\n\n    function drawCredits(i) {\n        if (i >= credits.length) {\n            return;\n        }\n\n        // redraw lines bottom to top to avoid cutting off letters\n        for (var j = i; j >= 0; j--) {\n            var line = credits[j];\n            map._display.drawText(line[0], line[1], line[2]);\n        }\n\n        map.timeout(function () {drawCredits(i+1);}, 2000)\n    }\n\n    map.timeout(function () {drawCredits(0);}, 4000);\n\n#END_OF_START_LEVEL#\n}\n 	', 
+    'levels/01_cellBlockA.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["global.startLevel", "global.onExit", "map.placePlayer",\n         "map.placeObject", "map.getHeight", "map.getWidth",\n         "map.displayChapter", "map.getPlayer", "player.hasItem"],\n    "music": "The Green"\n}\n#END_PROPERTIES#\n/*****************\n * cellBlockA.js *\n *****************\n *\n * 早安，Dr. Eval。\n *\n * 虽然这并不太容易，不过我已经得到授权，将你的电脑还给你。\n * 你可能对这个系统不怎么熟悉。不过和我们预期的一样，\n * 这个系统仍然是基于 JavaScript 的。\n * \n * 现在来看看我们在此的目的，并了解一下如何让你从这里出去。\n * 应当都是小菜一碟。\n *\n * 我会尽可能的为你提供代码的访问权限，不过可能不怎么有效。\n * 那些红色背景的代码表示不允许编辑。\n *\n * 这段代码构造了一个围绕你的墙。你需要开个缺口出来。\n * 你可能不用作太多工作。事实上，你做得越少越有效。\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.displayChapter(\'第一章\\n越狱\');\n\n    map.placePlayer(7, 5);\n#BEGIN_EDITABLE#\n\n    for (y = 3; y <= map.getHeight() - 10; y++) {\n        map.placeObject(5, y, \'block\');\n        map.placeObject(map.getWidth() - 5, y, \'block\');\n    }\n\n    for (x = 5; x <= map.getWidth() - 5; x++) {\n        map.placeObject(x, 3, \'block\');\n        map.placeObject(x, map.getHeight() - 10, \'block\');\n    }\n#END_EDITABLE#\n\n    map.placeObject(15, 12, \'computer\');\n\n    map.placeObject(map.getWidth()-7, map.getHeight()-5, \'exit\');\n#END_OF_START_LEVEL#\n}\n\nfunction onExit(map) {\n    if (!map.getPlayer().hasItem(\'computer\')) {\n        map.writeStatus("别忘记捡起你的电脑！");\n        return false;\n    } else {\n        return true;\n    }\n}\n ', 
+    'levels/02_theLongWayOut.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced": ["ROT.Map.DividedMaze", "player.atLocation"],\n    "music": "gurh"\n}\n#END_PROPERTIES#\n/********************\n * theLongWayOut.js *\n ********************\n *\n * 好吧，看起来他们发现了我们的意图。\n * 我原以为这条路会很畅通，事实上看来不是这样。\n * 不过没关系，聪明人总能消除这些麻烦。\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.placePlayer(7, 5);\n\n    var maze = new ROT.Map.DividedMaze(map.getWidth(), map.getHeight());\n#BEGIN_EDITABLE#\n\n#END_EDITABLE#\n    maze.create( function (x, y, mapValue) {\n\n        // don\'t write maze over player\n        if (map.getPlayer().atLocation(x,y)) {\n            return 0;\n        }\n\n        else if (mapValue === 1) { //0 is empty space 1 is wall\n            map.placeObject(x,y, \'block\');\n        }\n        else {\n            map.placeObject(x,y,\'empty\');\n        }\n    });\n\n    map.placeObject(map.getWidth()-4, map.getHeight()-4, \'block\');\n    map.placeObject(map.getWidth()-6, map.getHeight()-4, \'block\');\n    map.placeObject(map.getWidth()-5, map.getHeight()-5, \'block\');\n    map.placeObject(map.getWidth()-5, map.getHeight()-3, \'block\');\n#BEGIN_EDITABLE#\n\n#END_EDITABLE#\n    map.placeObject(map.getWidth()-5, map.getHeight()-4, \'exit\');\n#END_OF_START_LEVEL#\n}\n ', 
+    'levels/03_validationEngaged.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["global.validateLevel", "map.validateAtLeastXObjects",\n         "map.validateExactlyXManyObjects"],\n    "music": "Obscure Terrain"\n}\n#END_PROPERTIES#\n/************************\n * validationEngaged.js *\n ************************\n *\n * 现在，可以确认我们被他们发现了！\n * validateLevel 函数会用来检验，限制你可以做的事情。\n * 看来这儿不允许移除任何阻挡。\n *\n * 他们正想尽办法将你留在这里。\n * 不过你比他们更聪明。\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.placePlayer(map.getWidth()-7, map.getHeight()-5);\n#BEGIN_EDITABLE#\n\n    for (y = 10; y <= map.getHeight() - 3; y++) {\n        map.placeObject(5, y, \'block\');\n        map.placeObject(map.getWidth() - 5, y, \'block\');\n    }\n\n    for (x = 5; x <= map.getWidth() - 5; x++) {\n        map.placeObject(x, 10, \'block\');\n        map.placeObject(x, map.getHeight() - 3, \'block\');\n    }\n#END_EDITABLE#\n\n    map.placeObject(7, 5, \'exit\');\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    numBlocks = 2 * (map.getHeight()-13) + 2 * (map.getWidth()-10);\n\n    map.validateAtLeastXObjects(numBlocks, \'block\');\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n ', 
+    'levels/04_multiplicity.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced": [],\n    "music": "coming soon"\n}\n#END_PROPERTIES#\n/*******************\n * multiplicity.js *\n *******************\n *\n * 刚出狼窝又入虎穴。他们再次限制了你的活动。不过，当然啦……\n *\n * 顺便说一下，关卡文件名可作看作提示。我之前有提过吗？\n *\n * 我保证，不会再遇到这种监牢了。\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n\n    map.placePlayer(map.getWidth()-5, map.getHeight()-4);\n\n    for (y = 7; y <= map.getHeight() - 3; y++) {\n        map.placeObject(7, y, \'block\');\n        map.placeObject(map.getWidth() - 3, y, \'block\');\n    }\n#BEGIN_EDITABLE#\n\n#END_EDITABLE#\n    for (x = 7; x <= map.getWidth() - 3; x++) {\n        map.placeObject(x, 7, \'block\');\n        map.placeObject(x, map.getHeight() - 3, \'block\');\n    }\n\n    map.placeObject(map.getWidth() - 5, 5, \'exit\');\n#END_OF_START_LEVEL#\n}\n ', 
+    'levels/05_minesweeper.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2.1",\n    "commandsIntroduced": ["map.setSquareColor"],\n    "music": "cloudy_sin"\n}\n#END_PROPERTIES#\n/******************\n * minesweeper.js *\n ******************\n *\n * 阿西莫夫的机器人三定律见鬼了。他们现在实际上是想要干掉你。\n * 虽然地板上遍布地雷，但不要太悲观。只是奋不顾身的冲向出口似乎不太明智。\n * 无论如何，你需要活下来。\n *\n * 不过，如果有什么办法让你可以发现这些地雷……\n */\n\nfunction getRandomInt(min, max) {\n    return Math.floor(Math.random() * (max - min + 1)) + min;\n}\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    for (x = 0; x < map.getWidth(); x++) {\n        for (y = 0; y < map.getHeight(); y++) {\n            map.setSquareColor(x, y, \'#f00\');\n        }\n    }\n\n    map.placePlayer(map.getWidth() - 5, 5);\n\n    for (var i = 0; i < 75; i++) {\n        var x = getRandomInt(0, map.getWidth() - 1);\n        var y = getRandomInt(0, map.getHeight() - 1);\n        if ((x != 2 || y != map.getHeight() - 1)\n            && (x != map.getWidth() - 5 || y != 5)) {\n            // don\'t place mine over exit or player!\n            map.placeObject(x, y, \'mine\');\n#BEGIN_EDITABLE#\n\n#END_EDITABLE#\n        }\n    }\n\n    map.placeObject(2, map.getHeight() - 1, \'exit\');\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateAtLeastXObjects(40, \'mine\');\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n ', 
+    'levels/06_drones101.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n	"commandsIntroduced":\n        ["object.type", "object.behavior", "object.findNearest",\n         "object.getX", "object.getY", "object.canMove", "object.move"],\n    "music": "GameScratch"\n}\n#END_PROPERTIES#\n\n/****************\n * drones101.js *\n ****************\n *\n * 我亲爱的教授，还记得吗？很久以前你讲授过的那堂人工智能的课程，\n * 第二道作业是匿名特工的行为。\n * 我记得有一个幼稚的实现：只要机器人没有看到你，就很容易攻击它。\n * 那么现在让我们设想一下……\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    function moveToward(obj, type) {\n        var target = obj.findNearest(type);\n        var leftDist = obj.getX() - target.x;\n        var upDist = obj.getY() - target.y;\n\n        var direction;\n        if (upDist == 0 && leftDist == 0) {\n        	return;\n        } if (upDist > 0 && upDist >= leftDist) {\n            direction = \'up\';\n        } else if (upDist < 0 && upDist < leftDist) {\n            direction = \'down\';\n        } else if (leftDist > 0 && leftDist >= upDist) {\n            direction = \'left\';\n        } else {\n            direction = \'right\';\n        }\n\n        if (obj.canMove(direction)) {\n            obj.move(direction);\n        }\n    }\n\n    map.defineObject(\'attackDrone\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'d\',\n        \'color\': \'red\',\n        \'onCollision\': function (player) {\n            player.killedBy(\'an attack drone\');\n        },\n        \'behavior\': function (me) {\n            moveToward(me, \'player\');\n        }\n    });\n\n\n    map.placePlayer(1, 1);\n    map.placeObject(map.getWidth()-2, 12, \'attackDrone\');\n    map.placeObject(map.getWidth()-1, 12, \'exit\');\n\n    map.placeObject(map.getWidth()-1, 11, \'block\');\n    map.placeObject(map.getWidth()-2, 11, \'block\');\n    map.placeObject(map.getWidth()-1, 13, \'block\');\n    map.placeObject(map.getWidth()-2, 13, \'block\');\n#BEGIN_EDITABLE#\n\n\n\n\n#END_EDITABLE#\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n ', 
+    'levels/07_colors.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["map.defineObject", "player.getColor", "player.setColor",\n         "object.color", "object.impassable", "object.symbol",\n         "player.setPhoneCallback"],\n    "music": "Y"\n}\n#END_PROPERTIES#\n/*************\n* colors.js *\n *************\n *\n * 你已经接近出口了。只需要通过这个颜色锁就可以了。\n *\n * 只改变环境已经不够了。你需要学习改变你自己。\n * 我已经为你提供了一些有帮助的东西。\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.placePlayer(0, 12);\n\n    map.placeObject(5, 12, \'phone\');\n\n    // 电话（phone）可以让你调用由在下面\n	// player.setPhoneCallback() 定义的功能函数。\n	// 可以通过 Q 键或 Ctrl+6 使用电话的功能。\n    map.getPlayer().setPhoneCallback(function () {\n#BEGIN_EDITABLE#\n        var player = map.getPlayer();\n\n        player.setColor(\'#f00\');\n\n\n\n\n\n#END_EDITABLE#\n    });\n\n\n    map.defineObject(\'redLock\', {\n        symbol: \'☒\',\n        color: "#f00", // 红\n        impassable: function(player, object) {\n            return player.getColor() != object.color;\n        }\n    });\n\n    map.defineObject(\'greenLock\', {\n        symbol: \'☒\',\n        color: "#0f0", // 绿\n        impassable: function(player, object) {\n            return player.getColor() != object.color;\n        }\n    });\n\n    map.defineObject(\'yellowLock\', {\n        symbol: \'☒\',\n        color: "#ff0", // 黄\n        impassable: function(player, object) {\n            return player.getColor() != object.color;\n        }\n    });\n\n    for (var x = 20; x <= 40; x++) {\n        map.placeObject(x, 11, \'block\');\n        map.placeObject(x, 13, \'block\');\n    }\n    map.placeObject(22, 12, \'greenLock\');\n    map.placeObject(25, 12, \'redLock\');\n    map.placeObject(28, 12, \'yellowLock\');\n    map.placeObject(31, 12, \'greenLock\');\n    map.placeObject(34, 12, \'redLock\');\n    map.placeObject(37, 12, \'yellowLock\');\n    map.placeObject(40, 12, \'exit\');\n    for (var y = 0; y < map.getHeight(); y++) {\n        if (y != 12) {\n            map.placeObject(40, y, \'block\');\n        }\n        for (var x = 41; x < map.getWidth(); x++) {\n            map.setSquareColor(x, y, \'#080\');\n        }\n    }\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n\nfunction onExit(map) {\n    if (!map.getPlayer().hasItem(\'phone\')) {\n        map.writeStatus("我们需要电话！");\n        return false;\n    } else {\n        return true;\n    }\n}\n ', 
+    'levels/08_intoTheWoods.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["map.getObjectTypeAt", "player.getX", "player.getY",\n         "map.refresh"],\n    "mapProperties": {\n        "allowOverwrite": true\n    },\n    "music": "Night Owl"\n}\n#END_PROPERTIES#\n/*******************\n * intoTheWoods.js *\n *******************\n *\n * 哈哈，现在你已经脱险了。\n * 或者，就当前环境来说，你进入更加危险的地方了。\n *\n * 那么深呼吸、放送，在进入之前务必记得你来此的目的。\n *\n * 我跟踪到一个信号，说明算法（Algorithm）就在跟前。\n * 你需要穿越树林、渡过小河，然后到达藏匿它的要塞。\n * 守卫不怎么严密，所以我们应该可以让他们放松警惕。\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    // 注意：在本关中，允许用 map.placeObject\n	// 替换已有的对象。\n\n    map.displayChapter(\'第二章\\n迷失的算法与骑士\');\n\n    map.placePlayer(2, map.getHeight() - 1);\n\n    var functionList = {};\n\n    functionList[\'fortresses\'] = function () {\n        function genRandomValue(direction) {\n            if (direction === "height") {\n                return Math.floor(Math.random() * (map.getHeight()-3));\n            } else if (direction === "width") {\n                return Math.floor(Math.random() * (map.getWidth()+1));\n            }\n        }\n\n        var x = genRandomValue("width");\n        var y = genRandomValue("height");\n\n        for (var i = x-2; i < x+2; i++) {\n            map.placeObject(i,y-2, \'block\');\n        }\n        for (var i = x-2; i < x+2; i++) {\n            map.placeObject(i,y+2, \'block\');\n        }\n\n        for (var j = y-2; j < y+2; j++) {\n            map.placeObject(x-2,j, \'block\');\n        }\n\n        for (var j = y-2; j < y+2; j++) {\n            map.placeObject(x+2,j, \'block\');\n        }\n    };\n\n    functionList[\'generateForest\'] = function () {\n        for (var i = 0; i < map.getWidth(); i++) {\n            for (var j = 0; j < map.getHeight(); j++) {\n\n                // 如果该格已经有树，就将其清空\n                if (map.getObjectTypeAt(i, j) === \'tree\') {\n                    // 移除已有的树\n                    map.placeObject(i,j, \'empty\');\n                }\n\n                if (map.getPlayer().atLocation(i,j) ||\n                        map.getObjectTypeAt(i, j) === \'block\' ||\n                        map.getObjectTypeAt(i, j) === \'exit\') {\n                    continue;\n                }\n\n                var rv = Math.random();\n                if (rv < 0.45) {\n                    map.placeObject(i, j, \'tree\');\n                }\n            }\n        }\n        map.refresh();\n    };\n\n    functionList[\'movePlayerToExit\'] = function () {\n        map.writeStatus("拒绝访问。");\n    }\n\n    functionList[\'pleaseMovePlayerToExit\'] = function () {\n        map.writeStatus("我不这么认为。");\n    }\n\n    functionList[\'movePlayerToExitDamnit\'] = function () {\n        map.writeStatus("那么，赛事如何了？");\n    }\n\n    // generate forest\n    functionList[\'generateForest\']();\n\n    // generate fortresses\n    functionList[\'fortresses\']();\n    functionList[\'fortresses\']();\n    functionList[\'fortresses\']();\n    functionList[\'fortresses\']();\n\n    map.getPlayer().setPhoneCallback(functionList[#{#"movePlayerToExit"#}#]);\n\n    map.placeObject(map.getWidth()-1, map.getHeight()-1, \'exit\');\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateAtLeastXObjects(100, \'tree\');\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n ', 
+    'levels/09_fordingTheRiver.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["player.killedBy", "object.onCollision"],\n    "music": "The_Waves_Call_Her_Name"\n}\n#END_PROPERTIES#\n/**********************\n * fordingTheRiver.js *\n **********************\n *\n * 这里有一条河。幸运的是，我对此有所准备。\n * 看见另一边的救生艇（raft）了吗？\n *\n * 所需要的只是一个计划。\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    var raftDirection = \'down\';\n\n    map.placePlayer(map.getWidth()-1, map.getHeight()-1);\n    var player = map.getPlayer();\n\n    map.defineObject(\'raft\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'▓\',\n        \'color\': \'#420\',\n        \'transport\': true, // （防止玩家掉进水里）\n        \'behavior\': function (me) {\n            me.move(raftDirection);\n        }\n    });\n\n    map.defineObject(\'water\', {\n        \'symbol\': \'░\',\n        \'color\': \'#44f\',\n        \'onCollision\': function (player) {\n            player.killedBy(\'drowning in deep dark water\');\n        }\n    });\n\n    for (var x = 0; x < map.getWidth(); x++) {\n        for (var y = 5; y < 15; y++) {\n            map.placeObject(x, y, \'water\');\n        }\n    }\n\n    map.placeObject(20, 5, \'raft\');\n    map.placeObject(0, 2, \'exit\');\n    map.placeObject(0, 1, \'block\');\n    map.placeObject(1, 1, \'block\');\n    map.placeObject(0, 3, \'block\');\n    map.placeObject(1, 3, \'block\');\n\n#BEGIN_EDITABLE#\n\n\n\n#END_EDITABLE#\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateExactlyXManyObjects(1, \'raft\');\n}\n ', 
+    'levels/10_ambush.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced": [],\n    "music": "Come and Find Me"\n}\n#END_PROPERTIES#\n/*************\n * ambush.js *\n *************\n *\n * 噢，噢，我知道了。这不在计划内。\n *\n * 看起来，不好好打一架，他们是不会让你带走算法（Algorithm）的。\n * 在穿过守卫机器人时，小心选择你的路线。\n *\n * 好吧，来点改进。让我们给它们的程序制造点麻烦，如何？\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    function moveToward(obj, type) {\n        var target = obj.findNearest(type);\n        var leftDist = obj.getX() - target.x;\n        var upDist = obj.getY() - target.y;\n\n        var direction;\n        if (upDist == 0 && leftDist == 0) {\n            return;\n        } if (upDist > 0 && upDist >= leftDist) {\n            direction = \'up\';\n        } else if (upDist < 0 && upDist < leftDist) {\n            direction = \'down\';\n        } else if (leftDist > 0 && leftDist >= upDist) {\n            direction = \'left\';\n        } else {\n            direction = \'right\';\n        }\n\n        if (obj.canMove(direction)) {\n            obj.move(direction);\n        }\n    }\n\n    map.defineObject(\'attackDrone\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'d\',\n        \'color\': \'red\',\n        \'onCollision\': function (player) {\n            player.killedBy(\'an attack drone\');\n        },\n        \'behavior\': function (me) {\n#BEGIN_EDITABLE#\n            moveToward(me, \'player\');\n#END_EDITABLE#\n        }\n    });\n\n    map.defineObject(\'reinforcementDrone\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'d\',\n        \'color\': \'yellow\',\n        \'onCollision\': function (player) {\n            player.killedBy(\'a reinforcement drone\');\n        },\n        \'behavior\': function (me) {\n#BEGIN_EDITABLE#\n            me.move(\'left\');\n#END_EDITABLE#\n        }\n    });\n\n    map.defineObject(\'defenseDrone\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'d\',\n        \'color\': \'green\',\n        \'onCollision\': function (player) {\n            player.killedBy(\'a defense drone\');\n        },\n        \'behavior\': function (me) {\n#BEGIN_EDITABLE#\n\n#END_EDITABLE#\n        }\n    });\n\n    // 用于装饰\n    map.defineObject(\'water\', {\n        \'symbol\': \'░\',\n        \'color\': \'#44f\'\n    });\n\n    map.placePlayer(0, 12);\n\n    for (var x = 0; x < map.getWidth(); x++) {\n        map.placeObject(x, 10, \'block\');\n        map.placeObject(x, 14, \'block\');\n\n        for (var y = 20; y < map.getHeight(); y++) {\n            map.placeObject(x, y, \'water\');\n        }\n    }\n\n    map.placeObject(23, 11, \'attackDrone\');\n    map.placeObject(23, 12, \'attackDrone\');\n    map.placeObject(23, 13, \'attackDrone\');\n\n    map.placeObject(27, 11, \'defenseDrone\');\n    map.placeObject(27, 12, \'defenseDrone\');\n    map.placeObject(27, 13, \'defenseDrone\');\n\n    map.placeObject(24, 11, \'reinforcementDrone\');\n    map.placeObject(25, 11, \'reinforcementDrone\');\n    map.placeObject(26, 11, \'reinforcementDrone\');\n    map.placeObject(24, 13, \'reinforcementDrone\');\n    map.placeObject(25, 13, \'reinforcementDrone\');\n    map.placeObject(26, 13, \'reinforcementDrone\');\n\n    map.placeObject(map.getWidth()-1, 12, \'exit\');\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n ', 
+    'levels/11_robot.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["object.giveItemTo", "object.passableFor",\n         "map.validateAtMostXObjects"],\n    "music": "conspiracy"\n}\n#END_PROPERTIES#\n/*\n * robot.js\n *\n * 你需要三把钥匙来释放算法（Algorithm）：红色的、绿色的和蓝色的钥匙。\n * 不幸的是，这三把钥匙保存在人类识别区（barrier）中。\n *\n * 计划很简单：对用于维护作业的机器人（robot）重新编程，\n * 以便让其穿过识别区拿到钥匙。\n *\n * 首先让我们试试红色钥匙（redKey）。\n */\n\nfunction getRandomInt(min, max) {\n    return Math.floor(Math.random() * (max - min + 1)) + min;\n}\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    // 提示：你可以按 R 或 5 来重置，并且玩家不要与机器人同时同方向移动。\n\n    map.placePlayer(map.getWidth()-2, map.getHeight()-2);\n    var player = map.getPlayer();\n\n    map.defineObject(\'robot\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'R\',\n        \'color\': \'gray\',\n        \'onCollision\': function (player, me) {\n            me.giveItemTo(player, \'redKey\');\n        },\n        \'behavior\': function (me) {\n#BEGIN_EDITABLE#\n            // 可用的命令：me.move(direction) 和 me.canMove(direction)\n\n#END_EDITABLE#\n        }\n    });\n\n    map.defineObject(\'barrier\', {\n        \'symbol\': \'░\',\n        \'color\': \'purple\',\n        \'impassable\': true,\n        \'passableFor\': [\'robot\']\n    });\n\n    map.placeObject(0, map.getHeight() - 1, \'exit\');\n    map.placeObject(1, 1, \'robot\');\n    map.placeObject(map.getWidth() - 2, 8, \'redKey\');\n    map.placeObject(map.getWidth() - 2, 9, \'barrier\');\n\n    for (var x = 0; x < map.getWidth(); x++) {\n        map.placeObject(x, 0, \'block\');\n        if (x != map.getWidth() - 2) {\n            map.placeObject(x, 9, \'block\');\n        }\n    }\n\n    for (var y = 1; y < 9; y++) {\n        map.placeObject(0, y, \'block\');\n        map.placeObject(map.getWidth() - 1, y, \'block\');\n    }\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateExactlyXManyObjects(1, \'robot\');\n    map.validateAtMostXObjects(1, \'redKey\');\n}\n\nfunction onExit(map) {\n    if (!map.getPlayer().hasItem(\'redKey\')) {\n        map.writeStatus("我们必须拿到这把钥匙！");\n        return false;\n    } else {\n        return true;\n    }\n}\n ', 
+    'levels/12_robotNav.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced": [],\n    "music": "Messeah"\n}\n#END_PROPERTIES#\n/*\n * robotNav.js\n *\n * 绿色钥匙被放在一个更加复杂的房间里。\n * 你需要让机器人穿越这些障碍。\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    // 提示：你可以按 R 或 5 来重置，并且玩家不要与机器人同时同方向移动。\n\n    map.placePlayer(0, map.getHeight() - 1);\n    var player = map.getPlayer();\n\n    map.defineObject(\'robot\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'R\',\n        \'color\': \'gray\',\n        \'onCollision\': function (player, me) {\n            me.giveItemTo(player, \'greenKey\');\n        },\n        \'behavior\': function (me) {\n#BEGIN_EDITABLE#\n            if (me.canMove(\'right\')) {\n                me.move(\'right\');\n            } else {\n                me.move(\'down\');\n            }\n\n\n\n\n\n\n\n\n\n\n\n#END_EDITABLE#\n        }\n    });\n\n    map.defineObject(\'barrier\', {\n        \'symbol\': \'░\',\n        \'color\': \'purple\',\n        \'impassable\': true,\n        \'passableFor\': [\'robot\']\n    });\n\n    map.placeObject(map.getWidth() - 1, map.getHeight() - 1, \'exit\');\n    map.placeObject(1, 1, \'robot\');\n    map.placeObject(map.getWidth() - 2, 8, \'greenKey\');\n    map.placeObject(map.getWidth() - 2, 9, \'barrier\');\n\n    for (var x = 0; x < map.getWidth(); x++) {\n        map.placeObject(x, 0, \'block\');\n        if (x != map.getWidth() - 2) {\n            map.placeObject(x, 9, \'block\');\n        }\n    }\n\n    for (var y = 1; y < 9; y++) {\n        map.placeObject(0, y, \'block\');\n        map.placeObject(map.getWidth() - 1, y, \'block\');\n    }\n\n    for (var i = 0; i < 4; i++) {\n        map.placeObject(20 - i, i + 1, \'block\');\n        map.placeObject(35 - i, 8 - i, \'block\');\n    }\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateExactlyXManyObjects(1, \'robot\');\n    map.validateAtMostXObjects(1, \'greenKey\');\n}\n\nfunction onExit(map) {\n    if (!map.getPlayer().hasItem(\'greenKey\')) {\n        map.writeStatus("我们必须拿到这把钥匙！");\n        return false;\n    } else {\n        return true;\n    }\n}\n ', 
+    'levels/13_robotMaze.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced": ["map.getAdjacentEmptyCells"],\n    "music": "Searching"\n}\n#END_PROPERTIES#\n/*\n * robotMaze.js\n *\n * 蓝色钥匙被藏在了迷宫里，这当然不是那么容易了。\n *\n * 新亏你是个工智能的专家，相信我们不会空手而归。\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    // 提示：你可以按 R 或 5 来重置，并且玩家不要与机器人同时同方向移动。\n\n    map.getRandomInt = function(min, max) {\n        return Math.floor(Math.random() * (max - min + 1)) + min;\n    }\n\n    map.placePlayer(map.getWidth()-1, map.getHeight()-1);\n    var player = map.getPlayer();\n\n    map.defineObject(\'robot\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'R\',\n        \'color\': \'gray\',\n        \'onCollision\': function (player, me) {\n            me.giveItemTo(player, \'blueKey\');\n        },\n        \'behavior\': function (me) {\n#BEGIN_EDITABLE#\n            // 随机移动\n            var moves = map.getAdjacentEmptyCells(me.getX(), me.getY());\n            // getAdjacentEmptyCells 可以提供一个 ((x, y), direction) 格式的数组\n            me.move(moves[map.getRandomInt(0, moves.length - 1)][1]);\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#END_EDITABLE#\n        }\n    });\n\n    map.defineObject(\'barrier\', {\n        \'symbol\': \'░\',\n        \'color\': \'purple\',\n        \'impassable\': true,\n        \'passableFor\': [\'robot\']\n    });\n\n    map.placeObject(0, map.getHeight() - 1, \'exit\');\n    map.placeObject(1, 1, \'robot\');\n    map.placeObject(map.getWidth() - 2, 8, \'blueKey\');\n    map.placeObject(map.getWidth() - 2, 9, \'barrier\');\n\n    var autoGeneratedMaze = new ROT.Map.DividedMaze(map.getWidth(), 10);\n    autoGeneratedMaze.create( function (x, y, mapValue) {\n        // 别试图欺骗机器人或者识别区\n        if ((x == 1 && y == 1) || (x == map.getWidth() - 2 && y >= 8)) {\n            return 0;\n        } else if (mapValue === 1) { //0 是空的，1 是墙\n            map.placeObject(x,y, \'block\');\n        } else {\n            map.placeObject(x,y,\'empty\');\n        }\n    });\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateExactlyXManyObjects(1, \'robot\');\n    map.validateAtMostXObjects(1, \'blueKey\');\n}\n\nfunction onExit(map) {\n    if (!map.getPlayer().hasItem(\'blueKey\')) {\n        map.writeStatus("我们必须拿到这把钥匙！");\n        return false;\n    } else {\n        return true;\n    }\n}\n ', 
+    'levels/14_crispsContest.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["map.createFromGrid", "player.removeItem"],\n    "music": "Chip"\n}\n#END_PROPERTIES#\n/********************\n * crispsContest.js *\n ********************\n *\n * 算法（Algorithm）已经是我们囊中之物了！\n * \n * 最后，我们将面对决定性的时刻，在多项式时间里解决 3SAT。\n * 这将会是一个漫长而又奇怪的旅程，不过这一切都十分值得。\n *\n * 你已经有了红色、绿色和蓝色的钥匙。现在，你需要找到解锁这些东西方法。\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.defineObject(\'redLock\', {\n        \'symbol\': String.fromCharCode(0x2297),\n        \'color\': \'red\',\n        \'impassable\': function (player) {\n            if (player.hasItem(\'redKey\')) {\n                player.removeItem(\'redKey\');\n                return false;\n            } else {\n                return true;\n            }\n        }\n    });\n\n    map.defineObject(\'blueLock\', {\n        \'symbol\': String.fromCharCode(0x2297),\n        \'color\': \'#06f\',\n        \'impassable\': function (player) {\n            if (player.hasItem(\'blueKey\')) {\n                player.removeItem(\'blueKey\');\n                return false;\n            } else {\n                return true;\n            }\n        }\n    });\n\n    map.defineObject(\'greenLock\', {\n        \'symbol\': String.fromCharCode(0x2297),\n        \'color\': \'#0f0\',\n        \'impassable\': function (player) {\n            if (player.hasItem(\'greenKey\')) {\n                player.removeItem(#{#\'greenKey\'#}#);\n                return false;\n            } else {\n                return true;\n            }\n        }\n    });\n\n    map.defineObject(\'yellowLock\', {\n        \'symbol\': String.fromCharCode(0x2297),\n        \'color\': \'yellow\',\n        \'impassable\': function (player) {\n            if (player.hasItem(\'yellowKey\')) {\n                player.removeItem(\'yellowKey\');\n                return false;\n            } else {\n                return true;\n            }\n        }\n    });\n\n    map.createFromGrid(\n       [\'  +++++ +++++  \',\n        \'  + b +++ r +  \',\n        \'  +   +E+   +  \',\n        \'+++G+B+ +R+G+++\',\n        \'+ y B     R b +\',\n        \'+   +     +   +\',\n        \'+++++  @  +++++\',\n        \'+   +     +   +\',\n        \'+ y R     B y +\',\n        \'++++++Y+Y++++++\',\n        \'    +  +  +    \',\n        \'    + ABy +    \',\n        \'    +++++++    \'],\n    {\n        \'@\': \'player\',\n        \'E\': \'exit\',\n        \'A\': \'theAlgorithm\',\n        \'+\': \'block\',\n        \'R\': \'redLock\',\n        \'G\': \'greenLock\',\n        \'B\': \'blueLock\',\n        \'Y\': \'yellowLock\',\n        \'r\': \'redKey\',\n        \'g\': \'greenKey\',\n        \'b\': \'blueKey\',\n        \'y\': \'yellowKey\'\n    }, 17, 6);\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateAtMostXObjects(1, \'theAlgorithm\');\n    map.validateAtMostXObjects(4, \'yellowKey\');\n    map.validateAtMostXObjects(2, \'blueKey\');\n    map.validateAtMostXObjects(1, \'redKey\');\n}\n\nfunction onExit(map) {\n    // 确保我们得到了所有需要的东西！\n    if (!map.getPlayer().hasItem(\'theAlgorithm\')) {\n        map.writeStatus("You must get that Algorithm!!");\n        return false;\n    } else if (!map.getPlayer().hasItem(\'computer\')) {\n        map.writeStatus("You\'ll need your computer! [Ctrl-5 to restart]");\n        return false;\n    } else if (!map.getPlayer().hasItem(\'phone\')) {\n        map.writeStatus("You\'ll need your phone! [Ctrl-5 to restart]");\n        return false;\n    } else {\n        return true;\n    }\n}\n ', 
+    'levels/15_exceptionalCrossing.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced": [],\n    "music": "The_Waves_Call_Her_Name",\n    "startingMessage": "You have lost the Algorithm!"\n}\n#END_PROPERTIES#\n/**************************\n * exceptionalCrossing.js *\n **************************\n *\n * 抱歉，老朋友，不过我想我不能与你共享这篇论文。\n * 为了我，你所做的一切非常了不起。对这些钥匙的利用非常聪明！\n * 我自己永远也想不到。\n *\n * 不过呢，当然啦，这也是为什么你一开始会来到这里的原因。\n *\n * 你一直都意志坚定。不过现在，啊哈，你的死期到了。\n *\n * 不过，我也不是铁石心肠的人。我会让你选择见上帝的方式。\n * 怎么样，这是不是很好啊？\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.displayChapter(\'第三章\\n背叛\');\n\n    map.placePlayer(0, 0);\n\n    // 哼哼！\n    map.getPlayer().removeItem(\'theAlgorithm\');\n\n    map.defineObject(\'water\', {\n        \'symbol\': \'░\',\n        \'color\': \'#44f\',\n        \'onCollision\': function (player) {\n            player.killedBy#{#(\'drowning in deep dark water\')#}#;\n        }\n    });\n\n    for (var x = 0; x < map.getWidth(); x++)\n        for (var y = 5; y < 15; y++)\n            map.placeObject(x, y, \'water\');\n\n    map.placeObject(map.getWidth()-1, map.getHeight()-1, \'exit\');\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n ', 
+    'levels/16_lasers.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2.3",\n    "commandsIntroduced":\n        ["map.getCanvasContext", "canvas.beginPath", "canvas.strokeStyle",\n         "canvas.lineWidth", "canvas.moveTo", "canvas.lineTo",\n         "canvas.stroke", "map.createLine", "map.validateAtLeastXLines"],\n    "music": "Soixante-8",\n    "mapProperties": {\n        "showDrawingCanvas": true\n    }\n}\n#END_PROPERTIES#\n/*************\n * lasers.js *\n *************\n *\n * 是启动杀戮激光的时候了！每支激光都可以即刻杀死你，除非你有匹配的颜色。\n * 你无法看到每支激光都是什么颜色，这真是太遗憾了！\n */\n\nfunction getRandomInt(min, max) {\n    return Math.floor(Math.random() * (max - min + 1)) + min;\n}\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.placePlayer(0, 0);\n    map.placeObject(map.getWidth()-1, map.getHeight()-1, \'exit\');\n    var player = map.getPlayer();\n\n    for (var i = 0; i < 25; i++) {\n        var colors = [\'red\', \'yellow\', \'teal\'];\n\n        var startX = getRandomInt(0, 600);\n        var startY = getRandomInt(0, 500);\n        var angle = getRandomInt(0, 360);\n        var length = getRandomInt(200, 300);\n        var color = colors[i % 3];\n        createLaser(startX, startY, angle, length, color);\n    }\n\n    function createLaser(centerX, centerY, angleInDegrees, length, color) {\n        var angleInRadians = angleInDegrees * Math.PI / 180;\n\n        var x1 = centerX - Math.cos(angleInRadians) * length / 2;\n        var y1 = centerY + Math.sin(angleInRadians) * length / 2;\n        var x2 = centerX + Math.cos(angleInRadians) * length / 2;\n        var y2 = centerY - Math.sin(angleInRadians) * length / 2;\n\n        // map.createLine() 创建一条不可见的线，\n		// 当玩家越过它的时候会产生响应的影响\n        map.createLine([x1, y1], [x2, y2], function (player) {\n            if (player.getColor() != color) {\n                player.killedBy(\'a \' + color + \' laser\');\n            }\n        });\n\n#BEGIN_EDITABLE#\n        // 使用画布绘制一条线\n        var ctx = map.getCanvasContext();\n        ctx.beginPath();\n        ctx.strokeStyle = \'white\';\n        ctx.lineWidth = 5;\n        ctx.moveTo(x1, y1);\n        ctx.lineTo(x2, y2);\n        ctx.stroke();\n#END_EDITABLE#\n\n    }\n\n#BEGIN_EDITABLE#\n\n\n\n\n\n\n\n\n\n#END_EDITABLE#\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateAtLeastXLines(25);\n}\n ', 
+    'levels/17_pointers.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2.1",\n    "commandsIntroduced":\n        ["map.getDynamicObjects", "map.getCanvasCoords", "object.setTarget"],\n    "music": "Tart",\n    "mapProperties": {\n        "showDrawingCanvas": true\n    }\n}\n#END_PROPERTIES#\n/***************\n * pointers.js *\n ***************\n *\n * 你！你怎么还活着？\n *\n * 好吧，没关系。祝你在通过这个迷宫房间的时候好运，你不会再见到我或者算法了！\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    function shuffle(o){ //v1.0 [http://bit.ly/1l6LGQT]\n        for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i),\n            x = o[--i], o[i] = o[j], o[j] = x);\n        return o;\n    };\n\n    map.createFromGrid(\n        [\'+++++++++++++++++++++++++++++++++++++++++++++\',\n         \'++o *++++o *++++o *++++o *++++o *++++o *+++++\',\n         \'+* @ o++*   o++*   o++*   o++*   o++*   o++++\',\n         \'++o *++++o *++++o *++++o *++++o *++++o *+++++\',\n         \'+++++++++++++++++++++++++++++++++++++++++++++\',\n         \'+++++* o++++* o++++* o++++* o++++* o++++* o++\',\n         \'++++o   *++o   *++o   *++o   *++o   *++o   *+\',\n         \'+++++* o++++* o++++* o++++* o++++* o++++* o++\',\n         \'+++++++++++++++++++++++++++++++++++++++++++++\',\n         \'++o *++++o *++++o *++++o *++++o *++++o *+++++\',\n         \'+*   o++*   o++*   o++*   o++*   o++*   o++++\',\n         \'++o *++++o *++++o *++++o *++++o *++++o *+++++\',\n         \'+++++++++++++++++++++++++++++++++++++++++++++\',\n         \'+++++* o++++* o++++* o++++* o++++* o++++* o++\',\n         \'++++o   *++o   *++o   *++o   *++o   *++o   *+\',\n         \'+++++* o++++* o++++* o++++* o++++* o++++* o++\',\n         \'+++++++++++++++++++++++++++++++++++++++++++++\',\n         \'++o *++++o *++++o *++++o *++++o *++++o *+++++\',\n         \'+*   o++*   o++*   o++*   o++*   o++* E o++++\',\n         \'++o *++++o *++++o *++++o *++++o *++++o *+++++\',\n         \'+++++++++++++++++++++++++++++++++++++++++++++\'],\n        {\n            \'@\': \'player\',\n            \'E\': \'exit\',\n            \'+\': \'block\',\n            \'o\': \'teleporter\',\n            \'*\': \'trap\',\n        }, 2, 2);\n\n    var canvas = map.getCanvasContext();\n\n    var teleportersAndTraps = map.getDynamicObjects();\n    teleportersAndTraps = shuffle(teleportersAndTraps);\n\n    for (i = 0; i < teleportersAndTraps.length; i+=2) {\n        var t1 = teleportersAndTraps[i];\n        var t2 = teleportersAndTraps[i+1];\n\n        // 让每个传输点（teleporter）通向另外一个传输点，\n		// 或是一个陷阱\n        if (t1.getType() == \'teleporter\') {\n            t1.setTarget(t2);\n        }\n        if (t2.getType() == \'teleporter\') {\n            t2.setTarget(t1);\n        }\n\n#BEGIN_EDITABLE#\n        // TODO 找到某种办法将文档中的 API 移除，\n		// 免得那些“好医生”发现了 map.getCanvasCoords()\n\n\n\n\n#END_EDITABLE#\n    }\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n}\n ', 
+    'levels/18_superDrEvalBros.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2.2",\n    "commandsIntroduced": ["player.move", "map.startTimer"],\n    "music": "Beach Wedding Dance",\n    "mapProperties": {\n        "keyDelay": 25\n    }\n}\n#END_PROPERTIES#\n/**********************\n * superDrEvalBros.js *\n **********************\n *\n * 你居然还在这？！好吧，Dr. Eval，让我们看看你在更小维度上表现如何吧。\n *\n * 放弃吧。除非你吃了魔法蘑菇来变大，否则一切都结束了。\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    var fl = Math.floor;\n    var w = map.getWidth();\n    var h = map.getHeight();\n\n    map.placePlayer(1, fl(h/2)-1);\n    var player = map.getPlayer();\n\n    map.placeObject(w-1, fl(h/2)-1, \'exit\');\n\n    for (var x = 0; x < fl(w/2) - 5; x++) {\n        for (var y = fl(h/2); y < h; y++) {\n            map.placeObject(x, y, \'block\');\n        }\n    }\n\n    for (var x = fl(w/2) + 5; x <= w; x++) {\n        for (var y = fl(h/2); y < h; y++) {\n            map.placeObject(x, y, \'block\');\n        }\n    }\n\n    function gravity() {\n        var x = player.getX();\n        var y = player.getY() + 1;\n\n        if (y === map.getHeight() - 2) {\n            player.killedBy("gravity");\n        }\n\n        if (map.getObjectTypeAt(x,y) === "empty") {\n            player.move("down");\n        }\n\n    }\n    map.startTimer(gravity, 45);\n\n    function jump() {\n#BEGIN_EDITABLE#\n\n\n\n\n\n\n\n#END_EDITABLE#\n    }\n\n    player.setPhoneCallback(function () {\n        var x = player.getX();\n        var y = player.getY() + 1;\n\n        if (map.getObjectTypeAt(x,y) !== "empty") {\n            jump();\n        }\n    });\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    map.validateExactlyXManyObjects(1, \'exit\');\n    map.validateExactlyXManyObjects(520, \'block\');\n}\n ', 
+    'levels/19_documentObjectMadness.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2.2",\n    "commandsIntroduced":\n        ["global.objective", "map.getDOM", "map.createFromDOM",\n         "map.updateDOM", "map.overrideKey", "global.$",\n         "jQuery.find", "jQuery.addClass", "jQuery.hasClass",\n         "jQuery.removeClass", "jQuery.parent", "jQuery.length",\n         "jQuery.children", "jQuery.first", "jQuery.next",\n         "jQuery.prev"],\n    "music": "BossLoop",\n    "mapProperties": {\n        "showDummyDom": true\n    }\n}\n#END_PROPERTIES#\n/****************************\n * documentObjectMadness.js *\n ****************************\n *\n * 这真令人无法相信！我无法相信你居然进入了人工智能部门的 Web 服务器！\n * 你应该已经被删除了！这不可能！这些干 IT 的蠢货在想什么？\n *\n * 没关系。算法还在我这里。这是最重要的。\n * 剩下的部分只是实现一下，这能有多难？\n *\n * 无论如何，你已经无法抓到我了，我亲爱的博士。\n * 最终，科研的史册里会记载你被授予令人尊敬的教授头衔的。\n *\n * 你大概不知道 jQuery 吧！\n */\n\nfunction objective(map) {\n    return map.getDOM().find(\'.adversary\').hasClass(\'drEval\');\n}\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    var html = "<div class=\'container\'>" +\n    "<div style=\'width: 600px; height: 500px; background-color: white; font-size: 10px;\'>" +\n        "<center><h1>人工智能部门</h1></center>" +\n        "<hr />" +\n        "<table border=\'0\'><tr valign=\'top\'>" +\n            "<td><div id=\'face\' /></td>" +\n            "<td>" +\n                "<h2 class=facultyName>Cornelius Eval</h2>" +\n                "<h3>计算机科学副教授</h3>" +\n                "<ul>" +\n                    "<li>学士, 数学, 马尼托巴大学</li>" +\n                    "<li>PhD, 人工智能, <a href=\'http://www.mit.edu\'>MIT</a></li>" +\n                "</ul>" +\n                "<h4>个人介绍</h4>" +\n                "<p>我是一名计算机科学副教授，工作于人工智能部门。" +\n                "我当前的研究方向包括人机界面、NP 完全问题和并行网格数学理论。</p>" +\n                "<p>我现在还是 <a href=\'\'>超级玛丽大学生队</a> 的在职顾问。" +\n                "业余时间，我热衷于波尔卡舞和轻骑摩托。</p>" +\n            "</td>" +\n        "</tr></table>" +\n\n        "<div id=\'class_schedule\'>" +\n          "<h4>Class Schedule</h4>" +\n            "<table>" +\n             "<tr>" +\n                "<th>星期一</th><th>星期二</th><th>星期三</th><th>星期四</th><th>星期五</th>" +\n             "</tr>" +\n             "<tr>" +\n                "<td>CS145 - 分号</td><td>无计划</td><td>CS145 - 分号</td><td>CS199 - 实践理论</td><td>CS145 - Semicolons</td>" +\n             "</tr>" +\n            "</table>" +\n        "</div>" +\n        "<div id=\'loremIpsum\'>" +\n        "<h4>Lorem Ipsum</h4>" +\n          "<blockquote>" +\n            "<code>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci " +\n            "velit, sed quia nonnumquam eiusmodi tempora incidunt ut labore et dolore magnam aliquam quaerat " +\n            "voluptatem.</code>" +\n            "<footer>— " +\n              "<cite>Cicero, De Finibus Bonorum et Malorum</cite>" +\n            "</footer>" +\n          "</blockquote>" +\n        "</div>" +\n    "</div></div>";\n\n    var $dom = $(html);\n\n    $dom.find(\'.facultyName\').addClass(\'drEval\');\n    $dom.find(\'cite\').addClass(\'adversary\');\n\n    function moveToParent(className) {\n        var currentPosition = $dom.find(\'.\' + className);\n        if (currentPosition.parent().length > 0 &&\n                !currentPosition.parent().hasClass(\'container\')) {\n            currentPosition.parent().addClass(className);\n            currentPosition.removeClass(className);\n            map.updateDOM($dom);\n        }\n    }\n\n    function moveToFirstChild(className) {\n        var currentPosition = $dom.find(\'.\' + className);\n        if (currentPosition.children().length > 0) {\n            currentPosition.children().first().addClass(className);\n            currentPosition.removeClass(className);\n            map.updateDOM($dom);\n        }\n    }\n\n    function moveToPreviousSibling(className) {\n        var currentPosition = $dom.find(\'.\' + className);\n        if (currentPosition.prev().length > 0) {\n            currentPosition.prev().addClass(className);\n            currentPosition.removeClass(className);\n            map.updateDOM($dom);\n        }\n    }\n\n    function moveToNextSibling(className) {\n        var currentPosition = $dom.find(\'.\' + className);\n        if (currentPosition.next().length > 0) {\n            currentPosition.next().addClass(className);\n            currentPosition.removeClass(className);\n            map.updateDOM($dom);\n        }\n    }\n\n    map.overrideKey(\'up\', function () { moveToParent(\'drEval\'); });\n    map.overrideKey(\'down\', function () { moveToFirstChild(\'drEval\'); });\n    map.overrideKey(\'left\', function () { moveToPreviousSibling(\'drEval\'); });\n    map.overrideKey(\'right\', function () { moveToNextSibling(\'drEval\'); });\n\n    map.defineObject(\'adversary\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'@\',\n        \'color\': \'red\',\n        \'behavior\': function (me) {\n            var move = Math.floor(Math.random() * 4) + 1; // 1, 2, 3, or 4\n            if (move == 1) {\n                moveToParent(\'adversary\');\n            } else if (move == 2) {\n                moveToFirstChild(\'adversary\');\n            } else if (move == 3) {\n                moveToPreviousSibling(\'adversary\');\n            } else if (move == 4) {\n                moveToNextSibling(\'adversary\');\n            }\n        }\n    });\n\n    map.placePlayer(1, 1);\n    map.placeObject(map.getWidth() - 2, map.getHeight() - 2, \'adversary\');\n\n    map.createFromDOM($dom);\n#END_OF_START_LEVEL#\n}\n ', 
+    'levels/20_bossFight.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "commandsIntroduced":\n        ["object.onDestroy", "object.projectile",\n         "map.countObjects", "map.isStartOfLevel",\n         "map.validateAtMostXDynamicObjects", "map.validateNoTimers"],\n	"music": "Adversity",\n    "mapProperties": {\n        "refreshRate": 50,\n        "quickValidateCallback": true\n    }\n}\n#END_PROPERTIES#\n\n/*****************\n * bossFight.js *\n *****************\n *\n * 别太过分了，DR. EVAL！！！！\n * 你不会活着离开这里的！！！！\n * 这回你将会见到我真正的能力！！！！\n * 尝尝机器人怒火吧！！！！\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n	map.defineObject(\'boss\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'⊙\',\n        \'color\': \'red\',\n        \'interval\': 200,\n        \'onCollision\': function (player) {\n            player.killedBy(\'the boss\');\n        },\n        \'behavior\': function (me) {\n        	if (!me.direction) {\n        		me.direction = \'right\';\n        	}\n        	if (me.canMove(me.direction)) {\n            	me.move(me.direction);\n        	} else {\n        		me.direction = (me.direction == \'right\') ? \'left\' : \'right\';\n        	}\n        	if (Math.random() < 0.3) {\n            	map.placeObject(me.getX(), me.getY() + 2, \'bullet\');\n        	}\n        },\n        \'onDestroy\': function (me) {\n            if (map.countObjects(\'boss\') == 0) {\n                map.placeObject(me.getX(), me.getY(), \'theAlgorithm\');\n            }\n        }\n    });\n\n    map.defineObject(\'bullet\', {\n        \'type\': \'dynamic\',\n        \'symbol\': \'.\',\n        \'color\': \'red\',\n        \'interval\': 100,\n        \'projectile\': true,\n        \'behavior\': function (me) {\n            me.move(\'down\');\n        }\n    });\n\n    map.placePlayer(0, map.getHeight() - 3);\n    map.placeObject(map.getWidth() - 1, map.getHeight() - 1, \'exit\');\n\n    // 很辛苦吗，嗯？\n    map.getPlayer().removeItem(\'phone\');\n    map.placeObject(map.getWidth() - 1, map.getHeight() - 3, \'phone\');\n\n    map.placeObject(0, map.getHeight() - 4, \'block\');\n    map.placeObject(1, map.getHeight() - 4, \'block\');\n    map.placeObject(2, map.getHeight() - 4, \'block\');\n    map.placeObject(2, map.getHeight() - 3, \'block\');\n    map.placeObject(map.getWidth() - 1, map.getHeight() - 4, \'block\');\n    map.placeObject(map.getWidth() - 2, map.getHeight() - 4, \'block\');\n    map.placeObject(map.getWidth() - 3, map.getHeight() - 4, \'block\');\n    map.placeObject(map.getWidth() - 3, map.getHeight() - 3, \'block\');\n\n    for (var x = 0; x < map.getWidth(); x++) {\n        map.placeObject(x, 4, \'block\');\n    }\n\n    map.placeObject(9, 5, \'boss\');\n    map.placeObject(11, 5, \'boss\');\n    map.placeObject(13, 5, \'boss\');\n    map.placeObject(15, 5, \'boss\');\n    map.placeObject(17, 5, \'boss\');\n    map.placeObject(19, 5, \'boss\');\n    map.placeObject(21, 5, \'boss\');\n    map.placeObject(23, 5, \'boss\');\n    map.placeObject(25, 5, \'boss\');\n    map.placeObject(27, 5, \'boss\');\n    map.placeObject(29, 5, \'boss\');\n    map.placeObject(31, 5, \'boss\');\n\n    map.placeObject(10, 6, \'boss\');\n    map.placeObject(12, 6, \'boss\');\n    map.placeObject(14, 6, \'boss\');\n    map.placeObject(16, 6, \'boss\');\n    map.placeObject(18, 6, \'boss\');\n    map.placeObject(20, 6, \'boss\');\n    map.placeObject(22, 6, \'boss\');\n    map.placeObject(24, 6, \'boss\');\n    map.placeObject(26, 6, \'boss\');\n    map.placeObject(28, 6, \'boss\');\n    map.placeObject(30, 6, \'boss\');\n\n#BEGIN_EDITABLE#\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#END_EDITABLE#\n\n#END_OF_START_LEVEL#\n}\n\nfunction validateLevel(map) {\n    // called at start of level and whenever a callback executes\n    map.validateAtMostXObjects(59, \'block\');\n    map.validateAtMostXObjects(1, \'phone\');\n\n    if (map.countObjects(\'theAlgorithm\') > 0 && map.countObjects(\'boss\') > 0) {\n        throw "The Algorithm can only be dropped by the boss!";\n    }\n\n    // only called at start of level\n    if (map.isStartOfLevel()) {\n        map.validateAtMostXDynamicObjects(23);\n        map.validateNoTimers();\n    }\n}\n\nfunction onExit(map) {\n    if (!map.getPlayer().hasItem(\'theAlgorithm\')) {\n        map.writeStatus("You must take back the Algorithm!!");\n        return false;\n    } else if (!map.getPlayer().hasItem(\'phone\')) {\n        map.writeStatus("We need the phone!");\n        return false;\n    } else {\n        return true;\n    }\n}\n ', 
+    'levels/21_endOfTheLine.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2",\n    "activateSuperMenu": true,\n    "music": "Comme Des Orages"\n}\n#END_PROPERTIES#\n\n/*******************\n * endOfTheLine.js *\n *******************\n *\n * \n * 我认为无须忏悔，Cornelius。\n *\n * 你真希望我能做到？你真的认为可以相信论文的作者可以证明举世瞩目的 P = NP？\n *\n * 你们都是单纯的科研人员，我的好博士。“人工智能部门”是脱离现实的。\n * 我不认为你曾行考虑过，将这个算法实现，一个【物理】的实现方案。\n * 如果一个棘手的谜题实际上就像它预期的那样容易解决，人类会怎么做？\n *\n * Cornelius，如果这个知识被公开的话，我们都将成为上帝。\n * 幼稚的孩童使用无法想象的力量会如何。\n * 我们已经有一个奥本海默了，我们不需要让 Dr. Cornelius Eval 成为另一个奥本海默。\n *\n * 如果在这个算法上我能获得成功，那么它将是安全和可靠的。\n * 我可以明智的、具有远见和负责的运用它。\n * 我祈祷我的失败不会导致人类毁灭，不过我如此并不报乐观态度。\n *\n * 你可能已经击败了我的机器人军团，而我估计这可能是最终结果了。\n * 算法永远无法离开这一赛博空间。而你也一样。\n *\n * 这是超越你我之外的存在。我不后悔，因为我可以立刻重新开始。\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    map.finalLevel = true;\n    map.placePlayer(15, 12);\n    map.placeObject(25, 12, \'exit\');\n#END_OF_START_LEVEL#\n}\n ', 
+    'levels/22_credits.jsx': '#BEGIN_PROPERTIES#\n{\n    "version": "1.2.1",\n    "music": "Brazil"\n}\n#END_PROPERTIES#\n/**************\n * credits.js *\n *************\n *\n * 恭喜！Dr. Eval 已经成功带着算法逃离了赛博空间。\n *\n * 给你自己一个大大的奖励吧，你是一个聪明的黑客。\n *\n *\n *\n * 渴望更多？\n *\n * 访问一意孤行的 github 版本库\n *      https://github.com/AlexNisnevich/untrusted （英文版）\n *		https://github.com/mikespook/untrusted （中文版）\n *\n * 或许还可以尝试自己作一两个关卡！\n *\n * 喜欢这些音乐？你可以完整地听一遍\n *      https://soundcloud.com/untrusted\n *\n * 请随时联系我们 [\n *      \'alex [dot] nisnevich [at] gmail [dot] com\'，\n *      \'greg [dot] shuflin [at] gmail [dot] com\'，\n *      \'mikepook [plus] untrusted [at] gmail [dot] com\'\n * ]\n *\n * 再一次，衷心祝贺！\n *\n *             -- Alex，Greg 和 mikespook\n */\n\nfunction startLevel(map) {\n#START_OF_START_LEVEL#\n    var credits = [\n        [21, 1, "一意孤行"],\n        [23, 2, "- 或 -"],\n        [19, 3, "Dr.Eval 大冒险"],\n        [1, 4, "{"],\n        [2, 5, "\'开发\': \'Alex Nisnevich 和 Greg Shuflin\',"],\n        [2, 6, "\'汉化\': \'mikespook\',"], \n        [2, 7, "\'特别感谢\': {"],\n        [5, 8, "Dmitry_Mazin: [\'设计\', \'编码\'],"],\n        [5, 9, "Jordan_Arnesen: [\'关卡\', \'测试\'],"],\n        [5, 10, "Natasha_HullRichter: [\'关卡\',\'测试\']"],\n        [2, 11, "},"],\n        [2, 12, "\'音乐\': "],\n        [4, 13, "[\'Jonathan Holliday\',"],\n        [5, 14, "\'Dmitry Mazin\',"],\n        [5, 15, "\'Revolution Void\',"],\n        [5, 16, "\'Fex\',"],\n        [5, 17, "\'iNTRICATE\',"],\n        [5, 18, "\'Tortue Super Sonic\',"],\n        [5, 19, "\'Broke For Free\',"],\n        [5, 20, "\'Sycamore Drive\',"],\n        [5, 21, "\'Eric Skiff\'],"],\n        [30, 13, "\'Mike and Alan\',"],\n        [30, 14, "\'RoccoW\',"],\n        [30, 15, "\'That Andy Guy\',"],\n        [30, 16, "\'Obsibilo\',"],\n        [30, 17, "\'BLEO\',"],\n        [30, 18, "\'Rolemusic\',"],\n        [30, 19, "\'Seropard\',"],\n        [30, 20, "\'Vernon Lenoir\',"],\n        [19, map.getHeight() - 2, "\'感谢\': \'赏玩！\'"],\n        [1, map.getHeight() - 1, "}"]\n    ];\n\n    function drawCredits(i) {\n        if (i >= credits.length) {\n            return;\n        }\n\n        // redraw lines bottom to top to avoid cutting off letters\n        for (var j = i; j >= 0; j--) {\n            var line = credits[j];\n            map._display.drawText(line[0], line[1], line[2]);\n        }\n\n        map.timeout(function () {drawCredits(i+1);}, 2000)\n    }\n\n    map.timeout(function () {drawCredits(0);}, 4000);\n\n#END_OF_START_LEVEL#\n}\n ', 
 };
 $(document).ready(function() {
-    new Game()._initialize();
+    var startLevel = getParameterByName('lvl') ? parseInt(getParameterByName('lvl')) : null;
+    window.game = new Game(true, startLevel);
+    window.game._initialize();
     window.eval = {};
-});
-
-// prevent ctrl+R and F5
-$(document).bind('keydown keyup', function(e) {
-    if(e.which === 116) {
-       return false;
-    }
-    if(e.which === 82 && e.ctrlKey) {
-       return false;
-    }
 });
 
 })();
 
-console.log("%cIf you can read this, you are cheating! D:", "color: red; font-size: x-large");
-console.log("%cBut really, you don't need this console to play the game. Walk around using arrow keys (or Vim keys), and pick up the computer (" + String.fromCharCode(0x2318) + "). Then the fun begins!", "font-size: 15px")
+console.log(_("%cIf you can read this, you are cheating! D:"), "color: red; font-size: x-large");
+console.log(_("%cBut really, you don't need this console to play the game. Walk around using arrow keys (or Vim keys), and pick up the computer (") + String.fromCharCode(0x2318) + _("). Then the fun begins!"), "font-size: 15px");

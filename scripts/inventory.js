@@ -92,7 +92,7 @@ Game.prototype.drawInventory = function () {
 	var game = this;
 
 	if (this.inventory.length > 0) {
-		$('#inventory').text('INVENTORY: ');
+		$('#inventory').text(_('INVENTORY: '));
 
 		this.inventory.forEach(function (item) {
 			var object = game.map._getObjectDefinition(item);

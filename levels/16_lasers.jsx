@@ -15,9 +15,8 @@
  * lasers.js *
  *************
  *
- * Time to unleash the killer lasers! Each laser will kill you
- * unless you have the appropriate color. Too bad you can't
- * see which color corresponds to which laser!
+ * 是启动杀戮激光的时候了！每支激光都可以即刻杀死你，除非你有匹配的颜色。
+ * 你无法看到每支激光都是什么颜色，这真是太遗憾了！
  */
 
 function getRandomInt(min, max) {
@@ -49,8 +48,8 @@ function startLevel(map) {
         var x2 = centerX + Math.cos(angleInRadians) * length / 2;
         var y2 = centerY - Math.sin(angleInRadians) * length / 2;
 
-        // map.createLine() creates a line with an effect when
-        // the player moves over it, but doesn't display it
+        // map.createLine() 创建一条不可见的线，
+		// 当玩家越过它的时候会产生响应的影响
         map.createLine([x1, y1], [x2, y2], function (player) {
             if (player.getColor() != color) {
                 player.killedBy('a ' + color + ' laser');
@@ -58,7 +57,7 @@ function startLevel(map) {
         });
 
 #BEGIN_EDITABLE#
-        // using canvas to draw the line
+        // 使用画布绘制一条线
         var ctx = map.getCanvasContext();
         ctx.beginPath();
         ctx.strokeStyle = 'white';

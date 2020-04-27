@@ -14,24 +14,22 @@
  * intoTheWoods.js *
  *******************
  *
- * Ah, you're out of the woods now. Or into the woods, as the
- * case may be.
+ * 哈哈，现在你已经脱险了。
+ * 或者，就当前环境来说，你进入更加危险的地方了。
  *
- * So take a deep breath, relax, and remember what you're here
- * for in the first place.
+ * 那么深呼吸、放送，在进入之前务必记得你来此的目的。
  *
- * I've traced its signal and the Algorithm is nearby. You'll
- * need to go through the forest and across the river, and
- * you'll reach the fortress where it's kept. Their defences
- * are light, and we should be able to catch them off-guard.
+ * 我跟踪到一个信号，说明算法（Algorithm）就在跟前。
+ * 你需要穿越树林、渡过小河，然后到达藏匿它的要塞。
+ * 守卫不怎么严密，所以我们应该可以让他们放松警惕。
  */
 
 function startLevel(map) {
 #START_OF_START_LEVEL#
-    // NOTE: In this level alone, map.placeObject is allowed to
-    //overwrite existing objects.
+    // 注意：在本关中，允许用 map.placeObject
+	// 替换已有的对象。
 
-    map.displayChapter('Chapter 2\nRaiders of the Lost Algorithm');
+    map.displayChapter('第二章\n迷失的算法与骑士');
 
     map.placePlayer(2, map.getHeight() - 1);
 
@@ -69,9 +67,9 @@ function startLevel(map) {
         for (var i = 0; i < map.getWidth(); i++) {
             for (var j = 0; j < map.getHeight(); j++) {
 
-                // initialize to empty if the square contains a forest already
+                // 如果该格已经有树，就将其清空
                 if (map.getObjectTypeAt(i, j) === 'tree') {
-                    // remove existing forest
+                    // 移除已有的树
                     map.placeObject(i,j, 'empty');
                 }
 
@@ -91,15 +89,15 @@ function startLevel(map) {
     };
 
     functionList['movePlayerToExit'] = function () {
-        map.writeStatus("Permission denied.");
+        map.writeStatus("拒绝访问。");
     }
 
     functionList['pleaseMovePlayerToExit'] = function () {
-        map.writeStatus("I don't think so.");
+        map.writeStatus("我不这么认为。");
     }
 
     functionList['movePlayerToExitDamnit'] = function () {
-        map.writeStatus("So, how 'bout them <LOCAL SPORTS TEAM>?");
+        map.writeStatus("那么，赛事如何了？");
     }
 
     // generate forest

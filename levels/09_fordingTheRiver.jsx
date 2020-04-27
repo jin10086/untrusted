@@ -10,10 +10,10 @@
  * fordingTheRiver.js *
  **********************
  *
- * And there's the river. Fortunately, I was prepared for this.
- * See the raft on the other side?
+ * 这里有一条河。幸运的是，我对此有所准备。
+ * 看见另一边的救生艇（raft）了吗？
  *
- * Everything is going according to plan.
+ * 所需要的只是一个计划。
  */
 
 function startLevel(map) {
@@ -27,7 +27,7 @@ function startLevel(map) {
         'type': 'dynamic',
         'symbol': '▓',
         'color': '#420',
-        'transport': true, // (prevents player from drowning in water)
+        'transport': true, // （防止玩家掉进水里）
         'behavior': function (me) {
             me.move(raftDirection);
         }

@@ -9,13 +9,11 @@
  * minesweeper.js *
  ******************
  *
- * So much for Asimov's Laws. They're actually trying to kill
- * you now. Not to be alarmist, but the floor is littered
- * with mines. Rushing for the exit blindly may be unwise.
- * I need you alive, after all.
+ * 阿西莫夫的机器人三定律见鬼了。他们现在实际上是想要干掉你。
+ * 虽然地板上遍布地雷，但不要太悲观。只是奋不顾身的冲向出口似乎不太明智。
+ * 无论如何，你需要活下来。
  *
- * If only there was some way you could track the positions
- * of the mines...
+ * 不过，如果有什么办法让你可以发现这些地雷……
  */
 
 function getRandomInt(min, max) {

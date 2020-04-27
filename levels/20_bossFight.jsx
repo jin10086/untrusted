@@ -17,10 +17,10 @@
  * bossFight.js *
  *****************
  *
- * NO FARTHER, DR. EVAL!!!!
- * YOU WILL NOT GET OUT OF HERE ALIVE!!!!
- * IT'S TIME YOU SEE MY TRUE FORM!!!!
- * FACE MY ROBOT WRATH!!!!!
+ * 别太过分了，DR. EVAL！！！！
+ * 你不会活着离开这里的！！！！
+ * 这回你将会见到我真正的能力！！！！
+ * 尝尝机器人怒火吧！！！！
  */
 
 function startLevel(map) {
@@ -67,7 +67,7 @@ function startLevel(map) {
     map.placePlayer(0, map.getHeight() - 3);
     map.placeObject(map.getWidth() - 1, map.getHeight() - 1, 'exit');
 
-    // Not so tough now, huh?
+    // 很辛苦吗，嗯？
     map.getPlayer().removeItem('phone');
     map.placeObject(map.getWidth() - 1, map.getHeight() - 3, 'phone');
 

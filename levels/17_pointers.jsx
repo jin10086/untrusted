@@ -13,10 +13,9 @@
  * pointers.js *
  ***************
  *
- * You! How are you still alive?
+ * 你！你怎么还活着？
  *
- * Well, no matter. Good luck getting through this
- * maze of rooms - you'll never see me or the Algorithm again!
+ * 好吧，没关系。祝你在通过这个迷宫房间的时候好运，你不会再见到我或者算法了！
  */
 
 function startLevel(map) {
@@ -66,8 +65,8 @@ function startLevel(map) {
         var t1 = teleportersAndTraps[i];
         var t2 = teleportersAndTraps[i+1];
 
-        // Point each teleporter to either another teleporter
-        // or a trap
+        // 让每个传输点（teleporter）通向另外一个传输点，
+		// 或是一个陷阱
         if (t1.getType() == 'teleporter') {
             t1.setTarget(t2);
         }
@@ -76,10 +75,8 @@ function startLevel(map) {
         }
 
 #BEGIN_EDITABLE#
-        // TODO find a way to remove the API docs
-        // wouldn't want the 'good doctor' to find
-        // out about map.getCanvasCoords()...
-
+        // TODO 找到某种办法将文档中的 API 移除，
+		// 免得那些“好医生”发现了 map.getCanvasCoords()
 
 
 

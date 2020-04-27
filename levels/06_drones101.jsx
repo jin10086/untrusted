@@ -12,11 +12,10 @@
  * drones101.js *
  ****************
  *
- * Do you remember, my dear Professor, a certain introductory
- * computational rationality class you taught long ago? Assignment
- * #2, behavior functions of autonomous agents? I remember that one
- * fondly - but attack drones are so much easier to reason about
- * when they're not staring you in the face, I would imagine!
+ * 我亲爱的教授，还记得吗？很久以前你讲授过的那堂人工智能的课程，
+ * 第二道作业是匿名特工的行为。
+ * 我记得有一个幼稚的实现：只要机器人没有看到你，就很容易攻击它。
+ * 那么现在让我们设想一下……
  */
 
 function startLevel(map) {

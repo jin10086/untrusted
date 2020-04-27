@@ -10,28 +10,25 @@
  * exceptionalCrossing.js *
  **************************
  *
- * Sorry, old friend, but I'm afraid I can't share
- * co-authorship on this paper. You've done a very
- * good job getting this Algorithm for me. The bit
- * with the keys was especially clever! I wouldn't
- * have thought of it myself. But then, of course,
- * that's why you were here in the first place.
+ * 抱歉，老朋友，不过我想我不能与你共享这篇论文。
+ * 为了我，你所做的一切非常了不起。对这些钥匙的利用非常聪明！
+ * 我自己永远也想不到。
  *
- * You've served your purpose well. But now, alas,
- * it is time for you to die.
+ * 不过呢，当然啦，这也是为什么你一开始会来到这里的原因。
  *
- * I'm not heartless, though. In fact, I will let
- * you choose your mode of death. There, isn't that
- * nice?
+ * 你一直都意志坚定。不过现在，啊哈，你的死期到了。
+ *
+ * 不过，我也不是铁石心肠的人。我会让你选择见上帝的方式。
+ * 怎么样，这是不是很好啊？
  */
 
 function startLevel(map) {
 #START_OF_START_LEVEL#
-    map.displayChapter('Chapter 3\nBetrayal');
+    map.displayChapter('第三章\n背叛');
 
     map.placePlayer(0, 0);
 
-    // yoink!
+    // 哼哼！
     map.getPlayer().removeItem('theAlgorithm');
 
     map.defineObject('water', {

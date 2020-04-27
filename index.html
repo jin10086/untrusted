@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Untrusted - a user javascript adventure game</title>
+	<title>一意孤行 - javascript 单人冒险游戏</title>
 	<meta charset='utf8'></meta>
 	<link rel="shortcut icon" href="favicon.ico" />
 
@@ -9,7 +9,7 @@
 
 	<link rel="stylesheet" href="styles/game.css">
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="lib/es5-shim.min.js"></script>
 	<script type="text/javascript" src="lib/shortcut.js"></script>
 	<script type="text/javascript" src="lib/rotjs-library/rot.js"></script>
@@ -23,7 +23,8 @@
 	<script src="scripts/build/untrusted.js"></script>
 </head>
 <body>
-	<a id="forkMe" href="https://github.com/AlexNisnevich/untrusted" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 9999;" src="//s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+	<a id="forkMe" href="https://github.com/mikespook/untrusted" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 9999;" src="//s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+	<a id="passingTip" href="http://mikespook.com/2014/09/untrusted-chinese/" target="_blank"><img style="position: absolute; bottom: 0; left: 0; border: 0; z-index: 9999;" src="images/passing_tip.png" alt="通关技巧"></a>
 	<div id="container">
         <div id="panes">
         	<a id="muteButton"><img src="images/mute-off.png" /></a>
@@ -42,17 +43,17 @@
 				</textarea>
 				<div id="buttons">
 					<span><a id="helpButton" title="Ctrl+1: API Reference"><span class="keys">^1</span> API</a></span>
-					<span><a id="toggleFocusButton" title="Ctrl+2: Toggle Focus"><span class="keys">^2</span> Toggle Focus</a></span>
-                    <span><a id="notepadButton" title="Ctrl+3: Notepad"><span class="keys">^3</span> Notepad</a></span>
-					<span><a id="resetButton" title="Ctrl+4: Reset Level"><span class="keys">^4</span> Reset</a></span>
-					<span><a id="executeButton" title="Ctrl+5: Execute"><span class="keys">^5</span> Execute</a></span>
-					<span><a id="phoneButton" style="display: none;" title="Q: Use Phone"><span class="keys"> Q</span> Phone</a></span>
-					<span><a id="menuButton" title="Ctrl+0: Menu" style="float: right;"><span class="keys">^0</span> <span id="menuLabel">Menu</span></a></span>
+					<span><a id="toggleFocusButton" title="Ctrl+2: Toggle Focus"><span class="keys">^2</span> 切换焦点</a></span>
+                    <span><a id="notepadButton" title="Ctrl+3: Notepad"><span class="keys">^3</span> 笔记</a></span>
+					<span><a id="resetButton" title="Ctrl+4: Reset Level"><span class="keys">^4</span> 重置</a></span>
+					<span><a id="executeButton" title="Ctrl+5: Execute"><span class="keys">^5</span> 执行</a></span>
+					<span><a id="phoneButton" style="display: none;" title="Q: Use Phone"><span class="keys"> Q</span> 电话</a></span>
+					<span><a id="menuButton" title="Ctrl+0: Menu" style="float: right;"><span class="keys">^0</span> <span id="menuLabel">菜单</span></a></span>
 				</div>
 			</div>
 			<div id="helpPane" style="display: none;">
 				<div id="helpPaneSidebar">
-					<div id="helpPaneTitle">API Reference</div>
+					<div id="helpPaneTitle">API 手册</div>
 					<ul></ul>
 				</div>
 				<div id="helpPaneContent"></div>
@@ -69,7 +70,7 @@
 					</ul>
 				</div>
 				<div id="rightMenuPane">
-					<div class="pop_up_box_heading">Level Select</div>
+					<div class="pop_up_box_heading">关卡选择</div>
 					<div id="root"></div>
 					<div id="levels"></div>
 					<div id="scripts"></div>
@@ -79,17 +80,23 @@
 
             <div id="notepadPane" class='pop_up_box'>
                 <div id='notepadPaneContent'>
-                    <div class="pop_up_box_heading">$EDITOR</div>
+                    <div class="pop_up_box_heading">记事本</div>
                     <textarea id=notepadTextarea></textarea>
-                    <button id='notepadSaveButton'>Save</button>
+                    <button id='notepadSaveButton'>保存</button>
                 </div>
                 <div id='notepadPaneCloseButton'>x</div>
             </div>
 		</div>
-
 		<div id="paypal">
-			<span id="paypalCaption">Help us pay for bandwidth!</span>
-			<form id="paypalButton" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+			<span class="paypalCaption">捐赠中文版！</span>
+			<form class="paypalButton" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="RGFKJAPEMDE2Q">
+				<input type="image" src="https://www.paypalobjects.com/zh_CN/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+			<span class="paypalCaption">捐赠英文版！</span>
+			<form class="paypalButton" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
 			<input type="hidden" name="cmd" value="_s-xclick">
 				<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHbwYJKoZIhvcNAQcEoIIHYDCCB1wCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYCm7SFl45X1Lu7xu+F3oAV+spw9MvqKfjmED56iQSTH7SbbRdGmbtbQ30smDaU9rOXIt1QoEcFJgjO/Fq8o0+BWn7thno7btbwDnt4Jvr2DycSwZPSa8x8jNgypLBQVkQVL2v7ufhcjuNpIr7nz4M9CdmT0ys2m2JwpprBWDjFrtzELMAkGBSsOAwIaBQAwgewGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQI4EnAzSo6DfyAgci7VmL95V9fzkvjGoJSp9ZyDwaziQZPr9/CV285CyhivtaDc1Ytz1tnYAumWweOmBhlKbRNUg+3nXSlvqh8FXM/iHmr5QKEPFKFWvyqIOuXheDzKg+pX7UeeLzkZpagx6eJtvxf4C2KmOVcx4f8y6vj+Eoh4wsO/yKqyt0cdXWpnNNl7N1vMGSiJa43yHJ4TGGDwa9jOJfKo/kUZE8s7LYpGQODNvFEHYnLplS5pYo+xhbpq4j74z1oCT+UOYhJMvwa4N91dYOFOaCCA4cwggODMIIC7KADAgECAgEAMA0GCSqGSIb3DQEBBQUAMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbTAeFw0wNDAyMTMxMDEzMTVaFw0zNTAyMTMxMDEzMTVaMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAwUdO3fxEzEtcnI7ZKZL412XvZPugoni7i7D7prCe0AtaHTc97CYgm7NsAtJyxNLixmhLV8pyIEaiHXWAh8fPKW+R017+EmXrr9EaquPmsVvTywAAE1PMNOKqo2kl4Gxiz9zZqIajOm1fZGWcGS0f5JQ2kBqNbvbg2/Za+GJ/qwUCAwEAAaOB7jCB6zAdBgNVHQ4EFgQUlp98u8ZvF71ZP1LXChvsENZklGswgbsGA1UdIwSBszCBsIAUlp98u8ZvF71ZP1LXChvsENZklGuhgZSkgZEwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tggEAMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADgYEAgV86VpqAWuXvX6Oro4qJ1tYVIT5DgWpE692Ag422H7yRIr/9j/iKG4Thia/Oflx4TdL+IFJBAyPK9v6zZNZtBgPBynXb048hsP16l2vi0k5Q2JKiPDsEfBhGI+HnxLXEaUWAcVfCsQFvd2A1sxRr67ip5y2wwBelUecP3AjJ+YcxggGaMIIBlgIBATCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwCQYFKw4DAhoFAKBdMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE0MDQwOTIwMTMwNVowIwYJKoZIhvcNAQkEMRYEFCwi/dWQTjH3ydSP3kF9F1D65lSoMA0GCSqGSIb3DQEBAQUABIGAJ11YwSy6yDT6yk7rHUbyGQ027xEZ8xwDqjDGbbpPxswr3B4nXHlJwohhmv4Iy50Oq9g/FWCeQSNXMti52qGvAdzVVuzCelTb8ngxWmY+B7129CmqjZJPZPPCCuT+NjDovXDfNbJzYWakBkJSGeRlM84JBUuSQF1Ki+lI7BBUC7s=-----END PKCS7-----">
 				<input type="image" src="//www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -100,16 +107,13 @@
 
 	<div id="jquery_bgPlayer" class="jp-jplayer"></div>
 	<div id="jquery_soundPlayer" class="jp-jplayer"></div>
-	<script type="text/javascript">
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-345959-12']);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
+	<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-535688-7', 'auto');
+ga('send', 'pageview');
 	</script>
 </body>
 </html>

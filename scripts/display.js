@@ -1,5 +1,5 @@
 ROT.Display.create = function(game, opts) {
-    opts['fontFamily'] = '"droid sans mono", Courier, "Courier New", monospace';
+    opts.fontFamily = _('"droid sans mono", Courier, "Courier New", monospace');
     var display = new ROT.Display(opts);
     display.game = game;
     return display;
@@ -155,22 +155,7 @@ ROT.Display.prototype.saveGrid = function (map) {
 
 ROT.Display.prototype.playIntro = function (map, i) {
     display = this;
-
-    if (i < 0) {
-        this._intro = true;
-    } else {
-        if (typeof i === 'undefined') { i = map.getHeight(); }
-        this.clear();
-        this.drawText(0, i - 2, "%c{#0f0}> initialize")
-        this.drawText(15, i + 3, "U N T R U S T E D");
-        this.drawText(20, i + 5, "- or - ");
-        this.drawText(5, i + 7, "THE CONTINUING ADVENTURES OF DR. EVAL");
-        this.drawText(3, i + 12, "a game by Alex Nisnevich and Greg Shuflin");
-        this.drawText(10, i + 22, "Press any key to begin ...")
-        setTimeout(function () {
-            display.playIntro(map, i - 1);
-        }, 100);
-    }
+	playIntro(display, map, i)
 };
 
 ROT.Display.prototype.fadeIn = function (map, speed, callback, i) {
@@ -181,7 +166,7 @@ ROT.Display.prototype.fadeIn = function (map, speed, callback, i) {
     } else {
         var levelName = game._levelFileNames[game._currentLevel - 1];
     }
-    var command = "%c{#0f0}> run " + levelName;
+    var command = _("%c{#0f0}> run ") + levelName;
 
     if (i < -3) {
         if (callback) { callback(); }
@@ -205,19 +190,28 @@ ROT.Display.prototype.fadeIn = function (map, speed, callback, i) {
 ROT.Display.prototype.writeStatus = function(text) {
     var map = this.game.map;
 
-    var strings = [text];
-    if (text.length > map.getWidth()) {
-        // split into two lines
-        var minCutoff = map.getWidth() - 10;
-        var cutoff = minCutoff + text.slice(minCutoff).indexOf(" ");
-        strings = [text.slice(0, cutoff), text.slice(cutoff + 1)];
-    }
+    var strings = [];
+	var l = 0;
+	for (var i = 0; i < text.length; i ++) {
+		l ++;
+		if (escape(text.charAt(i)).indexOf('%u') >= 0) { // is full-width char
+			l ++;
+		}
+		if (l > map.getWidth() - 10) {
+	        // split into lines
+	        strings.push(text.substr(strings.join('').length, i));
+			l = 0;
+		}
+	}
+	if (strings.length == 0) {
+		strings = [text];
+	}
 
     for (var i = 0; i < strings.length; i++) {
         var str = strings[i];
-        var x = Math.floor((map.getWidth() - str.length) / 2);
+        var x = Math.floor((map.getWidth() - str.replace(/[^\u0000-\u00ff]/g,"aa").length) / 2);
         var y = map.getHeight() + i - strings.length - 1;
-        this.drawText(x, y, str);
+        this.drawText(x, y, _(str));
     }
 };
 

@@ -9,9 +9,9 @@
  * theLongWayOut.js *
  ********************
  *
- * Well, it looks like they're on to us. The path isn't as
- * clear as I thought it'd be. But no matter - four clever
- * characters should be enough to erase all their tricks.
+ * 好吧，看起来他们发现了我们的意图。
+ * 我原以为这条路会很畅通，事实上看来不是这样。
+ * 不过没关系，聪明人总能消除这些麻烦。
  */
 
 function startLevel(map) {

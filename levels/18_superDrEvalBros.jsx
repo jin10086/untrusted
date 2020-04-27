@@ -12,11 +12,9 @@
  * superDrEvalBros.js *
  **********************
  *
- * You're still here?! Well, Dr. Eval, let's see
- * how well you can operate with one less dimension.
+ * 你居然还在这？！好吧，Dr. Eval，让我们看看你在更小维度上表现如何吧。
  *
- * Give up now. Unless you have a magic mushroom
- * up your sleeve, it's all over.
+ * 放弃吧。除非你吃了魔法蘑菇来变大，否则一切都结束了。
  */
 
 function startLevel(map) {

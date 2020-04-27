@@ -8,66 +8,67 @@
  * credits.js *
  *************
  *
- * Congratulations! Dr. Eval has successfully escaped from the
- * Machine Continuum with the Algorithm in hand.
+ * 恭喜！Dr. Eval 已经成功带着算法逃离了赛博空间。
  *
- * Give yourself a pat on the back. You are one clever hacker.
- *
+ * 给你自己一个大大的奖励吧，你是一个聪明的黑客。
  *
  *
- * Hungry for more?
  *
- * Check out Untrusted's github repository at
- *      https://github.com/AlexNisnevich/untrusted
+ * 渴望更多？
  *
- * Perhaps try your hand at making your own level or two!
+ * 访问一意孤行的 github 版本库
+ *      https://github.com/AlexNisnevich/untrusted （英文版）
+ *		https://github.com/mikespook/untrusted （中文版）
  *
- * Like what you've been hearing? You can listen to the full
- * soundtrack at
+ * 或许还可以尝试自己作一两个关卡！
+ *
+ * 喜欢这些音乐？你可以完整地听一遍
  *      https://soundcloud.com/untrusted
  *
- * Feel free to drop us a line at [
- *      'alex [dot] nisnevich [at] gmail [dot] com',
- *      'greg [dot] shuflin [at] gmail [dot] com'
+ * 请随时联系我们 [
+ *      'alex [dot] nisnevich [at] gmail [dot] com'，
+ *      'greg [dot] shuflin [at] gmail [dot] com'，
+ *      'mikepook [plus] untrusted [at] gmail [dot] com'
  * ]
  *
- * Once again, congratulations!
+ * 再一次，衷心祝贺！
  *
- *             -- Alex and Greg
+ *             -- Alex，Greg 和 mikespook
  */
 
 function startLevel(map) {
 #START_OF_START_LEVEL#
     var credits = [
-        [15, 1, "U N T R U S T E D"],
-        [20, 2, "- or -"],
-        [5, 3, "THE CONTINUING ADVENTURES OF DR. EVAL"],
+        [21, 1, "一意孤行"],
+        [23, 2, "- 或 -"],
+        [19, 3, "Dr.Eval 大冒险"],
         [1, 4, "{"],
-        [2, 5, "a_game_by: 'Alex Nisnevich and Greg Shuflin',"],
-        [2, 7, "special_thanks_to: {"],
-        [5, 8, "Dmitry_Mazin: ['design', 'code'],"],
-        [5, 9, "Jordan_Arnesen: ['levels', 'playtesting'],"],
-        [5, 10, "Natasha_HullRichter: ['levels','playtesting']"],
+        [2, 5, "'开发': 'Alex Nisnevich 和 Greg Shuflin',"],
+        [2, 6, "'汉化': 'mikespook',"], 
+        [2, 7, "'特别感谢': {"],
+        [5, 8, "Dmitry_Mazin: ['设计', '编码'],"],
+        [5, 9, "Jordan_Arnesen: ['关卡', '测试'],"],
+        [5, 10, "Natasha_HullRichter: ['关卡','测试']"],
         [2, 11, "},"],
-        [2, 13, "music_by: "],
-        [4, 14, "['Jonathan Holliday',"],
-        [5, 15, "'Dmitry Mazin',"],
-        [5, 16, "'Revolution Void',"],
-        [5, 17, "'Fex',"],
-        [5, 18, "'iNTRICATE',"],
-        [5, 19, "'Tortue Super Sonic',"],
-        [5, 20, "'Broke For Free',"],
-        [5, 21, "'Sycamore Drive',"],
-        [5, 22, "'Eric Skiff'],"],
-        [30, 14, "'Mike and Alan',"],
-        [30, 15, "'RoccoW',"],
-        [30, 16, "'That Andy Guy',"],
-        [30, 17, "'Obsibilo',"],
-        [30, 18, "'BLEO',"],
-        [30, 19, "'Rolemusic',"],
-        [30, 20, "'Seropard',"],
-        [30, 21, "'Vernon Lenoir',"],
-        [15, map.getHeight() - 2, "Thank_you: 'for playing!'"],
+        [2, 12, "'音乐': "],
+        [4, 13, "['Jonathan Holliday',"],
+        [5, 14, "'Dmitry Mazin',"],
+        [5, 15, "'Revolution Void',"],
+        [5, 16, "'Fex',"],
+        [5, 17, "'iNTRICATE',"],
+        [5, 18, "'Tortue Super Sonic',"],
+        [5, 19, "'Broke For Free',"],
+        [5, 20, "'Sycamore Drive',"],
+        [5, 21, "'Eric Skiff'],"],
+        [30, 13, "'Mike and Alan',"],
+        [30, 14, "'RoccoW',"],
+        [30, 15, "'That Andy Guy',"],
+        [30, 16, "'Obsibilo',"],
+        [30, 17, "'BLEO',"],
+        [30, 18, "'Rolemusic',"],
+        [30, 19, "'Seropard',"],
+        [30, 20, "'Vernon Lenoir',"],
+        [19, map.getHeight() - 2, "'感谢': '赏玩！'"],
         [1, map.getHeight() - 1, "}"]
     ];
 
